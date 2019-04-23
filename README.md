@@ -22,7 +22,6 @@
     * [Hello World](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
     * [电影投票互动](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
 * 设计说明 
-    * 敬请期待...
 * 敬请期待
     * 支付能力
     * 音视频能力

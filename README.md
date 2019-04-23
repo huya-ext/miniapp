@@ -11,12 +11,20 @@
 * 丰富的Open Api
     * 为开发者提供诸如弹幕、订阅、支付、消息推送等api,让直播间能够孵化出更强大的应用。
 
+## 小程序接入
+
 ## 如何开发小程序
-* [快速接入](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
+* [Getting Start](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
 * [开发者中心](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
-* [开发者后台服务](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
-* [API使用](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
-* [脚手架](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
+* [前端开发指南](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
+* [SDK & API使用](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
 * Demo示例
+    * [Hello World](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
     * [电影投票互动](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
-* [使用文档](https://github.com/huya-ext/HuyaMiniPrograms/wiki)
+* 设计说明 
+    *敬请期待...
+* 敬请期待
+    * [支付能力](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
+    * [音视频能力](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
+    * [AI相关能力](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
+    * [应用商店](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)

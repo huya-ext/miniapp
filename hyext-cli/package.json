@@ -1,8 +1,8 @@
 {
   "name": "hyext",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a scaffold for hyext.",
-  "main": "./bin/index.js",
+  "main": "./bin/hyext.js",
   "bin": {
     "hyext": "./bin/hyext.js"
   },

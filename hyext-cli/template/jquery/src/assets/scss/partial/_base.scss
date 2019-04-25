@@ -1,0 +1,123 @@
+@charset "utf-8";
+@import "normalize.scss";
+
+html {
+	height: 100%;
+	text-rendering: optimizelegibility;
+}
+body {
+	word-wrap: break-word;
+}
+img {
+	height: auto;
+	vertical-align: middle;
+}
+i, em {
+	font-style: normal;
+}
+ol, ul, menu {
+	list-style: none outside none;
+}
+fieldset,iframe,abbr,acronym {
+	border: 0 none;
+}
+dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,select,textarea,p,blockquote,th,td,
+article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+	margin: 0; padding: 0;
+}
+
+textarea {
+	resize: vertical;
+}
+hr {
+	border: none;
+	border-bottom: 1px solid #cfcfcf;
+	margin-bottom: 10px;
+	height: 10px;
+}
+@mixin clearfix{
+	*zoom: 1;
+	&:before,
+	&:after{
+		content: "";
+		display: table;
+		line-height: 0;
+	}
+	&:after{
+		clear: both;
+	}
+}
+%clearfix{
+	*zoom: 1;
+	&:before,
+	&:after{
+		content: "";
+		display: table;
+		line-height: 0;
+	}
+	&:after{
+		clear: both;
+	}
+}
+.clearfix {
+	@extend %clearfix;
+}
+$blank-step: 5;
+%blank {
+	display: block;
+	clear: both;
+	overflow: hidden;
+}
+@for $i from 1 through 4 {
+	.blank#{$blank-step*$i} {
+		@extend %blank;
+	}
+	.blank#{$blank-step*$i} {
+		height: #{$blank-step*$i}px;
+	}
+}
+.fr {
+	float: right;
+	_display: inline;
+}
+.fl {
+	float: left;
+	_display: inline;
+}
+.show { display: block; }
+.hide { display: none; }
+.hidden {
+	display: none !important;
+	visibility: hidden;
+}
+.clear {
+    clear: both;
+}
+.zoom {
+	zoom: 1;
+}
+.highlight {color: #F60 !important;}
+.important {font-weight: 700 !important;}
+.no-border {border: 0 none !important;}
+.transparent {
+	opacity: .0;
+	filter: alpha(opacity=0);
+}
+.blue-link {
+	color: #0a8cd2!important;
+	font-size: 12px;
+	font-weight: normal;
+    &:hover {
+        text-decoration: underline;
+        .txt {
+        	text-decoration: underline;
+        }
+        i {
+        	text-decoration: none;
+        }
+    }
+}
+.nowrap {
+    white-space: nowrap;
+    word-wrap: normal;
+}

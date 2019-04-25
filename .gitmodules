@@ -1,0 +1,3 @@
+[submodule "hyext-cli/rn"]
+	path = hyext-cli/rn
+	url = https://git.huya.com/wuyunpeng1/hy-ext-cli.git

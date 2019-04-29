@@ -13,16 +13,16 @@
 
 ## 创建小程序
 
-1. 打开[小程序开发者中心](http://test-ext.huya.com)，点击 ‘立即创建’ 按钮即可创建。注意：创建小程序必须要先完成平台的账号实名认证。
-![](https://v-cms-img.huya.com/huya/hy-ext/create.png)
-2. 创建完毕后，在 ‘我拥有的’ 列表里面可以看到已创建好的小程序，点击列表的小程序，即可对小程序内容进行编辑。
-![](https://v-cms-img.huya.com/huya/hy-ext/create1.png)
-3. 进入小程序管理页，可以看到小程序概要和版本管理，切至版本管理，点击 ‘创建新版本’ 按钮，填写版本号，即可编辑当前版本的小程序内容。
-![](https://v-cms-img.huya.com/huya/hy-ext/create2.png)
-![](https://v-cms-img.huya.com/huya/hy-ext/create3.png)
-4. Shows a system indicator and a placeholder image while downloading.
-5. When prepared, it animates the small thumbnail image with a "fade in" effect. 
-6. The original large image is also cached to disk for later use, to get rid of downloading it again in a detail view.
+1. 成为开发者: 首次在开发中中心创建小程序，通过实名认证，即可成为开发者
+![](https://v-cms-img.huya.com/huya/hy-ext/new1.png)
+![](https://v-cms-img.huya.com/huya/hy-ext/new2.png)
+2. 小程序版本信息完善: 创建小程序版本，完善版本信息，包括名称、LOGO、介绍、开发者信息等。
+![](https://v-cms-img.huya.com/huya/hy-ext/new3.png)
+3. 开发小程序：完成小程序的开发配置，下载脚手架，参考开发文档进行小程序的开发和调试。
+![](https://v-cms-img.huya.com/huya/hy-ext/new4.png)
+4. 发布小程序：完成开发并测试通过后，可提交审核，待审核完毕，即可发布小程序，主播可在小程序商店对其进行安装。
+![](https://v-cms-img.huya.com/huya/hy-ext/new7.png)
+![](https://v-cms-img.huya.com/huya/hy-ext/new6.png)
 ## 如何开发小程序
 * [Getting Start](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
 * [开发者中心](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)

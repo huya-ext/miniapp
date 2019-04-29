@@ -20,7 +20,7 @@
 ![](https://v-cms-img.huya.com/huya/hy-ext/new3.png)
 3. 开发小程序：完成小程序的开发配置，下载脚手架，参考开发文档进行小程序的开发和调试。
 ![](https://v-cms-img.huya.com/huya/hy-ext/new4.png)
-4. 发布小程序：完成开发并测试通过后，可提交审核，待审核完毕，即可发布小程序，主播可在小程序商店对其进行安装。
+4. 发布小程序：完成开发并测试通过后，可提交审核，待审核完毕，即可发布小程序，主播可在小程序商店进行安装。
 ![](https://v-cms-img.huya.com/huya/hy-ext/new7.png)
 ![](https://v-cms-img.huya.com/huya/hy-ext/new6.png)
 ## 如何开发小程序

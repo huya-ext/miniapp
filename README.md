@@ -1,29 +1,44 @@
 ![](https://v-cms-img.huya.com/huya/hy-ext/logo.png)
 
 ## 虎牙小程序
+
 * 虎牙小程序是一款可以由第三方开发者在虎牙直播间内开发视频与观众互动程序的应用，例如小游戏，直播数据展示，互动投票等。
 
 ## 小程序特色
+
 * 增强粉丝群体群粘性
     * 透过小程序的个性化内容，让用户与主播能有更深入的互动交流。
+    
 * 强化观众直播体验
     * 小程序可以与直播内容想相结合，加入实时性互动玩法，增添直播观看趣味。
+    
 * 丰富的Open Api
     * 为开发者提供诸如弹幕、订阅、支付、消息推送等api,让直播间能够孵化出更强大的应用。
 
 ## 快速创建小程序
 
 1. 成为开发者: 首次在开发中中心创建小程序，通过实名认证，即可成为开发者
+
 ![](https://v-cms-img.huya.com/huya/hy-ext/new1.png)
+
 ![](https://v-cms-img.huya.com/huya/hy-ext/new2.png)
+
 2. 小程序版本信息完善: 创建小程序版本，完善版本信息，包括名称、LOGO、介绍、开发者信息等。
+
 ![](https://v-cms-img.huya.com/huya/hy-ext/new3.png)
+
 3. 开发小程序：完成小程序的开发配置，下载脚手架，参考开发文档进行小程序的开发和调试。
+
 ![](https://v-cms-img.huya.com/huya/hy-ext/new4.png)
+
 4. 发布小程序：完成开发并测试通过后，可提交审核，待审核完毕，即可发布小程序，主播可在小程序商店进行安装。
+
 ![](https://v-cms-img.huya.com/huya/hy-ext/new7.png)
+
 ![](https://v-cms-img.huya.com/huya/hy-ext/new6.png)
+
 ## 如何开发小程序
+
 * [Getting Start](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
 * [开发者中心](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
 * [前端开发指南](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)

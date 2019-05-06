@@ -66,14 +66,13 @@
 
 ## 如何开发小程序
 
-* [Getting Start](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
-* [开发者中心](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
-* [前端开发指南](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
-* [SDK & API使用](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
+* [Getting Start](https://github.com/huya-ext/miniapp/wiki)
+* [开发者中心](https://github.com/huya-ext/miniapp/wiki/ems)
+* [前端开发指南](https://github.com/huya-ext/miniapp/wiki/%E5%BC%80%E5%8F%91%E8%80%85%E6%8C%87%E5%8D%97)
+* [SDK使用说明](https://github.com/huya-ext/miniapp/wiki/SDK%E6%96%87%E6%A1%A3)
+* [API使用说明](https://github.com/huya-ext/miniapp/wiki/%E5%BC%80%E5%8F%91%E8%80%85%E5%90%8E%E5%8F%B0api)
 * Demo示例
-    * [Hello World](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
-    * [电影投票互动](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)
-* 设计说明 
+    * Hello World
 * 敬请期待
     * 支付能力
     * 音视频能力

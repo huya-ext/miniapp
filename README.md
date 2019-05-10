@@ -70,7 +70,7 @@
 * [开发者中心](https://github.com/huya-ext/miniapp/wiki/ems)
 * [前端开发指南](https://github.com/huya-ext/miniapp/wiki/%E5%BC%80%E5%8F%91%E8%80%85%E6%8C%87%E5%8D%97)
 * [SDK使用说明](https://github.com/huya-ext/miniapp/wiki/SDK%E6%96%87%E6%A1%A3)
-* [API使用说明](https://github.com/huya-ext/miniapp/wiki/%E5%BC%80%E5%8F%91%E8%80%85%E5%90%8E%E5%8F%B0api)
+* [API使用说明](https://github.com/huya-ext/miniapp/wiki/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%90%8E%E5%8F%B0API)
 * Demo示例
     * Hello World
 * 敬请期待

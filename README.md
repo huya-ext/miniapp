@@ -66,7 +66,7 @@
 
 ## 如何开发小程序
 
-* [Getting Start](https://github.com/huya-ext/miniapp/wiki)
+* [快速开始](https://github.com/huya-ext/miniapp/wiki)
 * [开发者中心](https://github.com/huya-ext/miniapp/wiki/ems)
 * [前端开发指南](https://github.com/huya-ext/miniapp/wiki/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97)
 * [SDK使用说明](https://github.com/huya-ext/miniapp/wiki/SDK%E6%96%87%E6%A1%A3)

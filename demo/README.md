@@ -34,7 +34,7 @@ hyext run dev
 * [http://localhost:8080/web.html](http://localhost:8080/web.html)：使用的是虎牙小程序Web端H5 SDK。
 * [http://localhost:8080/pc.html](http://localhost:8080/pc.html)：使用的是虎牙小程序PC端H5 SDK。
 
-web使用虎牙小程序平台提供的线上开发工具进行开发调试。
+web使用虎牙小程序平台提供的线上[开发工具](http://hyext.msstatic.com/hy-ext-comp/1.1.0/dev/index.html)进行开发调试。
 
 app执行完毕之后使用虎牙小程序平台提供的企业版虎牙直播APP扫码进入调试界面。
 

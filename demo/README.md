@@ -4,8 +4,8 @@
 
 包括两个部分：
 
-* web：使用[开发工具hyext](https://github.com/huya-ext/miniapp/wiki/%E8%84%9A%E6%89%8B%E6%9E%B6)选择react作为基础的事例代码。
-* app：使用[开发工具hyext](https://github.com/huya-ext/miniapp/wiki/%E8%84%9A%E6%89%8B%E6%9E%B6)选择react-native作为基础的事例代码。
+* web：使用[开发工具hyext](https://github.com/huya-ext/miniapp/wiki/%E8%84%9A%E6%89%8B%E6%9E%B6)选择*react*作为基础的事例代码。
+* app：使用[开发工具hyext](https://github.com/huya-ext/miniapp/wiki/%E8%84%9A%E6%89%8B%E6%9E%B6)选择*react-native*作为基础的事例代码。
 
 ### 使用说明
 

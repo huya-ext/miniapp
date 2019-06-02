@@ -36,7 +36,7 @@ hyext run dev
 
 web使用虎牙小程序平台提供的线上[开发工具](http://hyext.msstatic.com/hy-ext-comp/1.1.0/dev/index.html)进行开发调试。
 
-app执行完毕之后使用虎牙小程序平台提供的企业版虎牙直播APP扫码进入调试界面。
+app执行完毕之后使用虎牙小程序平台提供的[模拟调试工具](https://github.com/huya-ext/miniapp/wiki/DownloadApp)扫码进入调试界面。
 
 开发调试完成之后，在项目的根目录中执行`hyext release`，分别生成`web`和`app`目录。把这两个目录打到一个`.zip`包里，目录结构如下：
 

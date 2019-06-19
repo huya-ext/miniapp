@@ -2,7 +2,7 @@
 
 ### 目录说明
 
-包括两个部分：
+虎牙小程序SDK示例代码存放在`src`目录中，该目录包括两个部分：
 
 * web：使用[开发工具hyext](https://github.com/huya-ext/miniapp/wiki/%E8%84%9A%E6%89%8B%E6%9E%B6)选择**react**作为基础的事例代码。
 * app：使用[开发工具hyext](https://github.com/huya-ext/miniapp/wiki/%E8%84%9A%E6%89%8B%E6%9E%B6)选择**react-native**作为基础的事例代码。
@@ -13,28 +13,28 @@
 
 ```bash
 # web
-hyext init demo-web
+hyext init demo
 # app
-hyext init DemoApp
+hyext init demoRn
 ```
 
-然后把web目录里面的文件覆盖到demo-web里面，把app目录里面的文件覆盖到DemoApp里面，开始开发：
+接下来可以直接进行开发，或者如果想运行虎牙小程序SDK示例代码，把上述web目录里面的文件覆盖到demo里面，把app目录里面的文件覆盖到demoRn里面。运行以下命令进行开发：
 
 ```bash
 # web
-cd demo-web
+cd demo
 hyext run dev
 # app
-cd DemoApp
+cd demoRn
 hyext run dev
 ```
 
 其中web有两个页面：
 
-* [http://localhost:8080/web.html](http://localhost:8080/web.html)：使用的是虎牙小程序Web端H5 SDK。
-* [http://localhost:8080/pc.html](http://localhost:8080/pc.html)：使用的是虎牙小程序PC端H5 SDK。
+* [http://localhost:8080/index.html](http://localhost:8080/web.html)：使用的是虎牙小程序Web端H5 SDK。
+* [http://localhost:8080/streamer.html](http://localhost:8080/pc.html)：使用的是虎牙小程序PC端H5 SDK。
 
-web使用虎牙小程序平台提供的线上[开发工具](http://hyext.msstatic.com/hy-ext-comp/1.1.0/dev/index.html)进行开发调试。
+web使用虎牙小程序平台提供的线上[开发工具](http://hyext.msstatic.com/hy-ext-comp/1.2.0/dev/index.html)进行开发调试。
 
 app执行完毕之后使用虎牙小程序平台提供的[模拟调试工具](https://github.com/huya-ext/miniapp/wiki/DownloadApp)扫码进入调试界面。
 
@@ -45,6 +45,8 @@ app执行完毕之后使用虎牙小程序平台提供的[模拟调试工具](ht
 |--web
 |--app
 ```
+
+这里也给出一个[示例](./demo.zip)，供大家参考。
 
 在[开发者中心](https://ext.huya.com)的程序配置中按如下信息配置：
 

@@ -1,0 +1,19 @@
+@charset "UTF-8";
+@import "partial/base";
+@import "partial/flex";
+
+html,
+body {
+    position: relative;
+    font-family: "微软雅黑", "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background:transparent;
+    overflow-x:hidden;
+}
+
+#root, #aroot{
+	padding-top:100px;
+	text-align:center;
+}

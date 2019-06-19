@@ -1,0 +1,10 @@
+{
+	"entrys":[
+		{
+			"title"      : "主播RN example",
+			"testurl"    : "https://layer.huya.com/live/fansPrivaligeH5Node/index?use304Cache=1",
+			"releaseurl" : "https://layer.huya.com/live/fansPrivaligeH5Node/index?use304Cache=1"
+		}
+	],
+	"ext" : 1
+}

@@ -1,0 +1,46 @@
+@charset "UTF-8";
+@import "./partial/base";
+@import "./partial/flex";
+// @import "./partial/normalize";
+@import "./partial/reset";
+
+html,
+body {
+    position: relative;
+    // font-family: "微软雅黑", "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+    font-family: "Microsoft YaHei";
+
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background:transparent;
+    overflow-x:hidden;
+}
+
+
+
+@function size($px) {
+	@return $px / 2;
+}
+
+
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+    width:8px;
+  }
+    /* 滚动槽 */
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow:#e4e4e4;
+    border-radius:10px;
+  }
+    /* 滚动条滑块 */
+  ::-webkit-scrollbar-thumb {
+    border-radius:10px;
+    background:#e4e4e4;
+    -webkit-box-shadow:#e4e4e4;
+  }
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background:#e4e4e4;
+  }
+  

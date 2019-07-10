@@ -18,7 +18,7 @@ hyext run dev streamer // app助手端
 
 ```javascript
 cd ./web
-
+   
 hyext install
 
 hyext run dev

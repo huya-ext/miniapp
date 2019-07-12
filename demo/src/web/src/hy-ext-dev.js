@@ -2,7 +2,8 @@ import React from 'react'
 import {
   Collapse,
   List,
-  Button
+  Button,
+  Input
 } from 'antd'
 
 import RequestEbsForm from './components/request-ebs-form'
@@ -143,6 +144,7 @@ class HyExtDev extends React.Component {
             <div id='foo' style={{ marginBottom: '8px', background: 'red', color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
               捕捉这里
             </div>
+            <Input placeholder='填入背景色（做透明处理），例如#00000000' onChange={evt => this.setState({ screenColor: evt.target.value })} style={{ marginBottom: '8px' }} />
             <Button style={{ marginBottom: '8px' }} block onClick={this.addZone.bind(this)}>增加捕捉区域</Button>
             <Button style={{ marginBottom: '8px' }} block onClick={this.removeZone.bind(this)}>删除区域</Button>
             <List bordered dataSource={this.state.log11} renderItem={renderItem} />
@@ -376,7 +378,9 @@ class HyExtDev extends React.Component {
   }
   addZone (el) {
     this.log11('增加捕捉区域')
-    window.hyExt.stream.addZone(document.getElementById('foo')).then(() => {
+    window.hyExt.stream.addZone(document.getElementById('foo'), {
+      screenColor: this.state.screenColor || ''
+    }).then(() => {
       this.log11('操作成功')
     }).catch(err => {
       this.log11('操作失败：' + err.message)

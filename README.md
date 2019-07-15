@@ -46,7 +46,7 @@
 
 1. 成为开发者: 首次在开发者中心创建小程序，通过实名认证，即可成为开发者。
 
-![](https://v-cms-img.huya.com/huya/hy-ext/new1.png)
+![](./doc/img/aa.png)
 
 ![](./doc/img/a0.png)
 
@@ -60,9 +60,9 @@
 
 4. 发布小程序：完成开发并测试通过后，可提交审核，待审核完毕，即可发布小程序，主播可在小程序商店进行安装。
 
-![](https://v-cms-img.huya.com/huya/hy-ext/new7.png)
+![](./doc/img/ooo.png)
 
-![](https://v-cms-img.huya.com/huya/hy-ext/new6.png)
+![](./doc/img/pp.png)
 
 ## 如何开发小程序
 

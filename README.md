@@ -44,7 +44,7 @@
 
 ## 快速创建小程序
 
-1. 创建小程序
+1. 前往[开发者中心](https://ext.huya.com/#/ext/3md0qyzf)创建小程序
 
 ![](./doc/img/aa.png)
 

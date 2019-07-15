@@ -48,7 +48,7 @@
 
 ![](https://v-cms-img.huya.com/huya/hy-ext/new1.png)
 
-![](https://v-cms-img.huya.com/huya/hy-ext/new2.png)
+![](./doc/img/a0.png)
 
 2. 小程序版本信息完善: 创建小程序版本，完善版本信息，包括名称、LOGO、介绍、开发者信息等。
 

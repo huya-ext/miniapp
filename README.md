@@ -77,7 +77,11 @@
     * [PlayGround](https://github.com/huya-ext/miniapp/tree/master/demo)
     * [比手速](https://github.com/huya-ext/miniapp/tree/master/%E6%AF%94%E6%89%8B%E9%80%9F)
 * 敬请期待
-    * 小程序商店
     * 支付能力
     * 音视频能力
     * AI相关能力
+
+## 联系我们
+
+* Email: hy-ext@huya.com
+* QQ交流群: 619023706

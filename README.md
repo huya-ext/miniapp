@@ -75,6 +75,7 @@
 * [API使用说明](https://github.com/huya-ext/miniapp/wiki/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%90%8E%E5%8F%B0API)
 * Demo示例
     * [PlayGround](https://github.com/huya-ext/miniapp/tree/master/demo)
+    * [比手速](https://github.com/huya-ext/miniapp/tree/master/%E6%AF%94%E6%89%8B%E9%80%9F)
 * 敬请期待
     * 小程序商店
     * 支付能力

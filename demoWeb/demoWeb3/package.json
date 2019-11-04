@@ -1,0 +1,22 @@
+{
+  "name": "demoWeb3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/runtime": "^7.5.5",
+    "@hyext/builder-zabin": "^1.5.0",
+    "hyext": "^2.1.0"
+  },
+  "dependencies": {
+    "antd": "^3.25.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  }
+}

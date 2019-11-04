@@ -1,0 +1,32 @@
+{
+  "name": "demoWeb3",
+  "outputPath": "dist",
+  "releasePath": "release",
+  "ignore": [],
+  "builder": {
+    "name": "@hyext/builder-zabin",
+    "config": {
+      "lib": "react",
+      "devServer": {
+        "https": true,
+        "host": "localhost",
+        "port": 18080,
+        "publicPath": "/"
+      },
+      "endpoints": {
+        "viewer_web": {
+          "entry": "./src/app.js",
+          "template": "./index.html"
+        },
+        "viewer_pc": {
+          "entry": "./src/app.js",
+          "template": "./viewer_pc.html"
+        },
+        "streamer_pc": {
+          "entry": "./src/streamerApp.js",
+          "template": "./streamer.html"
+        }
+      }
+    }
+  }
+}

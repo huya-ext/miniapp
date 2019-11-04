@@ -7,9 +7,9 @@
 
 ### 目录说明
 
-* demoWeb：源码目录
+* demoWeb3：源码目录
 * build-result：可以直接拖拽到小程序程序配置区域进行配置
-* demoWeb.zip：可以直接作为源码包上传
+* demoWeb3.zip：可以直接作为源码包上传
 
 ### 使用说明
 

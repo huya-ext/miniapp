@@ -1,0 +1,31 @@
+{
+  "name": "WbDemo",
+  "outputPath": "dist",
+  "releasePath": "release",
+  "ignore": [
+    "*.md",
+    "LICENSE",
+    ".git/**",
+    ".gitignore",
+    "package-lock.json"
+  ],
+  "builder": {
+    "name": "@hyext/builder-beyond",
+    "config": {
+      "useCssLoader": true,
+      "webSDKVersion": "1.8.0",
+      "buildConfig": {
+        "H5": [{
+          "entry": "index_streamer.js",
+          "extType": "pc_anchor_panel",
+          "platform": "pc"
+        }],
+        "RN": [{
+          "entry": "index_streamer.js",
+          "extType": "zs_anchor_panel",
+          "platform": "app"
+        }]
+      }
+    }
+  }
+}

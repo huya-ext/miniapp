@@ -2,7 +2,7 @@ import { UI } from '@hyext/hy-ui'
 import React, { Component } from 'react'
 import './app.hycss'
 
-const streamerSDK = global.hyExt
+import streamerSDK from '@hyext/sdk-streamer'
 
 const { View, Text, Input, Button } = UI
 

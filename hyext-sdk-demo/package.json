@@ -1,0 +1,22 @@
+{
+  "name": "hyext-sdk-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "hyext start streamer"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@hyext/builder-beyond": "latest",
+    "hyext": "^2.1.4"
+  },
+  "dependencies": {
+    "@hyext/hy-ui": "latest",
+    "hyext-rn-sdk": "1.8.2",
+    "hyliveext-rn-sdk": "1.8.0"
+  }
+}

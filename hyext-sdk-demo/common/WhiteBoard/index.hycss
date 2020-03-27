@@ -1,0 +1,18 @@
+.wrap {
+ flex: 1;
+ background-color: rgba(255, 255, 255, .7);
+ justify-content: center;
+ align-items: center;
+}
+
+.font-hei {
+  font-size: 50px;
+  color: #000;
+}
+
+.img {
+  height: 250px;
+  width: 250px;
+  background-color: red;
+  margin-top: 10px;
+}

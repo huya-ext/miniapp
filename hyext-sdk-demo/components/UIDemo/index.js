@@ -29,8 +29,11 @@ export default class Demo extends Component {
     })
   }
   submit_hyExt_context_showToast () {
-    this.log('显示直播间Toast')
-    global.hyExt.context.showToast().then(() => {
+    let args = []
+    args[0] = {}
+    args[0].msg = this.state.hyExt_context_showToast_0_msg || ""
+    this.log('显示直播间Toast：' + JSON.stringify(args))
+    global.hyExt.context.showToast(args[0]).then(() => {
       this.log('显示直播间Toast成功')
     }).catch(err => {
       this.log('显示直播间Toast失败，错误信息：' + err.message)
@@ -44,6 +47,13 @@ export default class Demo extends Component {
         <Text style={styles.header}>hyExt.context.showActivityBadge</Text>
         <SubmitButton onPress={this.submit_hyExt_context_showActivityBadge.bind(this)}>显示互动通道入口红点</SubmitButton>
         <Text style={styles.header}>hyExt.context.showToast</Text>
+        <Form style={{marginTop: 20}}>
+          <FormItem label='msg'>
+            <Input placeholder='请输入Toast内容'
+              value={this.state.hyExt_context_showToast_0_msg || ''}
+              onChange={v => this.setState({ hyExt_context_showToast_0_msg: v })} />
+          </FormItem>
+        </Form>
         <SubmitButton onPress={this.submit_hyExt_context_showToast.bind(this)}>显示直播间Toast</SubmitButton>
         <LogPanel ref={logPanel => {
           if (logPanel) {

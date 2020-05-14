@@ -93,6 +93,25 @@ export default class Demo extends Component {
       this.log('查询当前直播间视觉识别结果失败，错误信息：' + err.message)
     })
   }
+  submit_hyExt_reg_onHumanContourDetection () {
+    let args = []
+    args[0] = {}
+    args[0].callback = this.commonLog
+    this.log('监听当前直播间人体轮廓点检测消息：' + JSON.stringify(args))
+    global.hyExt.reg.onHumanContourDetection(args[0]).then(() => {
+      this.log('监听当前直播间人体轮廓点检测消息成功')
+    }).catch(err => {
+      this.log('监听当前直播间人体轮廓点检测消息失败，错误信息：' + err.message)
+    })
+  }
+  submit_hyExt_reg_offHumanContourDetection () {
+    this.log('取消监听当前直播间人体轮廓点检测消息')
+    global.hyExt.reg.offHumanContourDetection().then(() => {
+      this.log('取消监听当前直播间人体轮廓点检测消息成功')
+    }).catch(err => {
+      this.log('取消监听当前直播间人体轮廓点检测消息失败，错误信息：' + err.message)
+    })
+  }
   submit_hyExt_reg_onHumanSkeletonDetection () {
     let args = []
     args[0] = {}
@@ -178,6 +197,10 @@ export default class Demo extends Component {
           </FormItem>
         </Form>
         <SubmitButton onPress={this.submit_hyExt_reg_queryCVRecognition.bind(this)}>查询当前直播间视觉识别结果</SubmitButton>
+        <Text style={styles.header}>hyExt.reg.onHumanContourDetection</Text>
+        <SubmitButton onPress={this.submit_hyExt_reg_onHumanContourDetection.bind(this)}>监听当前直播间人体轮廓点检测消息</SubmitButton>
+        <Text style={styles.header}>hyExt.reg.offHumanContourDetection</Text>
+        <SubmitButton onPress={this.submit_hyExt_reg_offHumanContourDetection.bind(this)}>取消监听当前直播间人体轮廓点检测消息</SubmitButton>
         <Text style={styles.header}>hyExt.reg.onHumanSkeletonDetection</Text>
         <SubmitButton onPress={this.submit_hyExt_reg_onHumanSkeletonDetection.bind(this)}>监听当前直播间肢体骨骼点检测消息</SubmitButton>
         <Text style={styles.header}>hyExt.reg.offHumanSkeletonDetection</Text>

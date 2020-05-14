@@ -67,7 +67,7 @@ export default class Demo extends Component {
         <Text style={styles.header}>hyExt.context.on</Text>
         <Form style={{marginTop: 20}}>
           <FormItem label='宿主消息名'>
-            <Select data={[{"label":"【观众端】当前观众订阅状态发生变化","value":"subscribeSubmit"},{"label":"【观众端】当前观众送礼","value":"giftSubmit"},{"label":"当前用户发送弹幕","value":"barrageSubmit"},{"label":"beginLive（尚未提供）","value":"beginLive"},{"label":"endLive（尚未提供）","value":"endLive"},{"label":"viewportChange（尚未提供）","value":"viewportChange"},{"label":"videoStateChange（尚未提供）","value":"videoStateChange"},{"label":"videoFrameReduceStart（尚未提供）","value":"videoFrameReduceStart"},{"label":"videoFrameGrowEnd（尚未提供）","value":"videoFrameGrowEnd"},{"label":"obMatchBegin（尚未提供）","value":"obMatchBegin"},{"label":"obMatchEnd（尚未提供）","value":"obMatchEnd"},{"label":"perspectiveChange（尚未提供）","value":"perspectiveChange"}]}
+            <Select data={[{"label":"【观众端】当前观众订阅状态发生变化","value":"subscribeSubmit"},{"label":"【观众端】当前观众送礼","value":"giftSubmit"},{"label":"当前用户发送弹幕","value":"barrageSubmit"},{"label":"beginLive（尚未提供）","value":"beginLive"},{"label":"endLive（尚未提供）","value":"endLive"},{"label":"viewportChange（尚未提供）","value":"viewportChange"},{"label":"videoStateChange（尚未提供）","value":"videoStateChange"},{"label":"extActivated（尚未提供）","value":"extActivated"}]}
               header='宿主消息名'
               value={this.state.hyExt_context_on_0 || "subscribeSubmit"}
               onPressConfirm={v => this.setState({ hyExt_context_on_0: v.value })} />

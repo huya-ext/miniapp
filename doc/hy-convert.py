@@ -125,8 +125,6 @@ if (window['navigator'] == undefined || window['navigator'] == null || navigator
     require('hy-adapter/adapter_base.js');
 }
 
-window.global = window;
-
     '''
 
         self.__TPL_CANVAS = '''
@@ -368,7 +366,10 @@ class Writer():
         # 打开文件
         fo = io.open(path, "w", encoding="utf8")
         print('write file:', fo.name)
-        fo.write(content.decode('utf-8'))
+        if sys.version_info < (3, 0):
+            fo.write(content.decode('utf-8'))
+        else:
+            fo.write(content)
         # 关闭文件
         fo.close()
         return

@@ -16,7 +16,7 @@ class Home extends Component {
     return components.map((item, i) => {
       return (
         <Button className='com-list-item' onPress={() => { props.onNavClick(item.name) }} key={i}>
-          <Text className='item-text'>{item.name}</Text>
+          <Text className='item-text' numberOfLines={1}>{item.name}</Text>
         </Button>
       )
     })
@@ -105,10 +105,21 @@ class App extends Component {
     global.hyExt.observer.on('show', () => {
       global.hyExt.panel.setLayout({
         visible: true,
-        x: 0,
-        y: 0,
-        width: 1,
-        height: 1,
+        x: 0.1,
+        y: 0.1,
+        width: 0.8,
+        height: 0.8,
+        ref: 'player',
+        alpha: 1
+      }).catch(_ => {})
+    })
+    global.hyExt.context.on('extActivated', () => {
+      global.hyExt.panel.setLayout({
+        visible: true,
+        x: 0.1,
+        y: 0.1,
+        width: 0.8,
+        height: 0.8,
         ref: 'player',
         alpha: 1
       }).catch(_ => {})
@@ -117,14 +128,14 @@ class App extends Component {
 
   handleBack () {
     this.setState({
-      path: `/home`,
+      path: '/home',
       componentName: ''
     })
   }
 
   handleNavClick (name) {
     this.setState({
-      path: `/component`,
+      path: '/component',
       componentName: name
     })
   }

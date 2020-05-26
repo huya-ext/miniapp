@@ -23,7 +23,7 @@
 .anchor-avatar {
   width: 150px;
   height: 150px;
-  border-radius: 50%;
+  border-radius: 75px;
   background: #ebebeb;
   margin-left: 50px;
   margin-right: 50px;
@@ -61,7 +61,6 @@
 .contain-left {
   width: 50%;
   height: 500px;
-  /* background: red; */
 
   display: flex;
   flex-direction: column;
@@ -72,7 +71,6 @@
 .weather-img {
   width: 186px;
   height: 175px;
-  /* background: black; */
 }
 
 .clock {
@@ -99,24 +97,20 @@
   margin-top: 40px;
   color: black;
   font-size: 46px;
-  height: 46px;
   height: 20%;
   line-height: 46px;
   font-weight: 500;
 }
 
 .temperature {
-  /* margin-top: 60px; */
   color: black;
   font-size: 48px;
-  height: 46px;
   height: 20%;
   line-height: 46px;
   font-weight: 700;
 }
 
 .weather {
-  /* margin-top: 40px; */
   color: black;
   font-size: 39px;
   height: 20%;

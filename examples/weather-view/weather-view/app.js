@@ -1,6 +1,9 @@
 import { UI } from "@hyext/hy-ui";
 import React, { Component } from "react";
 import "./app.hycss";
+import IMG_CONFIG from '../assets/index.js';
+
+let WEATHER_IMG = IMG_CONFIG.WEATHER_IMG;
 
 const { View, Text, Image } = UI;
 
@@ -77,7 +80,7 @@ class App extends Component {
             <Image
               className="weather-img"
               mode="cover"
-              src={require(`../assets/${weatherInfo["cond_code"] || 100}.png`)}
+              src={WEATHER_IMG[`ICON_${weatherInfo["cond_code"] || 100}`]}
             ></Image>
             <Clock />
             <Text className="date">{`星期${

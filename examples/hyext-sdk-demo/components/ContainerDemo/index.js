@@ -20,6 +20,16 @@ export default class Demo extends Component {
       this.log('触发回调：' + JSON.stringify(args))
     }).bind(this)
   }
+  submit_hyExt_context_onLayoutChange () {
+    let args = []
+    args[0] = this.commonLog
+    this.log('监听当前直播间小程序容器布局变化消息')
+    global.hyExt.context.onLayoutChange(args[0]).then(() => {
+      this.log('监听当前直播间小程序容器布局变化消息成功')
+    }).catch(err => {
+      this.log('监听当前直播间小程序容器布局变化消息失败，错误信息：' + err.message)
+    })
+  }
   submit_hyExt_panel_setLayout () {
     let args = []
     args[0] = {}
@@ -44,6 +54,8 @@ export default class Demo extends Component {
       <ScrollView
         testID='scroller'
         style={{...styles.body, backgroundColor: '#eee'}}>
+        <Text style={styles.header}>hyExt.context.onLayoutChange</Text>
+        <SubmitButton onPress={this.submit_hyExt_context_onLayoutChange.bind(this)}>监听当前直播间小程序容器布局变化消息</SubmitButton>
         <Text style={styles.header}>hyExt.panel.setLayout</Text>
         <Form style={{marginTop: 20}}>
           <FormItem label='ref'>

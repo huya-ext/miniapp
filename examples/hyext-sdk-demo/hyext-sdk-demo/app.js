@@ -16,7 +16,7 @@ class Home extends Component {
     return components.map((item, i) => {
       return (
         <Button className='com-list-item' onPress={() => { props.onNavClick(item.name) }} key={i}>
-          <Text className='item-text' numberOfLines={1}>{item.name}</Text>
+          <Text className='item-text' style={{ color: '#000' }} numberOfLines={1}>{item.name}</Text>
         </Button>
       )
     })
@@ -25,7 +25,7 @@ class Home extends Component {
   render () {
     return (
       <View>
-        <Text className='list-title'>组件列表</Text>
+        <Text className='list-title' style={{ color: '#000' }}>组件列表</Text>
         <View className='com-list'>
           {this.renderItem()}
         </View>

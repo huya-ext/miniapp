@@ -63,8 +63,8 @@ export default class WhiteBoard extends Component {
   render () {
     return (
       <View className='wrap'>
-        <Text className='font-hei' style={{ fontFamily: this.state.fontFamily }}>接收到数据：{this.state.data || '暂时没有' }</Text>
-        <Text className='font-hei' style={{ fontFamily: fonts[this.state.fontIndex] }}>{fonts[this.state.fontIndex]}</Text>
+        <Text className='font-hei' style={{ fontFamily: this.state.fontFamily, color: '#000' }}>接收到数据：{this.state.data || '暂时没有' }</Text>
+        <Text className='font-hei' style={{ fontFamily: fonts[this.state.fontIndex], color: '#000' }}>{fonts[this.state.fontIndex]}</Text>
         <View className='img' />
       </View>
     )

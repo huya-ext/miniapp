@@ -51,3 +51,7 @@ pc端
 2. `npx hyext release` 打包.
 3. 打开开发者中心([ext.huya.com](https://ext.huya.com/)),按提示把`hyext_release`目录下的压缩包上传(参考[小程序打包](https://dev.huya.com/docs/#/hyext-cli?id=%e6%89%93%e5%8c%85)),即可在虎牙app或者pc主播端以测试版本模式启动游戏.
 4. 如果要发给其它用户体验,需要根据虎牙号开通白名单.
+
+---
+
+更多虎牙小游戏开发文档请访问: [game.md](../../doc/game.md)

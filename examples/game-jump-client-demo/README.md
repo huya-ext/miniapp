@@ -1,15 +1,18 @@
 ## 虎牙小游戏前端DEMO介绍
 ### 运行截图
 ![pc端](./screenshot/pc.jpg)
+
 pc端
 
 ![pc端](./screenshot/pc2.jpg)
+
 pc端
 
 ![手机端](./screenshot/mobile.jpg)
+
 手机端
 
-### 目录说明
+### 文件结构说明
 ```
 .
 ├── README.md 

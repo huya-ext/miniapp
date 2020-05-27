@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.com-list {
+  flex: 1;
+  padding: 40px;
+}
+
+.list-title {
+  text-align: center;
+  font-weight: bold;
+}
+
+.com-list-item {
+  height: 80px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.com-itemWrapper {
+  margin-bottom: 20px;
+}
+
+.com-itemWrapper-title {
+  margin-bottom: 10px;
+}
+
+.com-itemWrapper-main {
+  padding: 10px;
+  border: 1px solid #666;
+  border-radius: 4px;
+}
+
+.itemWrapper-title-text {
+  font-weight: bold;
+}

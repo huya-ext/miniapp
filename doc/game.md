@@ -117,7 +117,7 @@ huyaimg.dwstatic.com
 
 参考小程序的[快速开始](https://dev.huya.com/docs/#/./getting-started)搭建开发环境
 
-创建一个空`<project-name>`目录，在里面创建`<h5game-name>\dist`二级子目录
+创建一个空`<project-name>`目录，在里面创建`<h5game-name>`二级子目录
 
 在`<project-name>`目录下面执行命令：
 ```
@@ -126,19 +126,18 @@ npx @hyext/cli init  -b h5game
 
 > 选择终端类型的过程参考[快速开始](https://dev.huya.com/docs/#/./getting-started)
 
-> 最后一步需要输入`h5Dir`，即H5游戏发布代码的相对路径，本例为：`<h5game-name>\dist`
+> 最后一步需要输入`h5Dir`，即H5游戏发布代码的相对路径，本例为：`<h5game-name>`
 
 创建完成之后的目录结构类似如下：
 ```
 ├── <h5game-name>
-│   └── dist
 ├── package.json
 └── project.config.json
 ```
 
-其中`<h5game-name>`目录是整个H5游戏代码的根目录，可以包含一些源代码文件，`<h5game-name>\dist`是H5游戏发布代码的目录。
+其中`<h5game-name>` 是H5游戏发布代码的目录。
 
-无论我们是用什么游戏引擎或者渲染引擎开发游戏，最终需要将游戏编译或导出成H5格式，并放到`<h5game-name>\dist`目录下面。
+无论我们是用什么游戏引擎或者渲染引擎开发游戏，最终需要将游戏编译或导出成H5格式，并放到`<h5game-name>` 目录下面。
 
 ### 小游戏开发测试过程
 #### 本地开发调试
@@ -150,9 +149,9 @@ npx @hyext/cli init  -b h5game
 
 小游戏本地开发模式与小程序的[开发调试](https://dev.huya.com/docs/#/dev-guide?id=%e5%bc%80%e5%8f%91%e8%b0%83%e8%af%95)流程一致。
 
-小游戏本地开发模式中，本地目录`<h5game-name>\dist`下的发布代码如果有变更，**退出并重进直播间**可以生效。
+小游戏本地开发模式中，本地目录`<h5game-name>`下的发布代码如果有变更，**退出并重进直播间** 可以生效。
 
-同时，小游戏本地开发模式**不支持游戏H5代码断点调试**。
+同时，小游戏本地开发模式 **不支持游戏H5代码断点调试**。
 
 
 #### 版本测试

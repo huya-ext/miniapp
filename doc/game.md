@@ -163,3 +163,6 @@ npx @hyext/cli init  -b h5game
 #### 版本发布
 与小程序一致，参考[版本发布](https://dev.huya.com/docs/#/ems?id=_26-%e7%89%88%e6%9c%ac%e5%8f%91%e5%b8%83)
 
+---
+## 小游戏DEMO
+链接: [跳一跳游戏-前端DEMO](../examples/game-jump-client-demo)

@@ -1,0 +1,54 @@
+
+
+.container {
+    display: flex;
+    margin: 30px auto;
+    width: 300px;
+    align-items: center;
+}
+
+.selectNum {
+    display: flex;
+    margin-top: 30px;
+    width: 300px;
+    align-items: center;
+}
+
+.text {
+    font-size: 30px;
+    text-align: center;
+}
+
+.left {
+    position: absolute;
+    left: 0%; 
+    border-radius: 40px;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(255, 187, 0);
+}
+
+.leftSymbol {
+    text-align: center;
+    color: #FFFFFF; 
+}
+
+.right {
+    position: absolute;
+    right: 0%; 
+    border-radius: 40px;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(255, 187, 0);
+}
+
+
+.rightSymbol {
+    text-align: center;
+    color: #FFFFFF; 
+}
+
+.selectText {
+    margin: 30px auto;
+    font-size: 30px;
+}

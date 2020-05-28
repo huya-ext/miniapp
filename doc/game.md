@@ -25,7 +25,7 @@ window.innerHeight
 ```
 
 ### 引擎支持
-开发者可以采用开发HTML5游戏方式(基于WebGL)来开发小游戏，支持使用Cocos Creator、Egret、Laya等游戏引擎开发，导出HTML5格式；也支持使用Three.js、PixiJS等HTML5渲染引擎直接开发。
+开发者可以采用开发HTML5游戏方式(基于WebGL)来开发小游戏，支持使用Cocos Creator、Egret、Laya等游戏引擎开发，导出HTML5格式(web mobile)；也支持使用Three.js、PixiJS等HTML5渲染引擎直接开发。
 
 > 注意，不支持使用DOM或者CSS方式开发游戏，所有游戏画面及元素必须在Canvas中绘制
 

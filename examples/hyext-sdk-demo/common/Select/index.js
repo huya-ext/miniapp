@@ -11,7 +11,7 @@ export default class Select extends Component {
         <Button onPress={() => {
           this.actionsheet.open()
         }}>
-          <Text>{value}</Text>
+          <Text style={{ color: '#000' }}>{value}</Text>
         </Button>
         <Actionsheet
           ref={(c) => {

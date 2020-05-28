@@ -5,23 +5,22 @@
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .com-list {
   flex: 1;
-  width: 700px;
   padding: 40px;
 }
 
 .list-title {
-  padding-top: 40px;
   text-align: center;
   font-weight: bold;
 }
 
 .com-list-item {
-  padding: 20px;
+  height: 80px;
+  padding: 10px;
   margin-bottom: 20px;
 }
 

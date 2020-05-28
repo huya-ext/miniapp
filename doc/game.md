@@ -117,54 +117,27 @@ huyaimg.dwstatic.com
 
 参考小程序的[快速开始](https://dev.huya.com/docs/#/./getting-started)搭建开发环境
 
-创建一个空`<project-name>`目录，在里面创建`<h5game-name>\dist`二级子目录
+创建一个空`<project-name>`目录，在里面创建`<h5game-name>`二级子目录
 
 在`<project-name>`目录下面执行命令：
 ```
-npx @hyext/cli@1.0.9 init  -b h5game
+npx @hyext/cli init  -b h5game
 ```
 
 > 选择终端类型的过程参考[快速开始](https://dev.huya.com/docs/#/./getting-started)
 
-> 最后一步需要输入`h5Dir`，即H5游戏发布代码的相对路径，本例为：`<h5game-name>\dist`
+> 最后一步需要输入`h5Dir`，即H5游戏发布代码的相对路径，本例为：`<h5game-name>`
 
 创建完成之后的目录结构类似如下：
 ```
 ├── <h5game-name>
-│   └── dist
 ├── package.json
 └── project.config.json
 ```
 
-其中`<h5game-name>`目录是整个H5游戏代码的根目录，可以包含一些源代码文件，`<h5game-name>\dist`是H5游戏发布代码的目录。
+其中`<h5game-name>` 是H5游戏发布代码的目录。
 
-无论我们是用什么游戏引擎或者渲染引擎开发游戏，最终需要将游戏编译或导出成H5格式，并放到`<h5game-name>\dist`目录下面。
-
-### H5游戏发布代码预处理
-
-小游戏Runtime约定的游戏启动入口是`hy-main.js`文件，在游戏首次导出H5发布代码之后，我们需要根据H5发布代码中的`index.html`文件生成`hy-main.js`及相关文件，我们提供了一个python脚本实现转换功能：[hy-convert.py](https://github.com/huya-ext/miniapp/blob/master/doc/hy-convert.py)，用法如下：
-
-```
-python hy-convert.py index_html_abs_path [root_dir_abs_path]
-```
-
-执行之后的目录结构
-
-```
-├── <h5game-name>
-│   └── dist
-│       ├── index.html
-│       ├── hy-adapter
-│       ├── hy-index.html
-│       └── hy-main.js
-├── package.json
-└── project.config.json
-```
-
-其中：
-`hy-index.html`可以作为浏览器运行的调试入口。
-`hy-adapter`目录包括了一些依赖文件。
-`hy-main.js` 为小游戏Runtime的启动入口
+无论我们是用什么游戏引擎或者渲染引擎开发游戏，最终需要将游戏编译或导出成H5格式，并放到`<h5game-name>` 目录下面。
 
 ### 小游戏开发测试过程
 #### 本地开发调试
@@ -172,22 +145,24 @@ python hy-convert.py index_html_abs_path [root_dir_abs_path]
 
 在游戏主要逻辑开发完成之后，需要集成到虎牙终端中运行测试时，先在虎牙小程序平台创建版本，参考[版本管理](https://dev.huya.com/docs/#/ems?id=_2-%e7%89%88%e6%9c%ac%e7%ae%a1%e7%90%86)
 
-然后在项目根目录下面执行：`npx @hyext/cli@1.0.9 start` 开启小游戏本地开发模式。
+然后在项目根目录下面执行：`npx hyext start`  开启小游戏本地开发模式。
 
 小游戏本地开发模式与小程序的[开发调试](https://dev.huya.com/docs/#/dev-guide?id=%e5%bc%80%e5%8f%91%e8%b0%83%e8%af%95)流程一致。
 
-小游戏本地开发模式中，本地目录`h5game\dist`下的发布代码如果有变更，**退出并重进直播间**可以生效。
+小游戏本地开发模式中，本地目录`<h5game-name>`下的发布代码如果有变更，**退出并重进直播间** 可以生效。
 
-同时，小游戏本地开发模式**不支持游戏H5代码断点调试**。
+同时，小游戏本地开发模式 **不支持游戏H5代码断点调试**。
 
-> 首次进入小游戏本地开发模式，也需要先使用hy-convert.py执行发布代码预处理
 
 #### 版本测试
 
 小游戏版本开发完毕后，可提交测试。
-执行`npx @hyext/cli@1.0.9 release`打包小游戏代码，然后上传到虎牙小程序平台。
+执行 `npx hyext release` 打包小游戏代码，然后上传到虎牙小程序平台。
 参考[程序配置](https://dev.huya.com/docs/#/ems?id=_232-%e7%a8%8b%e5%ba%8f%e9%85%8d%e7%bd%ae)进行测试
 
 #### 版本发布
 与小程序一致，参考[版本发布](https://dev.huya.com/docs/#/ems?id=_26-%e7%89%88%e6%9c%ac%e5%8f%91%e5%b8%83)
 
+---
+## 小游戏DEMO
+链接: [跳一跳游戏-前端DEMO](../examples/game-jump-client-demo)

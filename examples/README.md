@@ -4,3 +4,4 @@
 * WBDemo：独立白板Demo，适用于PC主播端和助手APP
 * weather-view: 看天气小程序，调用了http request方法，获取外部接口数据
 * giftsender-app：包含主播端和观众端的一个示例小程序，调用了礼物和消息通道接口
+* [game-jump-client-demo](./game-jump-client-demo)：虎牙小游戏：跳一跳前端DEMO

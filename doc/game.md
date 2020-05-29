@@ -121,7 +121,8 @@ huyaimg.dwstatic.com
 
 在`<project-name>`目录下面执行命令：
 ```
-npx @hyext/cli init  -b h5game
+npm install -g  @hyext/cli
+npx hyext init  -b h5game
 ```
 
 > 选择终端类型的过程参考[快速开始](https://dev.huya.com/docs/#/./getting-started)

@@ -6,4 +6,5 @@
 * giftsender-app：包含主播端和观众端的一个示例小程序，调用了礼物和消息通道接口
 * giftsender-wb-app：送礼助手添加白板功能
 * giftsender-rt-app：送礼助手添加秩序审核功能
+* giftsender-se-app：送礼助手添加控制观众端入口功能
 * [game-jump-client-demo](./game-jump-client-demo)：虎牙小游戏：跳一跳前端DEMO

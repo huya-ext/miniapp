@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    margin-top: 50px;
+    width: 300px;
+    border-radius: 40px;
+    align-items: center;
+}
+
+.left {
+    position: absolute;
+    left: -70%; 
+    top: 40%;
+    width: 0;
+    height: 0;
+    border:  60px solid transparent;
+    border-top-color: rgb(109, 32, 182);
+    transform: rotateZ(90deg) scaleY(0.5);
+}
+
+.right {
+    position: absolute;
+    right: -70%; 
+    top: 40%;
+    width: 0;
+    height: 0;
+    border:  60px solid transparent;
+    border-bottom-color: rgb(109, 32, 182);
+    transform: rotateZ(90deg) scaleY(0.5);
+}
+
+.selectText {
+    margin: 30px auto;
+    font-size: 30px;
+    font-weight: 600;
+}

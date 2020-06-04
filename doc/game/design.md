@@ -32,7 +32,7 @@
 
 ---
 
-6. 免费游戏素材资源网站：
+6. 游戏素材资源网站：
 
     [https://craftpix.net/](https://craftpix.net/)
 

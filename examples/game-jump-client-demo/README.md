@@ -57,4 +57,5 @@ pc端
 > 当前跳一跳前端demo还是单机版本，直播间主播和观众一起联机玩的版本正在开发中，敬请期待。
 
 ---
+> 链接: [跳一跳游戏-后端DEMO](https://github.com/huya-ext/miniapp/tree/master/examples/game-jump-server-demo)
 > 更多小游戏开发资料,请查阅: [小游戏开发文档](https://github.com/huya-ext/miniapp/blob/master/doc/game.md)

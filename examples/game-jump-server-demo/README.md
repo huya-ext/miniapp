@@ -61,4 +61,5 @@
 ```
 
 ---
+> 链接: [跳一跳游戏-前端DEMO](https://github.com/huya-ext/miniapp/tree/master/examples/game-jump-client-demo)
 > 更多小游戏开发资料,请查阅: [小游戏开发文档](https://github.com/huya-ext/miniapp/blob/master/doc/game.md)

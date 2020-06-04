@@ -1,0 +1,1 @@
+protoc.exe --java_out=../java/ jump.proto

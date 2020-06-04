@@ -3,3 +3,4 @@
 node_modules
 release
 dist
+examples/game-jump-client-demo/package-lock.json

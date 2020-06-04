@@ -167,3 +167,4 @@ npx hyext init  -b h5game
 ---
 ## 小游戏DEMO
 链接: [跳一跳游戏-前端DEMO](../examples/game-jump-client-demo)
+链接: [跳一跳游戏-后端DEMO](../examples/game-jump-server-demo)

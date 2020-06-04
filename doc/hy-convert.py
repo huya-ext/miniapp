@@ -8,7 +8,7 @@ import json
 import sys
 import random
 import hashlib
-
+from functools import reduce
 
 # 常量定义
 class CONST(object):
@@ -118,6 +118,29 @@ require('hy-adapter/adapter_base.js');
 </html>
     '''
 
+        self.__COCOS_HTML = '''
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Cocos Creator | hyExt Game</title>
+</head>
+
+<body>
+  <canvas id="GameCanvas" oncontextmenu="event.preventDefault()" tabindex="0"></canvas>
+  <script src="src/settings.js" charset="utf-8"></script>
+  <script src="cocos2d-js-min.js" charset="utf-8"></script>
+  <script src="main.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    cc.sys.isBrowser = false;
+    window.boot();
+  </script>
+</body>
+
+</html>
+    '''
+
         self.__HY_MAIN_JS = '''
 //Runtime环境下面需要先加载adapter_base.js
 console.log('navigator.userAgent:',navigator.userAgent);
@@ -187,6 +210,9 @@ hyAdapterLoader.createTextContent('${id}', `${content}`);
     def HY_MAIN_JS(self):
         return self.__HY_MAIN_JS
 
+    @property
+    def COCOS_HTML(self):
+        return self.__COCOS_HTML
 
 const = CONST()
 
@@ -223,18 +249,20 @@ class Element():
 # 带src元素
 class SrcElement(Element):
     def __init__(self, id, src):
-        super().__init__(id)
+        Element.__init__(self,id)
         self._src = src
 
     @property
     def src(self):
+        if self._src and self._src.startswith('/'):
+            return '.'+self._src
         return self._src
 
 
 # Canvas
 class Canvas(Element):
     def __init__(self, id, width, height):
-        super().__init__(id)
+        Element.__init__(self,id)
         self._width = width
         self._height = height
 
@@ -255,6 +283,8 @@ class Script():
 
     @property
     def src(self):
+        if self._src and self._src.startswith('/'):
+            return '.'+self._src
         return self._src
 
     @property
@@ -265,7 +295,7 @@ class Script():
 # Image
 class Image(SrcElement):
     def __init__(self, id, src):
-        super().__init__(id, src)
+        SrcElement.__init__(self,id, src)
 
 
 # Audio
@@ -276,7 +306,7 @@ class Audio(SrcElement):
 # TextContent
 class TextContent(Element):
     def __init__(self, id, content):
-        super().__init__(id)
+        Element.__init__(self,id)
         self._content = content
 
     @property
@@ -319,7 +349,7 @@ class Reader():
             self._convertContext.gameIndexHtmlAbsPath, "r", encoding="utf8")
         contents = file_obj.read()
         self.__gameIndexHtml = contents.rstrip()
-        # print("gameIndexHtml: "+self.__gameIndexHtml)
+        #print("gameIndexHtml: "+self.__gameIndexHtml)
         # 关闭文件
         file_obj.close()
 
@@ -366,9 +396,11 @@ class Writer():
         # 打开文件
         fo = io.open(path, "w", encoding="utf8")
         print('write file:', fo.name)
+        # python 2.x
         if sys.version_info < (3, 0):
             fo.write(content.decode('utf-8'))
         else:
+            # python 3.x
             fo.write(content)
         # 关闭文件
         fo.close()
@@ -483,7 +515,6 @@ class Writer():
 class GameHTMLParser(HTMLParser):
     def __init__(self):
         HTMLParser.__init__(self)
-        # super().__init__(self)
         self.currTag = None
         self.currAttrs = None
         self.__entire = Entire()
@@ -561,6 +592,55 @@ class GameHTMLParser(HTMLParser):
         return self.__entire
 
 
+# 过滤
+class GameFilter():
+    def __init__(self, convertContext, entire):
+        self._convertContext = convertContext
+        self._entire = entire
+
+    def do_filter(self):
+        if not self._entire or len(self._entire.elements) <= 0:
+            return
+
+        #cocos 检测
+        if self.cocos_match():
+            print('[GameFilter] game file is cocos export')
+            self.cocos_convert()
+
+    
+    # 判断是不是cocos导出的文件
+    def cocos_match(self):
+        conditions = []
+        for element in self._entire.elements:
+            # Canvas
+            if isinstance(element, Canvas):
+                if element.id == 'GameCanvas':
+                    conditions.append(True)
+                continue
+ 
+            # Script
+            if isinstance(element, Script):
+                if element.content and (element.content.find('cocos2d-js-min.js') >= 0):
+                    conditions.append(True)
+                continue
+
+        #至少有两个值,且都为true
+        if len(conditions) >=2 and  reduce(lambda x,y: x and y,conditions):
+            return True
+        else:
+            return False
+ 
+    # cocos 转换
+    def cocos_convert(self):
+        parser = GameHTMLParser()
+        parser.feed(const.COCOS_HTML)
+        self._entire = parser.getEntire()
+
+    @property
+    def entire(self):
+        return self._entire
+
+
 # print(const.HY_INDEX_HTML_NAME)
 # print(const.HY_MAIN_JS_NAME)
 # print(const.ADAPTER_BASE_JS)
@@ -589,8 +669,13 @@ def main(argv):
     reader = Reader(convertContext)
     reader.load()
     entire = reader.entire
-
+    
     # print(entire.elements)
+
+    # 转换
+    gameFilter = GameFilter(convertContext,entire)
+    gameFilter.do_filter()
+    entire = gameFilter.entire
 
     write = Writer(convertContext, entire)
     write.write()

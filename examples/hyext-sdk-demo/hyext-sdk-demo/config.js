@@ -20,6 +20,7 @@ import PlayerDemo from '../components/PlayerDemo'
 import PanelDemo from '../components/PanelDemo'
 import OrderDemo from '../components/OrderDemo'
 import RevenueDemo from '../components/RevenueDemo'
+import BackendDemo from '../components/BackendDemo'
 
 export const components = [
   { name: '生命周期', component: LifeCircleDemo },
@@ -43,5 +44,6 @@ export const components = [
   { name: '播放器相关', component: PlayerDemo },
   { name: '面板相关', component: PanelDemo },
   { name: '秩序相关', component: OrderDemo },
-  { name: '营收相关', component: RevenueDemo }
+  { name: '营收相关', component: RevenueDemo },
+  { name: '后台相关', component: BackendDemo }
 ]

@@ -193,16 +193,19 @@ export default class Demo extends Component {
           <FormItem label='param'>
             <Input placeholder='请输入独立白板的初始参数'
               value={this.state.hyExt_stream_addExtraWhiteBoard_0_param || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_addExtraWhiteBoard_0_param: v })} />
           </FormItem>
           <FormItem label='width'>
             <Input placeholder='请输入独立白板的宽度'
               value={this.state.hyExt_stream_addExtraWhiteBoard_0_width || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_addExtraWhiteBoard_0_width: v })} />
           </FormItem>
           <FormItem label='height'>
             <Input placeholder='请输入独立白板的高度'
               value={this.state.hyExt_stream_addExtraWhiteBoard_0_height || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_addExtraWhiteBoard_0_height: v })} />
           </FormItem>
         </Form>
@@ -212,6 +215,7 @@ export default class Demo extends Component {
           <FormItem label='wbId'>
             <Input placeholder='请输入独立白板的Id'
               value={this.state.hyExt_stream_removeExtraWhiteBoard_0_wbId || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_removeExtraWhiteBoard_0_wbId: v })} />
           </FormItem>
         </Form>
@@ -221,11 +225,13 @@ export default class Demo extends Component {
           <FormItem label='wbId'>
             <Input placeholder='请输入独立白板的Id'
               value={this.state.hyExt_stream_sendToExtraWhiteBoard_0_wbId || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_sendToExtraWhiteBoard_0_wbId: v })} />
           </FormItem>
           <FormItem label='data'>
             <Input placeholder='请输入要发送的消息'
               value={this.state.hyExt_stream_sendToExtraWhiteBoard_0_data || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_sendToExtraWhiteBoard_0_data: v })} />
           </FormItem>
         </Form>
@@ -237,21 +243,25 @@ export default class Demo extends Component {
           <FormItem label='x'>
             <Input placeholder='请输入普通白板的左上角横坐标'
               value={this.state.hyExt_stream_addWhiteBoard_0_x || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_addWhiteBoard_0_x: v })} />
           </FormItem>
           <FormItem label='y'>
             <Input placeholder='请输入普通白板的左上角纵坐标'
               value={this.state.hyExt_stream_addWhiteBoard_0_y || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_addWhiteBoard_0_y: v })} />
           </FormItem>
           <FormItem label='width'>
             <Input placeholder='请输入普通白板的宽度'
               value={this.state.hyExt_stream_addWhiteBoard_0_width || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_addWhiteBoard_0_width: v })} />
           </FormItem>
           <FormItem label='height'>
             <Input placeholder='请输入普通白板的高度'
               value={this.state.hyExt_stream_addWhiteBoard_0_height || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_addWhiteBoard_0_height: v })} />
           </FormItem>
         </Form>
@@ -263,11 +273,13 @@ export default class Demo extends Component {
           <FormItem label='md5'>
             <Input placeholder='请输入图片资源md5'
               value={this.state.hyExt_stream_addImageLayer_0_md5 || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_addImageLayer_0_md5: v })} />
           </FormItem>
           <FormItem label='frameRate'>
             <Input placeholder='请输入帧率'
               value={this.state.hyExt_stream_addImageLayer_0_frameRate || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_addImageLayer_0_frameRate: v })} />
           </FormItem>
         </Form>
@@ -277,6 +289,7 @@ export default class Demo extends Component {
           <FormItem label='layerId'>
             <Input placeholder='请输入图片图层id'
               value={this.state.hyExt_stream_removeImageLayer_0_layerId || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_removeImageLayer_0_layerId: v })} />
           </FormItem>
         </Form>
@@ -286,6 +299,7 @@ export default class Demo extends Component {
           <FormItem label='md5'>
             <Input placeholder='请输入变脸效果的md5'
               value={this.state.hyExt_stream_enableFaceEffect_0_md5 || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_enableFaceEffect_0_md5: v })} />
           </FormItem>
           <FormItem label='enable'>
@@ -299,26 +313,31 @@ export default class Demo extends Component {
           <FormItem label='shareHandler'>
             <Input placeholder='请输入EXE的共享句柄'
               value={this.state.hyExt_stream_addExeWhiteBoard_0_shareHandler || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_addExeWhiteBoard_0_shareHandler: v })} />
           </FormItem>
           <FormItem label='x'>
             <Input placeholder='请输入EXE白板的左上角横坐标'
               value={this.state.hyExt_stream_addExeWhiteBoard_0_x || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_addExeWhiteBoard_0_x: v })} />
           </FormItem>
           <FormItem label='y'>
             <Input placeholder='请输入EXE白板的左上角纵坐标'
               value={this.state.hyExt_stream_addExeWhiteBoard_0_y || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_addExeWhiteBoard_0_y: v })} />
           </FormItem>
           <FormItem label='width'>
             <Input placeholder='请输入EXE白板的宽度'
               value={this.state.hyExt_stream_addExeWhiteBoard_0_width || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_addExeWhiteBoard_0_width: v })} />
           </FormItem>
           <FormItem label='height'>
             <Input placeholder='请输入EXE白板的高度'
               value={this.state.hyExt_stream_addExeWhiteBoard_0_height || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_addExeWhiteBoard_0_height: v })} />
           </FormItem>
         </Form>
@@ -330,26 +349,31 @@ export default class Demo extends Component {
           <FormItem label='layerId'>
             <Input placeholder='请输入文字图层id'
               value={this.state.hyExt_stream_addTextLayer_0_layerId || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_addTextLayer_0_layerId: v })} />
           </FormItem>
           <FormItem label='text'>
             <Input placeholder='请输入文字图层内容'
               value={this.state.hyExt_stream_addTextLayer_0_text || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_addTextLayer_0_text: v })} />
           </FormItem>
           <FormItem label='fontFamily'>
             <Input placeholder='请输入文字图层字体'
               value={this.state.hyExt_stream_addTextLayer_0_fontFamily || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_addTextLayer_0_fontFamily: v })} />
           </FormItem>
           <FormItem label='fontSize'>
             <Input placeholder='请输入文字图层字体大小'
               value={this.state.hyExt_stream_addTextLayer_0_fontSize || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_addTextLayer_0_fontSize: v })} />
           </FormItem>
           <FormItem label='fontColor'>
             <Input placeholder='请输入字图层字体颜色'
               value={this.state.hyExt_stream_addTextLayer_0_fontColor || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_addTextLayer_0_fontColor: v })} />
           </FormItem>
           <FormItem label='useBackground'>
@@ -359,11 +383,13 @@ export default class Demo extends Component {
           <FormItem label='backgroundColor'>
             <Input placeholder='请输入文字图层背景颜色'
               value={this.state.hyExt_stream_addTextLayer_0_backgroundColor || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_addTextLayer_0_backgroundColor: v })} />
           </FormItem>
           <FormItem label='alpha'>
             <Input placeholder='请输入文字图层不透明度'
               value={this.state.hyExt_stream_addTextLayer_0_alpha || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_addTextLayer_0_alpha: v })} />
           </FormItem>
           <FormItem label='bold'>
@@ -389,6 +415,7 @@ export default class Demo extends Component {
           <FormItem label='layerId'>
             <Input placeholder='请输入文字图层id'
               value={this.state.hyExt_stream_removeTextLayer_0_layerId || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_stream_removeTextLayer_0_layerId: v })} />
           </FormItem>
         </Form>

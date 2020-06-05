@@ -95,11 +95,13 @@ export default class Demo extends Component {
           <FormItem label='url'>
             <Input placeholder='请输入要下载资源的url'
               value={this.state.hyExt_pc_downloadRes_0_url || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_pc_downloadRes_0_url: v })} />
           </FormItem>
           <FormItem label='md5'>
             <Input placeholder='请输入资源的md5'
               value={this.state.hyExt_pc_downloadRes_0_md5 || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_pc_downloadRes_0_md5: v })} />
           </FormItem>
           <FormItem label='unzip'>
@@ -113,16 +115,19 @@ export default class Demo extends Component {
           <FormItem label='md5'>
             <Input placeholder='请输入exe的md5'
               value={this.state.hyExt_pc_launchExe_0_md5 || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_pc_launchExe_0_md5: v })} />
           </FormItem>
           <FormItem label='name'>
             <Input placeholder='请输入exe的名称'
               value={this.state.hyExt_pc_launchExe_0_name || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_pc_launchExe_0_name: v })} />
           </FormItem>
           <FormItem label='params'>
             <Input placeholder='请输入额外的参数'
               value={this.state.hyExt_pc_launchExe_0_params || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_pc_launchExe_0_params: v })} />
           </FormItem>
         </Form>
@@ -132,6 +137,7 @@ export default class Demo extends Component {
           <FormItem label='md5'>
             <Input placeholder='请输入要监听消息exe的md5'
               value={this.state.hyExt_pc_onExeMessage_0_md5 || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_pc_onExeMessage_0_md5: v })} />
           </FormItem>
         </Form>
@@ -141,6 +147,7 @@ export default class Demo extends Component {
           <FormItem label='md5'>
             <Input placeholder='请输入要监听消息exe的md5'
               value={this.state.hyExt_pc_onExeStateChange_0_md5 || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_pc_onExeStateChange_0_md5: v })} />
           </FormItem>
         </Form>
@@ -150,11 +157,13 @@ export default class Demo extends Component {
           <FormItem label='md5'>
             <Input placeholder='请输入要发送消息exe的md5'
               value={this.state.hyExt_pc_sendToExe_0_md5 || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_pc_sendToExe_0_md5: v })} />
           </FormItem>
           <FormItem label='data'>
             <Input placeholder='请输入要发送消息exe的数据'
               value={this.state.hyExt_pc_sendToExe_0_data || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_pc_sendToExe_0_data: v })} />
           </FormItem>
         </Form>

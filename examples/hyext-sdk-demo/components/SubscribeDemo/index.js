@@ -80,6 +80,7 @@ export default class Demo extends Component {
           <FormItem label='userNick'>
             <Input placeholder='请输入用户昵称'
               value={this.state.hyExt_context_onSubscriberChange_0_userNick || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_context_onSubscriberChange_0_userNick: v })} />
           </FormItem>
         </Form>

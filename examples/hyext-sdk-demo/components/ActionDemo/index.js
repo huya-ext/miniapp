@@ -63,6 +63,7 @@ export default class Demo extends Component {
           <FormItem label='countDown'>
             <Input placeholder='请输入倒计时（尚未提供）'
               value={this.state.hyExt_action_showEntrance_0_countDown || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_action_showEntrance_0_countDown: v })} />
           </FormItem>
           <FormItem label='cornerMarkId'>

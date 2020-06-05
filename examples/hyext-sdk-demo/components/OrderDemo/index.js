@@ -41,6 +41,7 @@ export default class Demo extends Component {
           <FormItem label='text'>
             <Input placeholder='请输入要检查的字符串'
               value={this.state.hyExt_order_reportText_0_text || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_order_reportText_0_text: v })} />
           </FormItem>
         </Form>

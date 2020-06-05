@@ -7,5 +7,5 @@
 * giftsender-wb-app：送礼助手添加白板功能
 * giftsender-rt-app：送礼助手添加秩序审核功能
 * giftsender-se-app：送礼助手添加控制观众端入口功能
-* aiSunglasses-app：人脸识别demo
 * [game-jump-client-demo](./game-jump-client-demo)：虎牙小游戏：跳一跳前端DEMO
+* [game-jump-server-demo](./game-jump-server-demo)：虎牙小游戏：跳一跳后端DEMO

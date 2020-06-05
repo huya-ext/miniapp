@@ -1,0 +1,8 @@
+.container {
+  flex: 1;
+  overflow: hidden;
+}
+
+.data {
+  font-size: 120px;
+}

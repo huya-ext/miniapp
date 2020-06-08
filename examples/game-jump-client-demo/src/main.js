@@ -4,7 +4,7 @@ import { logFps, getIsHyExt, getVersion } from './jump/utils';
 
 if (!window.Event.initEvent) {
   window.Event.initEvent = function (name) {
-    this._target = name;
+    this._type = name;
   };
 }
 

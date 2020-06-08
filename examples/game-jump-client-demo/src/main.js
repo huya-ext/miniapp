@@ -3,7 +3,7 @@ import { logFps, getIsHyExt, getVersion } from './jump/utils';
 // import Stats from 'stats.js';
 
 if (!window.Event.initEvent) {
-  window.Event.initEvent = function (name) {
+  window.Event.prototype.initEvent = function (name) {
     this._type = name;
   };
 }

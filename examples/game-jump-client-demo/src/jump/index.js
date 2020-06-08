@@ -88,7 +88,7 @@ class JumpGameWorld {
   initStage() {
     const { canvas, axesHelper, width, height } = this;
     const cameraNear = 0.1;
-    const cameraFar = 2000;
+    const cameraFar = 3000;
     // 计算相机应该放在哪里
     const cameraInitalPosition = (this.cameraInitalPosition = computeCameraInitalPosition(
       35,

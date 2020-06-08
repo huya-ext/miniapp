@@ -252,13 +252,13 @@ class Stage {
     this.context.strokeStyle = 'white';
     // this.context.lineJoin = 'round';
     this.context.lineWidth = 3;
-    this.context.strokeRect(this.width / 2 - 60, this.height / 1.5, 120, 50);
+    this.context.strokeRect(this.width / 2 - 60, (this.height * 3) / 4 - 50, 120, 50);
 
     this.context.textAlign = 'center';
     this.context.textBaseline = 'middle';
     this.context.fillStyle = '#fff';
     this.context.font = '22px Arial';
-    this.context.fillText('重新开始', this.width / 2, this.height / 1.5 + 25);
+    this.context.fillText('重新开始', this.width / 2, (this.height * 3) / 4 - 25);
 
     // 将canvas作为材质的一面贴上去
     this.geometry = new THREE.PlaneGeometry(this.width / 1.5, this.height / 1.5); // 按比例设置宽高

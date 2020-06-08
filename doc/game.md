@@ -76,12 +76,13 @@ ws.onclose = function (event) {}
 ws.send("test data");
 
 ```
+> `hyExt.WebSocket` 支持文本消息及二进制消息，可以传输Json、Protocol Buffer、私有协议等。
 
 > 调用`let ws = new window['hyExt'].WebSocket(wsUrl)`时，虎牙代理会自动在原始的wsUrl的末尾追加参数`jwt=xxx`，即用户的鉴权token，方便游戏服务器来鉴权及获得用户ID，jwt的用法参考[统一鉴权说明](https://dev.huya.com/docs#/%E7%BB%9F%E4%B8%80%E9%89%B4%E6%9D%83%E8%AF%B4%E6%98%8E)
 
-> hyExt.WebSocket 支持发送和接收的最大单个message为64k
+> `hyExt.WebSocket` 支持发送和接收的最大单个message为64k
 
-> 游戏前端需要自行发送心跳包来上报活跃状态
+> 使用 `hyExt.WebSocket` 需要发送邮件到 `hy-ext@huya.com` 申请开通权限，附上小程序ID及名称
 
 ### HTTP支持
 基于安全性原因，小游戏对`XMLHttpRequest`的使用进行了限制，目前只允许通过`XMLHttpRequest`访问以下域名：

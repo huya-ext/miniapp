@@ -10,7 +10,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@hyext/builder-beyond": "^1.3.17"
+    "@hyext/builder-beyond": "^1.3.17",
+    "@hyext/cli": "^1.0.9"
   },
   "dependencies": {
     "@hyext-beyond/core": "1.0.6",

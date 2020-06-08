@@ -1,6 +1,6 @@
-# giftsender-se-app
+# aiSunglasses-app
 
-在送礼助手秩序审核功能基础上增加观众入口端控制
+一个示例用的ai demo
 
 ### 项目构建
 

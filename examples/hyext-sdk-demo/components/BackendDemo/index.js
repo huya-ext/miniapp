@@ -45,11 +45,13 @@ export default class Demo extends Component {
           <FormItem label='key'>
             <Input placeholder='请输入关键字'
               value={this.state.hyExt_backend_commonQuery_0_key || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_backend_commonQuery_0_key: v })} />
           </FormItem>
           <FormItem label='param'>
             <Input placeholder='请输入参数'
               value={this.state.hyExt_backend_commonQuery_0_param || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_backend_commonQuery_0_param: v })} />
           </FormItem>
         </Form>

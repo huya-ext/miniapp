@@ -23,7 +23,6 @@ export default class Demo extends Component {
   submit_hyExt_panel_setLayout () {
     let args = []
     args[0] = {}
-    args[0].ref = this.state.hyExt_panel_setLayout_0_ref || "player"
     args[0].visible = !!this.state.hyExt_panel_setLayout_0_visible
     args[0].x = Number(this.state.hyExt_panel_setLayout_0_x) || 0
     args[0].y = Number(this.state.hyExt_panel_setLayout_0_y) || 0
@@ -46,12 +45,6 @@ export default class Demo extends Component {
         style={{...styles.body, backgroundColor: '#eee'}}>
         <Text style={styles.header}>hyExt.panel.setLayout</Text>
         <Form style={{marginTop: 20}}>
-          <FormItem label='ref'>
-            <Select data={[{"label":"播放器","value":"player"},{"label":"公屏","value":"chatroom"},{"label":"屏幕","value":"screen"}]}
-              header='参照物'
-              value={this.state.hyExt_panel_setLayout_0_ref || "player"}
-              onPressConfirm={v => this.setState({ hyExt_panel_setLayout_0_ref: v.value })} />
-          </FormItem>
           <FormItem label='visible'>
             <Switch value={this.state.hyExt_panel_setLayout_0_visible || false}
               onChange={v => this.setState({ hyExt_panel_setLayout_0_visible: v })} />
@@ -59,21 +52,25 @@ export default class Demo extends Component {
           <FormItem label='x'>
             <Input placeholder='请输入左上角横坐标'
               value={this.state.hyExt_panel_setLayout_0_x || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_panel_setLayout_0_x: v })} />
           </FormItem>
           <FormItem label='y'>
             <Input placeholder='请输入左上角纵坐标'
               value={this.state.hyExt_panel_setLayout_0_y || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_panel_setLayout_0_y: v })} />
           </FormItem>
           <FormItem label='width'>
             <Input placeholder='请输入宽度'
               value={this.state.hyExt_panel_setLayout_0_width || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_panel_setLayout_0_width: v })} />
           </FormItem>
           <FormItem label='height'>
             <Input placeholder='请输入高度'
               value={this.state.hyExt_panel_setLayout_0_height || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_panel_setLayout_0_height: v })} />
           </FormItem>
           <FormItem label='animate'>
@@ -83,11 +80,13 @@ export default class Demo extends Component {
           <FormItem label='duration'>
             <Input placeholder='请输入动画时长（毫秒）'
               value={this.state.hyExt_panel_setLayout_0_duration || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_panel_setLayout_0_duration: v })} />
           </FormItem>
           <FormItem label='alpha'>
             <Input placeholder='请输入不透明度'
               value={this.state.hyExt_panel_setLayout_0_alpha || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_panel_setLayout_0_alpha: v })} />
           </FormItem>
         </Form>

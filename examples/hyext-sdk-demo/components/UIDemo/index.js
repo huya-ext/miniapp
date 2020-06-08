@@ -50,6 +50,7 @@ export default class Demo extends Component {
           <FormItem label='Toast内容'>
             <Input placeholder='请输入Toast内容'
               value={this.state.hyExt_context_showToast_0 || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_context_showToast_0: v })} />
           </FormItem>
         </Form>

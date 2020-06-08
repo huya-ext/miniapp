@@ -1,0 +1,38 @@
+{
+  "name": "aiSunglasses-app",
+  "outputPath": "dist",
+  "releasePath": "release",
+  "extId": "yjghrz3v|5y6rtkcy",
+  "isTestEnv":true,
+  "ignore": [
+    "*.md",
+    "LICENSE",
+    ".git/**",
+    ".gitignore",
+    "package-lock.json"
+  ],
+  "builder": {
+    "name": "@hyext/builder-beyond",
+    "config": {
+      "webSDKVersion": "test",
+      "webTitle": "虎牙小程序",
+      "useCssLoader": true,
+      "designWidth": 750,
+      "https": false,
+      "host": "localhost",
+      "port": 18089,
+      "enableLint": false,
+      "buildConfig": {
+        "RN": [
+        ],
+        "H5": [
+          {
+            "entry": "index_streamer.js",
+            "extType": "pc_anchor_panel",
+            "platform": "pc"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -51,11 +51,13 @@ export default class Demo extends Component {
           <FormItem label='header'>
             <Input placeholder='请输入自定义的HTTP头，可选'
               value={this.state.hyExt_request_0_header || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_request_0_header: v })} />
           </FormItem>
           <FormItem label='url'>
             <Input placeholder='请输入请求地址'
               value={this.state.hyExt_request_0_url || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_request_0_url: v })} />
           </FormItem>
           <FormItem label='method'>
@@ -67,6 +69,7 @@ export default class Demo extends Component {
           <FormItem label='data'>
             <Input placeholder='请输入请求的Body'
               value={this.state.hyExt_request_0_data || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_request_0_data: v })} />
           </FormItem>
           <FormItem label='dataType'>

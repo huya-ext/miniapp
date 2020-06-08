@@ -69,6 +69,7 @@ export default class Demo extends Component {
           <FormItem label='键'>
             <Input placeholder='请输入键'
               value={this.state.hyExt_storage_getItem_0 || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_storage_getItem_0: v })} />
           </FormItem>
         </Form>
@@ -78,11 +79,13 @@ export default class Demo extends Component {
           <FormItem label='键'>
             <Input placeholder='请输入键'
               value={this.state.hyExt_storage_setItem_0 || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_storage_setItem_0: v })} />
           </FormItem>
           <FormItem label='值'>
             <Input placeholder='请输入值'
               value={this.state.hyExt_storage_setItem_1 || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_storage_setItem_1: v })} />
           </FormItem>
         </Form>
@@ -94,6 +97,7 @@ export default class Demo extends Component {
           <FormItem label='键'>
             <Input placeholder='请输入键'
               value={this.state.hyExt_storage_removeItem_0 || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_storage_removeItem_0: v })} />
           </FormItem>
         </Form>

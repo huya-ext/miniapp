@@ -26,7 +26,7 @@ export function computeCameraInitalPosition(verticalDeg, horizontalDeg, top, bot
 
   if (minY > maxY) {
     console.warn('警告: 垂直角度太小了!');
-    return;
+    // return;
   }
   const y = minY + (maxY - minY) / 2;
   const longEdge = y / tan(verticalRadian);

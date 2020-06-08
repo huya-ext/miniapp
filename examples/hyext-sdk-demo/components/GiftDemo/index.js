@@ -83,21 +83,25 @@ export default class Demo extends Component {
           <FormItem label='sendNick'>
             <Input placeholder='请输入用户昵称'
               value={this.state.hyExt_context_onGiftChange_0_sendNick || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_context_onGiftChange_0_sendNick: v })} />
           </FormItem>
           <FormItem label='itemName'>
             <Input placeholder='请输入礼物名称'
               value={this.state.hyExt_context_onGiftChange_0_itemName || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_context_onGiftChange_0_itemName: v })} />
           </FormItem>
           <FormItem label='minSendItemCount'>
             <Input placeholder='请输入最小礼物个数'
               value={this.state.hyExt_context_onGiftChange_0_minSendItemCount || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_context_onGiftChange_0_minSendItemCount: v })} />
           </FormItem>
           <FormItem label='minSendItemComboHits'>
             <Input placeholder='请输入最小连击次数'
               value={this.state.hyExt_context_onGiftChange_0_minSendItemComboHits || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_context_onGiftChange_0_minSendItemComboHits: v })} />
           </FormItem>
         </Form>
@@ -111,11 +115,13 @@ export default class Demo extends Component {
           <FormItem label='giftId'>
             <Input placeholder='请输入礼物Id'
               value={this.state.hyExt_context_sendGift_0_giftId || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_context_sendGift_0_giftId: v })} />
           </FormItem>
           <FormItem label='giftCount'>
             <Input placeholder='请输入礼物个数'
               value={this.state.hyExt_context_sendGift_0_giftCount || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_context_sendGift_0_giftCount: v })} />
           </FormItem>
         </Form>

@@ -86,6 +86,7 @@ export default class Demo extends Component {
           <FormItem label='goodsUuid'>
             <Input placeholder='请输入商品id'
               value={this.state.hyExt_revenue_checkStreamerCanUseGoods_0_goodsUuid || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_revenue_checkStreamerCanUseGoods_0_goodsUuid: v })} />
           </FormItem>
         </Form>
@@ -95,11 +96,13 @@ export default class Demo extends Component {
           <FormItem label='goodsUuid'>
             <Input placeholder='请输入商品id'
               value={this.state.hyExt_revenue_startModuleGiftRevenueStat_0_goodsUuid || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_revenue_startModuleGiftRevenueStat_0_goodsUuid: v })} />
           </FormItem>
           <FormItem label='giftIds'>
             <Input placeholder='请输入礼物id，多个用竖线分隔'
               value={this.state.hyExt_revenue_startModuleGiftRevenueStat_0_giftIds || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_revenue_startModuleGiftRevenueStat_0_giftIds: v })} />
           </FormItem>
         </Form>
@@ -109,6 +112,7 @@ export default class Demo extends Component {
           <FormItem label='goodsUuid'>
             <Input placeholder='请输入商品id'
               value={this.state.hyExt_revenue_endModuleGiftRevenueStat_0_goodsUuid || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_revenue_endModuleGiftRevenueStat_0_goodsUuid: v })} />
           </FormItem>
         </Form>
@@ -118,6 +122,7 @@ export default class Demo extends Component {
           <FormItem label='goodsUuid'>
             <Input placeholder='请输入商品id'
               value={this.state.hyExt_revenue_checkStreamerGoodsExpire_0_goodsUuid || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_revenue_checkStreamerGoodsExpire_0_goodsUuid: v })} />
           </FormItem>
         </Form>
@@ -127,6 +132,7 @@ export default class Demo extends Component {
           <FormItem label='goodsUuid'>
             <Input placeholder='请输入商品id'
               value={this.state.hyExt_revenue_popupGoodsBuyPanel_0_goodsUuid || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_revenue_popupGoodsBuyPanel_0_goodsUuid: v })} />
           </FormItem>
         </Form>

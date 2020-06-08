@@ -59,40 +59,6 @@ export default class Demo extends Component {
       this.log('取消监听当前直播间手势识别消息失败，错误信息：' + err.message)
     })
   }
-  submit_hyExt_reg_onCVRecognition () {
-    let args = []
-    args[0] = {}
-    args[0].keys = this.state.hyExt_reg_onCVRecognition_0_keys ? this.state.hyExt_reg_onCVRecognition_0_keys.split(',') : []
-    args[0].callback = this.commonLog
-    this.log('监听当前直播间视觉识别消息：' + JSON.stringify(args))
-    global.hyExt.reg.onCVRecognition(args[0]).then(() => {
-      this.log('监听当前直播间视觉识别消息成功')
-    }).catch(err => {
-      this.log('监听当前直播间视觉识别消息失败，错误信息：' + err.message)
-    })
-  }
-  submit_hyExt_reg_offCVRecognition () {
-    let args = []
-    args[0] = {}
-    args[0].keys = this.state.hyExt_reg_offCVRecognition_0_keys ? this.state.hyExt_reg_offCVRecognition_0_keys.split(',') : []
-    this.log('取消监听当前直播间视觉识别消息：' + JSON.stringify(args))
-    global.hyExt.reg.offCVRecognition(args[0]).then(() => {
-      this.log('取消监听当前直播间视觉识别消息成功')
-    }).catch(err => {
-      this.log('取消监听当前直播间视觉识别消息失败，错误信息：' + err.message)
-    })
-  }
-  submit_hyExt_reg_queryCVRecognition () {
-    let args = []
-    args[0] = {}
-    args[0].keys = this.state.hyExt_reg_queryCVRecognition_0_keys ? this.state.hyExt_reg_queryCVRecognition_0_keys.split(',') : []
-    this.log('查询当前直播间视觉识别结果：' + JSON.stringify(args))
-    global.hyExt.reg.queryCVRecognition(args[0]).then(resp => {
-      this.log('查询当前直播间视觉识别结果成功，返回：' + JSON.stringify(resp))
-    }).catch(err => {
-      this.log('查询当前直播间视觉识别结果失败，错误信息：' + err.message)
-    })
-  }
   submit_hyExt_reg_onHumanContourDetection () {
     let args = []
     args[0] = {}
@@ -160,6 +126,7 @@ export default class Demo extends Component {
           <FormItem label='hotwords'>
             <Input placeholder='请输入热词'
               value={this.state.hyExt_reg_onSpeechRecognition_0_hotwords || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_reg_onSpeechRecognition_0_hotwords: v })} />
           </FormItem>
         </Form>
@@ -170,33 +137,6 @@ export default class Demo extends Component {
         <SubmitButton onPress={this.submit_hyExt_reg_onGestureRecognition.bind(this)}>监听当前直播间手势识别消息</SubmitButton>
         <Text style={styles.header}>hyExt.reg.offGestureRecognition</Text>
         <SubmitButton onPress={this.submit_hyExt_reg_offGestureRecognition.bind(this)}>取消监听当前直播间手势识别消息</SubmitButton>
-        <Text style={styles.header}>hyExt.reg.onCVRecognition</Text>
-        <Form style={{marginTop: 20}}>
-          <FormItem label='keys'>
-            <Input placeholder='请输入识别标识'
-              value={this.state.hyExt_reg_onCVRecognition_0_keys || ''}
-              onChange={v => this.setState({ hyExt_reg_onCVRecognition_0_keys: v })} />
-          </FormItem>
-        </Form>
-        <SubmitButton onPress={this.submit_hyExt_reg_onCVRecognition.bind(this)}>监听当前直播间视觉识别消息</SubmitButton>
-        <Text style={styles.header}>hyExt.reg.offCVRecognition</Text>
-        <Form style={{marginTop: 20}}>
-          <FormItem label='keys'>
-            <Input placeholder='请输入识别标识'
-              value={this.state.hyExt_reg_offCVRecognition_0_keys || ''}
-              onChange={v => this.setState({ hyExt_reg_offCVRecognition_0_keys: v })} />
-          </FormItem>
-        </Form>
-        <SubmitButton onPress={this.submit_hyExt_reg_offCVRecognition.bind(this)}>取消监听当前直播间视觉识别消息</SubmitButton>
-        <Text style={styles.header}>hyExt.reg.queryCVRecognition</Text>
-        <Form style={{marginTop: 20}}>
-          <FormItem label='keys'>
-            <Input placeholder='请输入识别标识'
-              value={this.state.hyExt_reg_queryCVRecognition_0_keys || ''}
-              onChange={v => this.setState({ hyExt_reg_queryCVRecognition_0_keys: v })} />
-          </FormItem>
-        </Form>
-        <SubmitButton onPress={this.submit_hyExt_reg_queryCVRecognition.bind(this)}>查询当前直播间视觉识别结果</SubmitButton>
         <Text style={styles.header}>hyExt.reg.onHumanContourDetection</Text>
         <SubmitButton onPress={this.submit_hyExt_reg_onHumanContourDetection.bind(this)}>监听当前直播间人体轮廓点检测消息</SubmitButton>
         <Text style={styles.header}>hyExt.reg.offHumanContourDetection</Text>

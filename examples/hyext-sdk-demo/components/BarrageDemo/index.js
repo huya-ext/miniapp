@@ -63,21 +63,25 @@ export default class Demo extends Component {
           <FormItem label='sendNick'>
             <Input placeholder='请输入用户昵称'
               value={this.state.hyExt_context_onBarrageChange_0_sendNick || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_context_onBarrageChange_0_sendNick: v })} />
           </FormItem>
           <FormItem label='content'>
             <Input placeholder='请输入弹幕内容'
               value={this.state.hyExt_context_onBarrageChange_0_content || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_context_onBarrageChange_0_content: v })} />
           </FormItem>
           <FormItem label='nobleLevel'>
             <Input placeholder='请输入贵族等级'
               value={this.state.hyExt_context_onBarrageChange_0_nobleLevel || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_context_onBarrageChange_0_nobleLevel: v })} />
           </FormItem>
           <FormItem label='fansLevel'>
             <Input placeholder='请输入粉丝等级'
               value={this.state.hyExt_context_onBarrageChange_0_fansLevel || ''}
+              inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_context_onBarrageChange_0_fansLevel: v })} />
           </FormItem>
         </Form>

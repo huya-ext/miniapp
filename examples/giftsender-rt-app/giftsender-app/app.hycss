@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex: 1;
+  background-color: #FFFFFF;
+  align-items: center;
+}
+
+.text {
+  width: 90%;
+  height: 10%;
+  text-align: center;
+  border:  2px solid yellowgreen;
+  border-radius: 4px;
+}
+
+.senderButton{
+  margin: 30px auto;
+  width: 320px;
+  height: 100px;
+  border-radius: 40px;
+  background-color: rgb(201, 48, 201);
+}

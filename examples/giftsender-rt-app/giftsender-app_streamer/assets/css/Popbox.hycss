@@ -1,0 +1,56 @@
+.popBox{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-Color:rgba(0,0,0,0.4);
+}
+
+.content{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:500px;
+    height:300px;
+    margin-Top:-170px;
+    margin-Left:-250px;
+    background-Color:#505050;
+    border-Radius:12px;
+    z-Index:200;
+}
+
+.bd{
+    height: 100%;
+    display: flex;
+    align-Items: center;
+    justify-Content: center;
+}
+
+.h4{
+    margin-Bottom: 50px;
+    padding-Bottom:8px;
+    font-Size: 28px;
+    color:#fff;
+    text-Align:center;
+}
+
+.hitBtn{
+    margin-Top:15px;
+    display:flex;
+    justify-Content:center;
+    align-Items:center;
+}
+
+.a1{
+    align-Items: center;
+    background-Color:rgb(165, 165, 165);
+    border-Top-Right-Radius:8px;
+    border-Top-Left-Radius:8px;
+    border-Bottom-Right-Radius:8px;
+    border-Bottom-Left-Radius:8px;
+    padding-Top:10px;
+    padding-Bottom:10px;
+    padding-Left:40px;
+    padding-Right:40px;
+}

@@ -139,11 +139,10 @@ class App extends Component {
             
             style={{
               position: 'absolute',
-              left: wb_width * (((x2+x1)/2) / canvas.width),
-              top:  wb_height * (((y2+y1)/2) / canvas.height),
-              transform: [{translateX:"-50%"},{translateY:"-50%"}],
+              left: wb_width * ((x1 - (x2-x1)) / canvas.width),
+              top:  wb_height * ((y1 - (x2-x1)) / canvas.height),
               width: wb_width * (x2-x1) / canvas.width * 3,
-              height:  wb_height * (x2-x1) / canvas.height
+              height:  wb_height * (x2-x1) / canvas.height * 2
             }}
           >
           </Image>

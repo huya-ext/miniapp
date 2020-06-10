@@ -64,25 +64,23 @@ public class Room {
      * @param req 基本资料
      */
     public void onPlayerInfo(String uid, PlayerInfoReq req){
-        if(!players.containsKey(uid)){
-            PlayerInfo playerInfo = new PlayerInfo();
-            playerInfo.setUid(uid);
-            playerInfo.setAvatar(req.getPlayer().getAvatar());
-            playerInfo.setNick(req.getPlayer().getNick());
-            playerInfo.setDeviceWidth(req.getPlayer().getDeviceWidth());
+        PlayerInfo playerInfo = players.getOrDefault(uid, new PlayerInfo());
+        playerInfo.setUid(uid);
+        playerInfo.setAvatar(req.getPlayer().getAvatar());
+        playerInfo.setNick(req.getPlayer().getNick());
+        playerInfo.setDeviceWidth(req.getPlayer().getDeviceWidth());
 
-            players.put(uid, playerInfo);
+        players.put(uid, playerInfo);
 
-            PlayerJoinNotice notice = PlayerJoinNotice.newBuilder()
-                    .setPlayer(playerInfo.tran2Pb())
-                    .build();
-            broadcast(Protocol.S2CPlayerJoinNotice_VALUE, notice.toByteString());
-        }
+        PlayerJoinNotice notice = PlayerJoinNotice.newBuilder()
+                .setPlayer(playerInfo.tran2Pb())
+                .build();
+        broadcast(Protocol.S2CPlayerJoinNotice_VALUE, notice.toByteString());
 
         List<Player> playerList = new ArrayList<>();
         players.values().forEach(p -> playerList.add(p.tran2Pb()));
         // 同步房间状态
-        SyncGameDataNotice notice = SyncGameDataNotice.newBuilder()
+        SyncGameDataNotice syncNotice = SyncGameDataNotice.newBuilder()
                 .setState(state)
                 .setTimeLeft(state == ERoomState.Gaming ? (int)((System.currentTimeMillis() - gameStartedAt)/1000) : 0)
                 .addAllPlatforms(platforms)
@@ -90,7 +88,7 @@ public class Room {
                 .addAllRank(playerRank)
                 .build();
 
-        unicast(uid, Protocol.S2CSyncGameDataNotice_VALUE, notice.toByteString());
+        unicast(uid, Protocol.S2CSyncGameDataNotice_VALUE, syncNotice.toByteString());
     }
 
     /**

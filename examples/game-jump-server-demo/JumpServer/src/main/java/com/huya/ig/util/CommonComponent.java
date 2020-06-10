@@ -70,8 +70,19 @@ public class CommonComponent {
         return platforms;
     }
 
+    /**
+     * 生成开发阶段联调使用的jwt
+     * @param args
+     */
     public static void main(String[] args) {
-        Algorithm algorithm = Algorithm.HMAC256("test");
+        // 私钥，随意字符，注意需要跟game.properties中的secretKey一致
+        String secretKey = "test";
+        // 主播uid字符串，随意字符
+        String profileId = "zhubouid";
+        // 观众uid字符串，如果是生成主播端使用的jwt的话 userId跟profileId一致即可，生成观众使用的jwt则随意不同的字符串即可
+        String userId = "zhubouid";
+
+        Algorithm algorithm = Algorithm.HMAC256(secretKey);
         Map<String, Object> headerClaims = new HashMap();
         headerClaims.put("alg", "HS256");
         headerClaims.put("typ", "JWT");
@@ -81,10 +92,10 @@ public class CommonComponent {
                 .withHeader(headerClaims)
                 .withClaim("creator", "DEV")
                 .withClaim("role", "P")
-                .withClaim("profileId", "unA7WRfQzYAnGXPRUi6v5If7pr6ca4HXeA")
+                .withClaim("profileId", profileId)
                 .withClaim("extId", "")
                 .withClaim("roomId", "1000")
-                .withClaim("userId", "unA7WRfQzYAnGXPRUi6v5If7pr6ca4HXeA2")
+                .withClaim("userId", userId)
                 .withClaim("iat", now)
                 .withClaim("exp", now+30*24*60*60)
                 .withClaim("appId", "appId")

@@ -15,7 +15,7 @@ import Particle from './Particle';
  * 人物类
  */
 class LittleMan {
-  constructor({ world, color, G, options = {}, isOther }) {
+  constructor({ world, color, G, options = {}, isOther, restart, currentProp, nextProp }) {
     this.world = world;
     this.color = color;
     this.G = G;
@@ -30,11 +30,14 @@ class LittleMan {
     this.body = null;
 
     this.unbindFunc = null;
-    this.currentProp = null;
-    this.nextProp = null;
+
+    this.currentProp = currentProp;
+    this.nextProp = nextProp;
     this.powerStorageDuration = 1500;
 
     this.stage = null;
+
+    this.restart = restart;
 
     this.createBody();
     this.particle = new Particle({
@@ -92,7 +95,7 @@ class LittleMan {
     const mousedown = (event) => {
       event.preventDefault();
       // 跳跃没有完成不能操作
-      if (this.poweringUp || this.jumping || !this.currentProp || this.gameOver) {
+      if (this.poweringUp || this.jumping || !this.currentProp || this.gameOver || (this.world.type !== 1 && this.world.wss && this.world.wss.isEnd)) {
         return;
       }
       this.poweringUp = true;
@@ -271,7 +274,7 @@ class LittleMan {
     const { x: startX, y: startY, z: startZ } = start;
 
     // 开始游戏时，小人从第一个盒子正上方入场做弹球下落
-    if (!currentProp && startX === target.x && startZ === target.z) {
+    if (this.restart || (!currentProp && startX === target.x && startZ === target.z)) {
       animate(
         {
           from: { y: startY },
@@ -287,6 +290,7 @@ class LittleMan {
           this.currentProp = nextProp;
           this.nextProp = nextProp.getNext();
           this.jumping = false;
+          this.restart = false;
         }
       );
     } else {
@@ -358,6 +362,23 @@ class LittleMan {
       // 从起跳开始就回弹
       currentProp.springbackTransition(500, this.isOther);
 
+      const sendJumpCmd = (isSuccess) => {
+        world.wss.sendJumpCmd(
+          {
+            id: world.currentPropIndex,
+            x: startX,
+            y: startY,
+            z: startZ,
+          },
+          {
+            id: isSuccess ? world.currentPropIndex + 1 : 0,
+            x: jumpDownX,
+            y: rangeH,
+            z: jumpDownZ,
+          }
+        );
+      };
+
       // 落地后的回调
       const yDownCallBack = () => {
         const currentInfos = currentProp.computePointInfos(width, jumpDownX, jumpDownZ);
@@ -368,15 +389,32 @@ class LittleMan {
           // gameOver 游戏结束，跌落
           console.log('GameOver');
           this.fall(currentInfos, nextInfos);
+          if (world.type === 2) {
+            sendJumpCmd();
+          }
           setTimeout(() => {
+            if (world.type !== 1 && world.wss && world.wss.isEnd) {
+              return;
+            }
             if (!this.isOther) {
-              this.unbindFunc();
-              stage.changeHud();
+              if (this.world.type === 1) {
+                this.unbindFunc();
+                stage.changeEndHud();
+              } else {
+                this.restart = true;
+                const restartPostion = currentProp.getPosition();
+                this.world.initLittleMan(restartPostion.x, restartPostion.z, true, currentProp, nextProp);
+                this.destroy();
+                stage.render();
+              }
             }
           }, 1000);
         } else {
           bufferUp
             .onComplete(() => {
+              if (world.type !== 1 && world.wss && world.wss.isEnd) {
+                return;
+              }
               if (nextInfos.contains) {
                 if (this.isOther) {
                   world.handleProp(this.isOther, i);
@@ -387,10 +425,18 @@ class LittleMan {
                   world.handlePropIndex();
                   world.handleProp();
                   world.moveCamera();
+
+                  if (world.type === 2) {
+                    sendJumpCmd(true);
+                  }
                 }
 
                 this.currentProp = nextProp;
                 this.nextProp = nextProp.getNext();
+              } else {
+                if (world.type === 2) {
+                  sendJumpCmd();
+                }
               }
 
               // 粒子喷泉

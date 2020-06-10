@@ -1,0 +1,248 @@
+{
+  "nested": {
+    "pb": {
+      "options": {
+        "java_generic_services": true,
+        "java_package": "com.huya.ig.jump.protocol",
+        "java_multiple_files": true
+      },
+      "nested": {
+        "Packet": {
+          "fields": {
+            "uri": {
+              "type": "int32",
+              "id": 1
+            },
+            "body": {
+              "type": "bytes",
+              "id": 2
+            }
+          }
+        },
+        "Protocol": {
+          "values": {
+            "Protocol_Default": 0,
+            "C2SJumpReq": 2000,
+            "C2SHeartbeatReq": 2001,
+            "C2SPlayerInfoReq": 2002,
+            "C2SStartGameReq": 2003,
+            "S2CJumpNotice": 3000,
+            "S2CHeartbeatNotice": 3001,
+            "S2CGameOverNotice": 3002,
+            "S2CGameStartNotice": 3003,
+            "S2CSyncGameDataNotice": 3004,
+            "S2CPlayerJoinNotice": 3005,
+            "S2CRoomConnectedNotice": 3006
+          }
+        },
+        "EJoinRet": {
+          "values": {
+            "SUCCESS": 0,
+            "ROOM_CLOSED": 1,
+            "ROOM_FULL": 2
+          }
+        },
+        "RoomConnectedNotice": {
+          "fields": {
+            "ret": {
+              "type": "EJoinRet",
+              "id": 1
+            },
+            "uid": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "ERoomState": {
+          "values": {
+            "Preparing": 0,
+            "Gaming": 1,
+            "GameOver": 2
+          }
+        },
+        "Platform": {
+          "fields": {
+            "id": {
+              "type": "int32",
+              "id": 1
+            },
+            "color": {
+              "type": "int32",
+              "id": 2
+            },
+            "size": {
+              "type": "int32",
+              "id": 3
+            },
+            "shape": {
+              "type": "int32",
+              "id": 4
+            },
+            "distance": {
+              "type": "int32",
+              "id": 5
+            },
+            "direction": {
+              "type": "int32",
+              "id": 6
+            }
+          }
+        },
+        "SyncGameDataNotice": {
+          "fields": {
+            "state": {
+              "type": "ERoomState",
+              "id": 1
+            },
+            "timeLeft": {
+              "type": "int32",
+              "id": 2
+            },
+            "players": {
+              "rule": "repeated",
+              "type": "Player",
+              "id": 3
+            },
+            "rank": {
+              "rule": "repeated",
+              "type": "Player",
+              "id": 4
+            },
+            "platforms": {
+              "rule": "repeated",
+              "type": "Platform",
+              "id": 5
+            }
+          }
+        },
+        "PlayerJoinNotice": {
+          "fields": {
+            "player": {
+              "type": "Player",
+              "id": 1
+            }
+          }
+        },
+        "GameStartNotice": {
+          "fields": {
+            "gameDuration": {
+              "type": "int32",
+              "id": 1
+            },
+            "platforms": {
+              "rule": "repeated",
+              "type": "Platform",
+              "id": 2
+            }
+          }
+        },
+        "GameOverNotice": {
+          "fields": {
+            "rank": {
+              "rule": "repeated",
+              "type": "Player",
+              "id": 1
+            }
+          }
+        },
+        "PlayerInfoReq": {
+          "fields": {
+            "player": {
+              "type": "Player",
+              "id": 1
+            }
+          }
+        },
+        "Heartbeat": {
+          "fields": {
+            "timestamp": {
+              "type": "int64",
+              "id": 1
+            }
+          }
+        },
+        "JumpCmd": {
+          "fields": {
+            "from": {
+              "type": "Position",
+              "id": 1
+            },
+            "to": {
+              "type": "Position",
+              "id": 2
+            }
+          }
+        },
+        "JumpReq": {
+          "fields": {
+            "cmd": {
+              "type": "JumpCmd",
+              "id": 1
+            }
+          }
+        },
+        "Position": {
+          "fields": {
+            "id": {
+              "type": "int32",
+              "id": 1
+            },
+            "x": {
+              "type": "float",
+              "id": 2
+            },
+            "y": {
+              "type": "float",
+              "id": 3
+            },
+            "z": {
+              "type": "float",
+              "id": 4
+            }
+          }
+        },
+        "Player": {
+          "fields": {
+            "uid": {
+              "type": "string",
+              "id": 1
+            },
+            "nick": {
+              "type": "string",
+              "id": 2
+            },
+            "avatar": {
+              "type": "string",
+              "id": 3
+            },
+            "score": {
+              "type": "int32",
+              "id": 4
+            },
+            "deviceWidth": {
+              "type": "float",
+              "id": 5
+            },
+            "position": {
+              "type": "Position",
+              "id": 6
+            }
+          }
+        },
+        "JumpNotice": {
+          "fields": {
+            "player": {
+              "type": "Player",
+              "id": 1
+            },
+            "cmd": {
+              "type": "JumpCmd",
+              "id": 2
+            }
+          }
+        }
+      }
+    }
+  }
+}

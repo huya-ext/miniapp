@@ -1,0 +1,119 @@
+syntax = "proto3";
+package pb;
+option java_generic_services = true;
+
+option java_package = "com.huya.ig.jump.protocol";
+option java_multiple_files = true;
+
+
+// 数据协议，所有接受和发送的数据包都以Packet作为数据协议
+message Packet {
+    int32 uri = 1;      // 协议号
+    bytes body = 2;     // 数据包，proto二进制
+}
+
+enum Protocol {
+    Protocol_Default = 0;
+
+    C2SJumpReq = 2000;              // 玩家起跳指令&结果  JumpReq
+    C2SHeartbeatReq = 2001;         // 心跳包 Heartbeat
+    C2SPlayerInfoReq = 2002;        // 玩家资料，玩家连接成功后，第一个数据包  PlayerInfoReq
+    C2SStartGameReq = 2003;         // 主播开始游戏
+
+    S2CJumpNotice = 3000;           // 玩家起跳消息  JumpNotice
+    S2CHeartbeatNotice = 3001;      // 心跳响应 Heartbeat
+    S2CGameOverNotice = 3002;       // 游戏结束 GameOverNotice
+    S2CGameStartNotice = 3003;      // 游戏开始 GameStartNotice
+    S2CSyncGameDataNotice = 3004;   // 同步游戏数据，断线重连时服务器下发 SyncGameDataNotice
+    S2CPlayerJoinNotice = 3005;     // 玩家加入 PlayerJoinNotice
+    S2CRoomConnectedNotice = 3006;  // 连接房间信息  RoomConnectedNotice
+}
+
+enum EJoinRet {
+    SUCCESS = 0;        // 成功
+    ROOM_CLOSED = 1;    // 房间已关闭
+    ROOM_FULL = 2;      // 房间已满员
+}
+
+message RoomConnectedNotice {
+    EJoinRet ret = 1;
+    string uid = 2;
+}
+
+// 房间状态
+enum ERoomState {
+    Preparing = 0;  // 准备中
+    Gaming = 1;     // 游戏中
+    GameOver = 2;   // 游戏结束
+}
+
+message Platform {
+    int32 id = 1;           // 站台id
+    int32 color = 2;        // 颜色
+    int32 size = 3;         // 大小
+    int32 shape = 4;        // 形状
+    int32 distance = 5;     // 间距
+    int32 direction = 6;    // 生成方向
+}
+
+message SyncGameDataNotice {
+    ERoomState state = 1;               // 当前房间状态
+    int32 timeLeft = 2;                 // 如果是游戏中，剩余游戏时间，单位秒
+    repeated Player players = 3;        // 玩家当前状态
+    repeated Player rank = 4;           // gameOver时返回排行榜
+    repeated Platform platforms = 5;    // 站台
+}
+
+// 玩家加入游戏
+message PlayerJoinNotice {
+    Player player = 1;
+}
+
+// 游戏开始事件
+message GameStartNotice {
+    int32 gameDuration = 1;             // 游戏时长，单位秒
+    repeated Platform platforms = 2;    //  站台
+}
+
+// 游戏结束
+message GameOverNotice {
+    repeated Player rank = 1;       // 玩家排行榜
+}
+
+message PlayerInfoReq {
+    Player player = 1;
+}
+
+message Heartbeat {
+    int64 timestamp = 1;
+}
+
+message JumpCmd {
+    Position from = 1;          // 起跳站台
+    Position to = 2;            // 抵达站台
+}
+
+message JumpReq {
+    JumpCmd cmd = 1;            // 起跳指令
+}
+
+message Position {
+    int32 id = 1;       // 站台id
+    float x = 2;        // 玩家坐标x
+    float y = 3;        // 玩家坐标y
+    float z = 4;        // 玩家坐标z
+}
+
+message Player {
+    string uid = 1;
+    string nick = 2;
+    string avatar = 3;
+    int32 score = 4;
+    float deviceWidth = 5;
+    Position position = 6;      // 当前站台
+}
+
+message JumpNotice {
+    Player player = 1;
+    JumpCmd cmd = 2;
+}

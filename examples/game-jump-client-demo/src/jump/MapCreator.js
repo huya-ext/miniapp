@@ -31,7 +31,10 @@ class MapCreator {
       });
     }
 
-    return configs;
+    // return configs;
+    const str =
+      '[{"color":6799930,"size":214,"shape":0,"distance":293,"direction":"z"},{"color":16777215,"size":214,"shape":0,"distance":249,"direction":"z"},{"color":15114812,"size":158,"shape":1,"distance":82,"direction":"z"},{"color":16777215,"size":202,"shape":1,"distance":188,"direction":"x"},{"color":6799930,"size":180,"shape":1,"distance":79,"direction":"x"},{"color":16777215,"size":214,"shape":0,"distance":88,"direction":"z"},{"color":4235007,"size":189,"shape":1,"distance":313,"direction":"z"},{"color":16084076,"size":131,"shape":1,"distance":176,"direction":"z"},{"color":16084076,"size":143,"shape":0,"distance":181,"direction":"x"},{"color":16777215,"size":190,"shape":1,"distance":327,"direction":"x"}]';
+    return JSON.parse(str);
   }
 }
 

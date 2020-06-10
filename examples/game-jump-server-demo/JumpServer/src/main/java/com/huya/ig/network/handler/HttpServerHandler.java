@@ -63,7 +63,7 @@ public class HttpServerHandler extends ChannelInboundHandlerAdapter {
                     log.info("收到新连接->uid:{}, profileId:{}, isPresenter:{}", userId, profileId, userId.equals(profileId));
                     handleHandshake(ctx, request, userId, roomId, userId.equals(profileId));
                 }catch (JWTVerificationException e){
-                    log.error("token校验失败", e);
+                    log.error("token校验失败 jwt:"+jwt, e);
                     ctx.close();
                 }
             }else{

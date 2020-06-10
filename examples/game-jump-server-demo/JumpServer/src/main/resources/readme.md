@@ -59,3 +59,44 @@
 │       ├── jump_error.log
 │       └── jump.log
 ```
+
+#### 本地客户端/服务器联调
+
+1. 参考`本地运行`部分启动本地服务器；
+2. 客户端配置本地服务器ws连接串后启动，其中ws连接串格式为`ws://{本地ws服务器ip}:{本地ws服务器端口}/?jwt=xxxxxxx`，即连接串后面附加jwt参数；
+3. 说明：ws连接串后面的jwt参数，在虎牙小程序中是由客户端封装的websocket client自动获取并追加上去的，无需客户端和服务器特别处理，在本地调试阶段，需要客户端手动指定带jwt参数的ws连接串；
+4. 本地调试阶段，jwt的生成方法参考`CommonComponent.java`中`main`方法，分别生成主播端的jwt和若干个观众端的jwt，并提供给客户端同学配置ws连接串；
+5. 客户端在连接时，先由主播客户单连接（主播连接自动创建游戏房间），然后观众端连接到游戏房间进行游戏。
+
+
+附jwt生成代码：
+
+```java
+// 私钥，随意字符，注意需要跟game.properties中的secretKey一致
+String secretKey = "test";
+// 主播uid字符串，随意字符
+String profileId = "zhubouid";
+// 观众uid字符串，如果是生成主播端使用的jwt的话 userId跟profileId一致即可，生成观众使用的jwt则随意不同的字符串即可
+String userId = "zhubouid";
+
+Algorithm algorithm = Algorithm.HMAC256(secretKey);
+Map<String, Object> headerClaims = new HashMap();
+headerClaims.put("alg", "HS256");
+headerClaims.put("typ", "JWT");
+
+int now = (int)(System.currentTimeMillis()/1000);
+String token = JWT.create()
+        .withHeader(headerClaims)
+        .withClaim("creator", "DEV")
+        .withClaim("role", "P")
+        .withClaim("profileId", profileId)
+        .withClaim("extId", "")
+        .withClaim("roomId", "1000")
+        .withClaim("userId", userId)
+        .withClaim("iat", now)
+        .withClaim("exp", now+30*24*60*60)
+        .withClaim("appId", "appId")
+        .sign(algorithm);
+
+System.out.println(token);
+```

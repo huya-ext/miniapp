@@ -3,12 +3,17 @@
 
 import os
 import io
-from html.parser import HTMLParser
 import json
 import sys
 import random
 import hashlib
 from functools import reduce
+
+# python 2.x
+if sys.version_info < (3, 0):
+    from HTMLParser import HTMLParser
+else:
+    from html.parser import HTMLParser
 
 # 常量定义
 class CONST(object):

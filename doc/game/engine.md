@@ -16,8 +16,8 @@
 
 #### 准备工作
 
-安装 nodejs 环境，版本:v10.x.x
-安装 Python 3 环境
+安装 nodejs 环境，版本:v10.x.x；
+安装 Python 3 环境；
 执行以下命令安装虎牙小程序CLI
 ```
 npm install -g  @hyext/cli

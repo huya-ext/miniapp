@@ -6,11 +6,24 @@
 }
 
 .text {
+  position: relative;
+  top: 10px;
   width: 90%;
   height: 10%;
+  border:  6px solid yellowgreen;
+  border-radius: 8px;
+  margin: 50px auto;
+}
+
+.title {
+  font-weight: 600;
+  position: absolute;
+  top: -50px;
+  color: rgb(201, 48, 201);
+}
+
+.msg {
   text-align: center;
-  border:  2px solid yellowgreen;
-  border-radius: 4px;
 }
 
 .senderButton{

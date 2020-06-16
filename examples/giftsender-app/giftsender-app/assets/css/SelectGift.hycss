@@ -1,6 +1,5 @@
 .container {
     display: flex;
-    margin-top: 50px;
     width: 300px;
     border-radius: 40px;
     align-items: center;

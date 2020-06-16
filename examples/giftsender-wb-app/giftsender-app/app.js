@@ -3,9 +3,7 @@ import React, { Component } from 'react'
 import './app.hycss'
 import SelectGift from './components/SelectGift'
 import SelectNum from './components/SelectNum'
-
 const hyExt = global.hyExt
-
 const { View, Text, Button } = UI
 
 class App extends Component {
@@ -15,7 +13,8 @@ class App extends Component {
       giftInfo: [],
       giftIndex: 1,
       giftNum: 1,
-      textBar: ""
+      textBar: "",
+      default_step: 1
     }
   }
 
@@ -23,14 +22,16 @@ class App extends Component {
     hyExt.context.getGiftConf().then(giftInfo => {
       if(giftInfo){
         this.setState({
-          giftInfo: giftInfo
+          giftInfo: giftInfo.filter((item,i)=>{
+            return item.giftGif&&item.giftName;
+          })
         })
       }
     })
   }
 
   messageEventListener(){
-    hyExt.observer && hyExt.observer.on('message-push', res => {
+    hyExt.observer.on('message-push', res => {
       console.log("[message]:",res);
       this.setState({
         textBar: res
@@ -39,9 +40,15 @@ class App extends Component {
   }
 
   changeGift(step){
+    if(step === undefined)  //无参数则按上一次操作来
+      step = this.state.default_step;
+    else
+      this.setState({default_step:step})  //有参数则保存操作
+
     var {giftIndex} = this.state;
     const maxlen = this.state.giftInfo.length;
     giftIndex = (giftIndex + step + maxlen)%maxlen;
+
     this.setState({
       giftIndex: giftIndex
     })
@@ -56,50 +63,37 @@ class App extends Component {
   }
 
   componentDidMount() {
-    hyExt.onLoad && hyExt.onLoad(()=> {
-        hyExt.context.getUserInfo().then(userInfo => {
-            hyExt.logger.info('获取用户信息成功', userInfo);
-            this.getGiftInfo();
-            this.messageEventListener();
-        }).catch(err => {
-
-        })
+    hyExt.onLoad(()=> {
+      hyExt.context.getUserInfo().then(userInfo => {
+        hyExt.logger.info('获取用户信息成功', userInfo);
+        this.getGiftInfo();
+        this.messageEventListener();
+      })
     });
   }
 
   sendGift(){
-    console.log("1234")
     const giftCount = this.state.giftNum;
     const giftIndex = this.state.giftIndex;
     const giftId = this.state.giftInfo[giftIndex].giftId;
-    console.log({giftId,giftCount});
     hyExt.context.sendGift({giftId,giftCount}).then((result)=>{
-        console.log(result);
-
-      }
-    ).catch((err)=>{
+      console.log(result);
+    }).catch((err)=>{
       console.log(err);
     })
-  }
+  }npx
 
   render () {
     
-    const temp_gift = {"giftId":20205,
-    "giftName":"周年蛋糕",
-    "giftLogo":"https://huyaimg.msstatic.com/cdnimage/actprop/20205_1__108_1552620250.jpg?3d6d2b95f760ec51699c20474f2d3cdb",
-    "giftGif":"https://huyaimg.msstatic.com/cdnimage/actprop/20205_1__gif_1552619918.gif?611e701a7eb71d3252d8cda791371a10",
-    "giftPriceHuya":0.1,
-    "giftPriceGreenBean":100,
-    "giftPriceWhiteBean":-1};//this.sendGift.bind(this)
-    
     const {giftInfo, giftIndex, giftNum, textBar} = this.state;
-
-    console.log(this.state)
     return (
       giftInfo[giftIndex]?
       <View className="container">
+        <View className="text">
+          <Text className="title">公告栏（主播留言）</Text>
+          <Text className="msg">{textBar?textBar:"暂未收到主播发送的消息~"}</Text>
+        </View>
         <SelectGift data={giftInfo[giftIndex]} changeGift={this.changeGift.bind(this)}></SelectGift>
-        <Text className="text">{textBar}</Text> 
         <SelectNum num={giftNum} changeNum={this.changeNum.bind(this)}></SelectNum>
         <Button type='primary' className="senderButton" onPress={()=>this.sendGift()}>赠送</Button>
       </View>        

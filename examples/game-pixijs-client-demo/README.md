@@ -3,6 +3,9 @@
 ### 版权声明
 基于[Pixi实例学习: 宝物猎人](https://github.com/Zainking/learningPixi#casestudy)修改
 
+### 特别说明
+此DEMO仅供参考,其中大部分代码仅为示例,并不完善,请勿用于正式发布.
+
 ### 截图
 ![](./ss.png)
 

@@ -23,7 +23,7 @@ class App extends Component {
       if(giftInfo){
         this.setState({
           giftInfo: giftInfo.filter((item,i)=>{
-            return item.giftGif&&item.giftName;
+            return item.giftName&&/https/.test(item.giftGif)
           })
         })
       }

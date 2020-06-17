@@ -67,4 +67,4 @@ npm install -g  @hyext/cli
 ---
 
 #### 附录
-  * [常见问题](./game/faq.md)   
+  * [常见问题](./faq.md)   

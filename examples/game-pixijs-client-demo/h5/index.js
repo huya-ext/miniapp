@@ -80,7 +80,7 @@ function initGameMainScene() {
         vName = '正式版本'
         break;
     }
-    message = new Text("小游戏版本:" + vName, new TextStyle({
+    let vTips = new Text("小游戏版本:" + vName, new TextStyle({
       fontFamily: "Futura",
       fontSize: 30,
       fill: "white",
@@ -88,9 +88,9 @@ function initGameMainScene() {
       stroke: '#4a1850',
       strokeThickness: 2,
     }));
-    message.x = 10;
-    message.y = showHeight - 60;
-    gameScene.addChild(message);
+    vTips.x = 10;
+    vTips.y = showHeight - 60;
+    gameScene.addChild(vTips);
   }).catch(err => {
     log('获取当前小程序版本信息失败，错误信息：' + err.message)
   })

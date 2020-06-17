@@ -64,5 +64,7 @@ npm install -g  @hyext/cli
 1. 需要在虎牙终端调试时，在项目根目录下面执行 `npx hyext start` 开启小游戏本地开发模式
 2. 需要打包上传时，在项目根目录下面执行 `npx hyext release` 
 
+---
 
-
+#### 附录
+  * [常见问题](./faq.md)   

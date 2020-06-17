@@ -169,12 +169,10 @@ npx hyext init  -b h5game
 与小程序一致，参考[版本发布](https://dev.huya.com/docs/#/ems?id=_26-%e7%89%88%e6%9c%ac%e5%8f%91%e5%b8%83)
 
 ---
-## 小游戏DEMO
+## 附录
+  * [常见问题](./game/faq.md)   
+  * [虎牙小游戏引擎支持清单及对接流程](./game/engine.md)
+  * [小游戏美术设计工具及流程介绍](./game/design.md)
+  * [跳一跳游戏-前端DEMO](https://github.com/huya-ext/miniapp/tree/master/examples/game-jump-client-demo)
+  * [跳一跳游戏-后端DEMO](https://github.com/huya-ext/miniapp/tree/master/examples/game-jump-server-demo)
 
-链接: [跳一跳游戏-前端DEMO](../examples/game-jump-client-demo)
-
-链接: [跳一跳游戏-后端DEMO](../examples/game-jump-server-demo)
-
----
-链接：[虎牙小游戏引擎支持清单及对接流程](./game/engine.md)
-链接：[小游戏美术设计工具及流程介绍](./game/design.md)

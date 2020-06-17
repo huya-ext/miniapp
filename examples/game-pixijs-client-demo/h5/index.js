@@ -52,7 +52,7 @@ let state, explorer, huyazai, blobs, chimes, exit, player, dungeon,
   door, healthBar, message, gameScene, gameOverScene, enemies, id,
   huyazaiTexture1, huyazaiTexture2;
 
-var moveDirect, moveDirectDef, againBt, againBtBg, againBtContainer;
+var moveDirect, moveDirectDef, againBt, againBtBg, againBtContainer, bgAudio;
 
 
 /**
@@ -60,9 +60,24 @@ var moveDirect, moveDirectDef, againBt, againBtBg, againBtContainer;
  */
 function initGameMainScene() {
 
+  //播放背景音乐
+  bgAudio = document.createElement("audio");
+  bgAudio.setAttribute("src", "./audio/bg.mp3");
+  bgAudio.setAttribute("loop", true);
+  bgAudio.play();
+  
+  //pc端浏览器限制,音频无法自动播放,必须用户点击一下鼠标才能开始播放
+  document.addEventListener("mousedown", function (e) {
+    if (bgAudio.paused) { //判读是否播放  
+      bgAudio.play(); //没有就播放 
+    }
+  }, false);
+
+
   //Make the game scene and add it to the stage
   gameScene = new Container();
   app.stage.addChild(gameScene);
+
 
   //调用小程序API获得版本信息
   window['hyExt'].env.getVersionType().then(versionInfo => {
@@ -275,13 +290,18 @@ function reStart() {
 
   huyazai.texture = huyazaiTexture1;
 
-  huyazai.x = gameScene.width - huyazai.width - 48;
+  huyazai.x = gameScene.width - 100;
   huyazai.y = gameScene.height / 2 - huyazai.height / 2;
+  huyazai.catch = false;
 
   gameScene.visible = true;
   gameOverScene.visible = false;
 
+  //播放背景音乐
+  bgAudio.play();
+
   state = playScenceLoop;
+
 }
 
 
@@ -364,39 +384,73 @@ function playScenceLoop(delta) {
     }
   });
 
-  //If the explorer is hit...
+  //如果当前帧被怪碰到
   if (explorerHit) {
 
-    //Make the explorer semi-transparent
-    explorer.alpha = 0.5;
+    //如果前一帧还没被怪碰到
+    if (explorer.hit != 1) {
+      //Make the explorer semi-transparent
+      explorer.alpha = 0.5;
+      explorer.hit = 1;
 
-    //Reduce the width of the health bar's inner rectangle by 1 pixel
-    healthBar.setWidth(healthBar.getWidth() - 1);
+      //Reduce the width of the health bar's inner rectangle by 1 pixel
+      healthBar.setWidth(healthBar.getWidth() - 1);
+
+      //播放音效
+      let y = document.createElement("audio");
+      y.setAttribute("src", "./audio/rivalHp.mp3");
+      y.play();
+
+    } else {
+      //如果前一帧已经被怪碰到就什么都不做
+    }
 
   } else {
-
-    //Make the explorer fully opaque (non-transparent) if it hasn't been hit
+    //如果当前帧没有被怪碰到
     explorer.alpha = 1;
+    explorer.hit = 0;
   }
 
   //Check for a collision between the explorer and the huyazai
   if (hitTestRectangle(explorer, huyazai)) {
 
+    if (huyazai.catch != true) {
+      //播放音效
+      let y = document.createElement("audio");
+      y.setAttribute("src", "./audio/face.mp3");
+      y.play();
+    }
+
     //If the huyazai is touching the explorer, center it over the explorer
     huyazai.x = explorer.x + 25;
     huyazai.y = explorer.y - 25;
     huyazai.texture = huyazaiTexture2;
+    huyazai.catch = true;
   }
 
 
   if (healthBar.getWidth() < 0) {
     state = endScenceLoop;
     message.text = "你输了!";
+
+    //播放音效
+    let y = document.createElement("audio");
+    y.setAttribute("src", "./audio/lose.mp3");
+    y.play();
+
+    bgAudio.pause();
   }
 
   if (hitTestRectangle(huyazai, door)) {
     state = endScenceLoop;
     message.text = "你赢了!";
+
+    //播放音效
+    let y = document.createElement("audio");
+    y.setAttribute("src", "./audio/win.mp3");
+    y.play();
+
+    bgAudio.pause();
   }
 }
 

@@ -1,0 +1,106 @@
+.app {
+ position: absolute;
+ left: 0;
+ right: 0;
+ top: 0;
+ bottom: 0;
+ padding: 0;
+ display: flex;
+ flex: 1;
+}
+
+::-webkit-scrollbar {
+  width: 0px !important;
+}
+
+.header {
+  width: 100%;
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.anchor-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.anchor-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.anchor-name {
+  color: #000;
+  font-size: 20px;
+}
+
+.anchor-id {
+  color: #8a9baf;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.weather-contain {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.contain-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.weather-img {
+  width: 60px;
+  height: 60px;
+}
+
+.clock {
+  color:#ccc;
+  font-size: 20px;
+}
+
+.date {
+  color: #cfcfcf;
+  font-size: 20px;
+}
+
+.contain-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.daily-time {
+  color: #000;
+  font-size: 20px;
+  height: 20%;
+  font-weight: 500;
+}
+
+.temperature {
+  color: #000;
+  font-size: 20px;
+  height: 20%;
+  line-height: 46px;
+  font-weight: 700;
+}
+
+.weather {
+  color: black;
+  font-size: 20px;
+  height: 20%;
+  font-weight: 600;
+}

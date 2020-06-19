@@ -24,6 +24,11 @@
       "enableLint": false,
       "buildConfig": {
         "RN": [
+          {
+            "entry": "index_streamer.js",
+            "extType": "zs_anchor_panel",
+            "platform": "app"
+          }
         ],
         "H5": [
           {

@@ -67,20 +67,20 @@ export default class Demo extends Component {
         <Text style={styles.header}>hyExt.context.on</Text>
         <Form style={{marginTop: 20}}>
           <FormItem label='宿主消息名'>
-            <Select data={[{"label":"【观众端】当前观众订阅状态发生变化","value":"subscribeSubmit"},{"label":"【观众端】当前观众送礼","value":"giftSubmit"},{"label":"当前用户发送弹幕","value":"barrageSubmit"}]}
-              header='宿主消息名'
-              value={this.state.hyExt_context_on_0 || "subscribeSubmit"}
-              onPressConfirm={v => this.setState({ hyExt_context_on_0: v.value })} />
+            <Input placeholder='请输入宿主消息名'
+              value={this.state.hyExt_context_on_0 || ''}
+              inputStyle={{ color: '#000' }}
+              onChange={v => this.setState({ hyExt_context_on_0: v })} />
           </FormItem>
         </Form>
         <SubmitButton onPress={this.submit_hyExt_context_on.bind(this)}>监听宿主消息</SubmitButton>
         <Text style={styles.header}>hyExt.context.off</Text>
         <Form style={{marginTop: 20}}>
           <FormItem label='宿主消息名'>
-            <Select data={[{"label":"【观众端】当前观众订阅状态发生变化","value":"subscribeSubmit"},{"label":"【观众端】当前观众送礼","value":"giftSubmit"},{"label":"当前用户发送弹幕","value":"barrageSubmit"}]}
-              header='宿主消息名'
-              value={this.state.hyExt_context_off_0 || "subscribeSubmit"}
-              onPressConfirm={v => this.setState({ hyExt_context_off_0: v.value })} />
+            <Input placeholder='请输入宿主消息名'
+              value={this.state.hyExt_context_off_0 || ''}
+              inputStyle={{ color: '#000' }}
+              onChange={v => this.setState({ hyExt_context_off_0: v })} />
           </FormItem>
         </Form>
         <SubmitButton onPress={this.submit_hyExt_context_off.bind(this)}>取消监听宿主消息</SubmitButton>

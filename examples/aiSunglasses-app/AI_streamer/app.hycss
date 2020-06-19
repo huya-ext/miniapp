@@ -1,8 +1,25 @@
 .container {
   flex: 1;
   overflow: hidden;
+  background-color: rgba(0, 255, 0, .3);
 }
 
 .data {
   font-size: 120px;
+}
+
+.block {
+  position: absolute;
+}
+
+.text {
+  z-index: 1;
+  color: blue;
+  font-size: 24px;
+}
+
+.panel {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
 }

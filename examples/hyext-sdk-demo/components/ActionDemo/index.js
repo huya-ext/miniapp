@@ -56,8 +56,8 @@ export default class Demo extends Component {
               value={this.state.hyExt_action_showEntrance_0_extTypes || []}
               onChange={v => this.setState({ hyExt_action_showEntrance_0_extTypes: v })}
               iconPosition='left'>
-              <Checkbox.Item label='web互动通道面板' value='web_video_com' />
-              <Checkbox.Item label='APP互动通道面板' value='app_panel' />
+              <Checkbox.Item label='虎牙主站-面板' value='web_video_com' />
+              <Checkbox.Item label='虎牙直播APP-面板' value='app_panel' />
             </Checkbox>
           </FormItem>
           <FormItem label='countDown'>
@@ -81,8 +81,8 @@ export default class Demo extends Component {
               value={this.state.hyExt_action_hideEntrance_0_extTypes || []}
               onChange={v => this.setState({ hyExt_action_hideEntrance_0_extTypes: v })}
               iconPosition='left'>
-              <Checkbox.Item label='web互动通道面板' value='web_video_com' />
-              <Checkbox.Item label='APP互动通道面板' value='app_panel' />
+              <Checkbox.Item label='虎牙主站-面板' value='web_video_com' />
+              <Checkbox.Item label='虎牙直播APP-面板' value='app_panel' />
             </Checkbox>
           </FormItem>
         </Form>

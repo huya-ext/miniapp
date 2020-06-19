@@ -12,7 +12,7 @@
   "builder": {
     "name": "@hyext/builder-beyond",
     "config": {
-      "webSDKVersion": "^1.10.0",
+      "webSDKVersion": "1.10.0",
       "webTitle": "虎牙小程序",
       "useCssLoader": true,
       "designWidth": 750,

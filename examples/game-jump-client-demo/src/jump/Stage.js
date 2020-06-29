@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { animate, destroyMesh, compare, findValue } from './utils';
+import { animate, destroyMesh, compare, findValue, setPx } from './utils';
 import { MeshText2D, SpriteText2D, textAlign } from 'three-text2d';
 
 /**

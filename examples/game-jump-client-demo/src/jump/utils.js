@@ -344,3 +344,5 @@ export const findValue = (uid, list = [], key) => {
 
   return item[key];
 }
+
+export const setPx = value => value * window.innerWidth / 375 / 1.5;

@@ -252,26 +252,26 @@ class Stage {
     this.context.textAlign = 'center';
     this.context.textBaseline = 'middle';
     this.context.fillStyle = '#000';
-    this.context.font = '32px Arial';
+    this.context.font = `${setPx(32)}px Arial`;
     this.context.fillText('跳一跳', this.width / 2, this.height / 3);
     // this.context.save();
 
     this.context.strokeStyle = 'black';
     // this.context.lineJoin = 'round';
-    this.context.lineWidth = 3;
-    this.context.strokeRect(this.width / 2 - 60, (this.height * 3) / 4 - 50, 120, 50);
+    this.context.lineWidth = setPx(3);
+    this.context.strokeRect(this.width / 2 - setPx(60), (this.height * 3) / 4 - setPx(50), setPx(120), setPx(50));
 
     this.context.textAlign = 'center';
     this.context.textBaseline = 'middle';
     this.context.fillStyle = '#000';
-    this.context.font = '20px Arial';
-    this.context.fillText('开始游戏', this.width / 2, (this.height * 3) / 4 - 25);
+    this.context.font = `${setPx(20)}px Arial`;
+    this.context.fillText('开始游戏', this.width / 2, (this.height * 3) / 4 - setPx(25));
 
     this.context.textAlign = 'center';
     this.context.textBaseline = 'middle';
     this.context.fillStyle = '#000';
-    this.context.font = '18px Arial';
-    this.context.fillText('多人游戏 >', this.width / 2, (this.height * 3) / 4 + 40);
+    this.context.font = `${setPx(18)}px Arial`;
+    this.context.fillText('多人游戏 >', this.width / 2, (this.height * 3) / 4 + setPx(40));
 
     this.changeTexture();
 
@@ -280,10 +280,10 @@ class Stage {
       const _event = touches ? event.touches[0] : event;
       const { clientX, clientY } = _event;
       const { width, height } = this;
-      let beginX = width / 2 - 60;
-      let endX = width / 2 + 60;
+      let beginX = width / 2 - setPx(60);
+      let endX = width / 2 + setPx(60);
       let endY = (height * 3) / 4;
-      let beginY = endY - 50;
+      let beginY = endY - setPx(50);
       // 开始游戏
       if (clientX >= beginX && clientX <= endX && clientY >= beginY && clientY <= endY) {
         this.world.setType(1);
@@ -291,10 +291,10 @@ class Stage {
         this.world.reset();
       }
 
-      beginX = width / 2 - 60;
-      endX = width / 2 + 60;
-      endY = (height * 3) / 4 + 49;
-      beginY = endY - 18;
+      beginX = width / 2 - setPx(60);
+      endX = width / 2 + setPx(60);
+      endY = (height * 3) / 4 + setPx(49);
+      beginY = endY - setPx(18);
       // 多人运动
       if (clientX >= beginX && clientX <= endX && clientY >= beginY && clientY <= endY) {
         this.world.setType(2);
@@ -320,30 +320,30 @@ class Stage {
     this.context.textAlign = 'center';
     this.context.textBaseline = 'middle';
     this.context.fillStyle = '#000';
-    this.context.font = '22px Arial';
+    this.context.font = `${setPx(22)}px Arial`;
     this.context.fillText(text, this.width / 2, this.height / 2);
 
     if (isShowBtn) {
       this.context.strokeStyle = 'black';
       // this.context.lineJoin = 'round';
-      this.context.lineWidth = 3;
-      this.context.strokeRect(this.width / 2 - 60, (this.height * 3) / 4 - 50, 120, 50);
+      this.context.lineWidth = setPx(3);
+      this.context.strokeRect(this.width / 2 - setPx(60), (this.height * 3) / 4 - setPx(50), setPx(120), setPx(50));
 
       this.context.textAlign = 'center';
       this.context.textBaseline = 'middle';
       this.context.fillStyle = '#000';
-      this.context.font = '20px Arial';
-      this.context.fillText('返回首页', this.width / 2, (this.height * 3) / 4 - 25);
+      this.context.font = `${setPx(20)}px Arial`;
+      this.context.fillText('返回首页', this.width / 2, (this.height * 3) / 4 - setPx(25));
 
       this.clickFunc = (event) => {
         const { touches } = event;
         const _event = touches ? event.touches[0] : event;
         const { clientX, clientY } = _event;
         const { width, height } = this;
-        let beginX = width / 2 - 60;
-        let endX = width / 2 + 60;
+        let beginX = width / 2 - setPx(60);
+        let endX = width / 2 + setPx(60);
         let endY = (height * 3) / 4;
-        let beginY = endY - 50;
+        let beginY = endY - setPx(50);
         // 开始游戏
         if (clientX >= beginX && clientX <= endX && clientY >= beginY && clientY <= endY) {
           this.canvas.removeEventListener(this.clickName, this.clickFunc);
@@ -376,38 +376,38 @@ class Stage {
     this.context.textAlign = 'center';
     this.context.textBaseline = 'middle';
     this.context.fillStyle = '#000';
-    this.context.font = '30px Arial';
+    this.context.font = `${setPx(30)}px Arial`;
     this.context.fillText('当前房间人数：', this.width / 2, this.height / 3);
     // this.context.save();
 
     this.context.textAlign = 'center';
     this.context.textBaseline = 'middle';
     this.context.fillStyle = 'red';
-    this.context.font = '40px Arial';
-    this.context.fillText(length, this.width / 2, this.height / 3 + 70);
+    this.context.font = `${setPx(40)}px Arial`;
+    this.context.fillText(length, this.width / 2, this.height / 3 + setPx(70));
 
     if (length > 1) {
       if (__isAnchor) {
         this.context.strokeStyle = 'black';
         // this.context.lineJoin = 'round';
-        this.context.lineWidth = 3;
-        this.context.strokeRect(this.width / 2 - 60, (this.height * 3) / 4 - 50, 120, 50);
+        this.context.lineWidth = setPx(3);
+        this.context.strokeRect(this.width / 2 - setPx(60), (this.height * 3) / 4 - setPx(50), setPx(120), setPx(50));
 
         this.context.textAlign = 'center';
         this.context.textBaseline = 'middle';
         this.context.fillStyle = '#000';
-        this.context.font = '20px Arial';
-        this.context.fillText('开始游戏', this.width / 2, (this.height * 3) / 4 - 25);
+        this.context.font = `${setPx(20)}px Arial`;
+        this.context.fillText('开始游戏', this.width / 2, (this.height * 3) / 4 - setPx(25));
         
         this.clickFunc = (event) => {
           const { touches } = event;
           const _event = touches ? event.touches[0] : event;
           const { clientX, clientY } = _event;
           const { width, height } = this;
-          let beginX = width / 2 - 60;
-          let endX = width / 2 + 60;
+          let beginX = width / 2 - setPx(60);
+          let endX = width / 2 + setPx(60);
           let endY = (height * 3) / 4;
-          let beginY = endY - 50;
+          let beginY = endY - setPx(50);
           // 开始游戏
           if (clientX >= beginX && clientX <= endX && clientY >= beginY && clientY <= endY) {
             // this.world.setType(2);
@@ -424,15 +424,15 @@ class Stage {
         this.context.textAlign = 'center';
         this.context.textBaseline = 'middle';
         this.context.fillStyle = '#000';
-        this.context.font = '18px Arial';
-        this.context.fillText('等待主播开始游戏，请耐心等待...', this.width / 2, (this.height * 3) / 4 - 25);
+        this.context.font = `${setPx(18)}px Arial`;
+        this.context.fillText('等待主播开始游戏，请耐心等待...', this.width / 2, (this.height * 3) / 4 - setPx(25));
       }
     } else {
       this.context.textAlign = 'center';
       this.context.textBaseline = 'middle';
       this.context.fillStyle = '#000';
-      this.context.font = '18px Arial';
-      this.context.fillText('要两人以上才能开始游戏，请耐心等待...', this.width / 2, (this.height * 3) / 4 - 25);
+      this.context.font = `${setPx(18)}px Arial`;
+      this.context.fillText('要两人以上才能开始游戏，请耐心等待...', this.width / 2, (this.height * 3) / 4 - setPx(25));
     }
 
     this.changeTexture();
@@ -453,15 +453,15 @@ class Stage {
     this.context.textAlign = 'left';
     this.context.textBaseline = 'middle';
     this.context.fillStyle = '#000';
-    this.context.font = '30px Arial';
-    this.context.fillText(this.world.count, 60, 60);
+    this.context.font = `${setPx(30)}px Arial`;
+    this.context.fillText(this.world.count, setPx(60), setPx(60));
 
     if (this.world.type !== 1) {
       this.context.textAlign = 'right';
       this.context.textBaseline = 'middle';
       this.context.fillStyle = '#000';
-      this.context.font = '20px Arial';
-      this.context.fillText(`倒计时：${this.world.wss.gameDuration - this.world.wss.timeLeft}`, this.width - 30, 55);
+      this.context.font = `${setPx(20)}px Arial`;
+      this.context.fillText(`倒计时：${this.world.wss.gameDuration - this.world.wss.timeLeft}`, this.width - setPx(30), setPx(55));
 
       const list = Object.keys(this.world.wss.playerMap).reduce(
         (_list, uid) => [..._list, ...[{ uid, value: this.world.wss.playerMap[uid] }]],
@@ -471,8 +471,8 @@ class Stage {
         this.context.textAlign = 'right';
         this.context.textBaseline = 'middle';
         this.context.fillStyle = 'rgba(0, 0, 0, 0.7)';
-        this.context.font = '12px Arial';
-        this.context.fillText(`${findValue(item.uid, this.world.wss.playerInfo, 'nick')}：${item.value}`, this.width - 30, 80 + (index + 1) * 16);
+        this.context.font = `${setPx(12)}px Arial`;
+        this.context.fillText(`${findValue(item.uid, this.world.wss.playerInfo, 'nick')}：${item.value}`, this.width - setPx(30), setPx(80) + (index + 1) * setPx(16));
       });
     }
 
@@ -492,7 +492,7 @@ class Stage {
     this.context.textAlign = 'center';
     this.context.textBaseline = 'middle';
     this.context.fillStyle = '#fff';
-    this.context.font = '30px Arial';
+    this.context.font = `${setPx(30)}px Arial`;
     this.context.fillText('得分： ' + this.world.count, this.width / 2, this.height / 3);
     // this.context.save();
 
@@ -500,20 +500,20 @@ class Stage {
       this.context.textAlign = 'center';
       this.context.textBaseline = 'middle';
       this.context.fillStyle = '#fff';
-      this.context.font = '30px Arial';
-      this.context.fillText('排名： ' + rank, this.width / 2, this.height / 3 + 50);
+      this.context.font = `${setPx(30)}px Arial`;
+      this.context.fillText('排名： ' + rank, this.width / 2, this.height / 3 + setPx(50));
     }
 
     this.context.strokeStyle = 'white';
     // this.context.lineJoin = 'round';
-    this.context.lineWidth = 3;
-    this.context.strokeRect(this.width / 2 - 60, (this.height * 3) / 4 - 50, 120, 50);
+    this.context.lineWidth = setPx(3);
+    this.context.strokeRect(this.width / 2 - setPx(60), (this.height * 3) / 4 - setPx(50), setPx(120), setPx(50));
 
     this.context.textAlign = 'center';
     this.context.textBaseline = 'middle';
     this.context.fillStyle = '#fff';
-    this.context.font = '22px Arial';
-    this.context.fillText('返回首页', this.width / 2, (this.height * 3) / 4 - 25);
+    this.context.font = `${setPx(22)}px Arial`;
+    this.context.fillText('返回首页', this.width / 2, (this.height * 3) / 4 - setPx(25));
 
     this.changeTexture(1.5);
 
@@ -522,11 +522,11 @@ class Stage {
       const _event = touches ? event.touches[0] : event;
       const { clientX, clientY } = _event;
       const { width, height } = this;
-      const beginX = width / 2 - 60;
-      const endX = width / 2 + 60;
+      const beginX = width / 2 - setPx(60);
+      const endX = width / 2 + setPx(60);
       const _height = height / 1.5;
       const endY = (_height * 3) / 4 + (height - _height) / 2;
-      const beginY = endY - 50;
+      const beginY = endY - setPx(50);
       if (clientX >= beginX && clientX <= endX && clientY >= beginY && clientY <= endY) {
         this.canvas.removeEventListener(this.clickName, this.clickFunc);
         this.changeStartHud();

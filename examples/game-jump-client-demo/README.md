@@ -49,7 +49,7 @@ pc端
 1. `npx  hyext start` 启动本地开发服务.
 2. 打开开发者中心([ext.huya.com](https://ext.huya.com/)),按提示手动上传本地`hyext_dist/build-result`目录下的开发配置文件(参考[小程序开发](https://dev.huya.com/docs/#/hyext-cli?id=%e5%bc%80%e5%8f%91)),即可在虎牙app或者pc主播端启动游戏.
 
-### 本地联调websockets
+### 本地联调Websocket
 1. 建议前端本地服务与服务端本地服务在同一局域网下启动，服务端生成调试jwt给前端使用，其中ws连接串格式为ws://{本地ws服务器ip}:{本地ws服务器端口}/?jwt=xxxxxxx，即连接串后面附加jwt参数.
 2. 多人游戏模式区分主播测和用户测，游戏房只能由主播创建并开始，修改入口文件main.js其中__isAnchor全局变量主播为true，用户为false；__userName也可自定义，此变量作为本地联调使用.
 3. 修改wss->index.js其中(ws://{本地ws服务器ip}:{本地ws服务器端口}/?jwt=xxxxxxx)，jwt写死为第一点服务端生成的jwt即可，注意区分主播测和用户侧

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="full-screen" content="true" />
+    <meta name="x5-fullscreen" content="true" />
+    <meta name="360-fullscreen" content="true" />
+
+    <script src="./lib/pixi.min.js"></script>
+    <script src="./joystick.js"></script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <title>PIXI摇杆 亲测有效</title>
+</head>
+
+<body>
+
+    <div id="game"></div>
+    <script>
+        var GameOptions = {
+            width: window.innerWidth, //游戏屏幕的高度。
+            height: window.innerHeight, //游戏屏幕的宽度。
+        };
+    </script>
+    <script>
+        var gamePIXI = new PIXI.Container(0x66FF99);
+        var renderer = PIXI.autoDetectRenderer(GameOptions.width, GameOptions.height, { backgroundColor: 0x1099bb });
+        document.body.append(renderer.view);
+
+
+        var joystick = new Joystick(gamePIXI,
+            {
+                outer: "./images/Joystick.png",//摇杆的背景
+                inner: "./images/SmallHandleFilled.png", //摇杆中心
+                rockerX: 100, //摇杆的x坐标 
+                rockerY: window.innerHeight - 100, //摇杆的y坐标
+                outerScale: {
+                    x: 0.3,
+                    y: 0.3
+                },
+                innerScale: {
+                    x: 0.5,
+                    y: 0.5
+                },
+                onJoyStickMove: function (stickObj) {
+                    console.log('stickObj:' + JSON.stringify(stickObj));
+                    if(stickObj.direct == joystick.getMoveDirectDef().LEFT){
+                        console.log('move left');
+                    }
+                }
+            });
+
+        function gameLoop() {
+            requestAnimationFrame(gameLoop);
+            renderer.render(gamePIXI);
+        }
+        requestAnimationFrame(gameLoop);
+
+    </script>
+
+
+</body>
+
+</html>

@@ -8,9 +8,8 @@ const { Text, View } = UI;
 const SelectNum = ({num, changeNum}) => {
   return (
     <View className="container">
-        <Text className="text">礼物数量</Text>
         <View className="selectNum">
-            <Text className="text">{num}</Text>
+            <Text className="text">{num}个</Text>
             <TouchableWithoutFeedback  onPress={()=>changeNum(-1)}>
                 <View className="left"><Text className="leftSymbol">-</Text></View>
             </TouchableWithoutFeedback>

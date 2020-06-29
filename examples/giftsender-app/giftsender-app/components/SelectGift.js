@@ -9,7 +9,7 @@ const SelectGift = ({data, changeGift}) => {
   return (
     <View className="container">
       <Text className="selectText">选择礼物</Text>
-      <Image src={data.giftGif} mode="cover" className="image"></Image> 
+      <Image src={data.giftGif} onError={()=>{changeGift()}} mode="cover" className="image"></Image> 
       <TouchableWithoutFeedback  onPress={()=>changeGift(-1)}>
         <View className="left"></View>
       </TouchableWithoutFeedback>

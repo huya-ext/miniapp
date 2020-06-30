@@ -60,5 +60,5 @@ npm install -g  @hyext/cli
 
 5.虎牙小程序API调用
 
-6.背景音播放及音效播放
+6.音效播放
 

@@ -1,13 +1,20 @@
 import protobuf from 'protobufjs';
-import { compare, getUserInfo } from '../jump/utils';
+import { compare, getUserInfo, getJwt } from '../jump/utils';
 
 class WSS {
-  constructor({ stage, world, jwt }) {
+  constructor({ stage, world }) {
     const jsonDescriptor = require('../pb/jump.json');
     this.root = protobuf.Root.fromJSON(jsonDescriptor);
 
+    this.stage = stage;
+    this.world = world;
+
+    this.init();
+  }
+
+  async init() {
     this.uid = null;
-    this.jwt = jwt;
+    this.jwt = await getJwt();
     this.players = [];
     this.playerMap = {};
     this.playerInfo = [];
@@ -16,10 +23,11 @@ class WSS {
     this.platforms = [];
     this.onReady = false;
     this.isEnd = false;
-    this.timer = null;
-
-    this.stage = stage;
-    this.world = world;
+    this.cTimer = null;
+    this.hTimer = null;
+    this.tTimer = null;
+    this.timer = 3 * 1000;
+    this.timeoutNum = 0;
 
     const wssInstance = (this.wssInstance = new WebSocket(
       `ws://127.0.0.1:8081?jwt=${this.jwt}`
@@ -29,6 +37,14 @@ class WSS {
     wssInstance.onmessage = this.onmessage.bind(this);
     wssInstance.onclose = this.onclose.bind(this);
     wssInstance.onerror = this.onerror.bind(this);
+  }
+
+  close() {
+    this.isEnd = true;
+    this.cTimer && clearInterval(this.cTimer);
+    this.hTimer && clearInterval(this.hTimer);
+    this.tTimer && clearTimeout(this.tTimer);
+    this.wssInstance && this.wssInstance.close();
   }
 
   onopen(event) {
@@ -102,6 +118,18 @@ class WSS {
   }
 
   sendHeartbeet() {
+    // 心跳超时大于等于3次，主动断开连接并重连
+    if (this.timeoutNum >= 3) {
+      this.close();
+      this.init();
+      return;
+    }
+
+    !this.tTimer && (this.tTimer = setTimeout(() => {
+      this.tTimer = null;
+      this.timeoutNum++;
+    }, this.timer - 1000));
+
     const buffer = this.create('Packet', {
       uri: 2001,
       body: this.create('Heartbeat', { timestamp: +new Date() }),
@@ -149,9 +177,11 @@ class WSS {
   }
 
   handleHeartbeet() {
-    setTimeout(() => {
-      this.sendHeartbeet();
-    }, 3 * 1000);
+    if (this.tTimer) {
+      clearTimeout(this.tTimer);
+      this.tTimer = null;
+      this.timeoutNum = 0;
+    }
   }
 
   handlePlayerJoin(body) {
@@ -182,8 +212,8 @@ class WSS {
       this.platforms = platforms;
       this.world.reset();
 
-      !this.timer &&
-        (this.timer = setInterval(() => {
+      !this.cTimer &&
+        (this.cTimer = setInterval(() => {
           this.timeLeft++;
           this.stage.changeGoHud();
         }, 1000));
@@ -202,8 +232,8 @@ class WSS {
     this.stage.hudScene.remove(this.stage.scorePlane);
     this.world.reset();
 
-    !this.timer &&
-      (this.timer = setInterval(() => {
+    !this.cTimer &&
+      (this.cTimer = setInterval(() => {
         this.timeLeft++;
         this.stage.changeGoHud();
       }, 1000));
@@ -213,7 +243,7 @@ class WSS {
     const data = this.lookup('GameOverNotice').decode(body);
     // console.log('3002', data);
     this.isEnd = true;
-    this.timer && clearInterval(this.timer);
+    this.cTimer && clearInterval(this.cTimer);
     this.timeLeft = this.gameDuration;
     this.stage.changeGoHud();
 
@@ -249,8 +279,10 @@ class WSS {
     const { uid } = data;
     this.uid = uid;
     this.sendPlayerInfo();
-    this.sendHeartbeet();
     this.onReady = true;
+    !this.hTimer && (this.hTimer = setInterval(() => {
+      this.sendHeartbeet();
+    }, this.timer));
   }
 }
 

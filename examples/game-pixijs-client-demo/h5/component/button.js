@@ -8,23 +8,23 @@ function Button(scene, opts) {
     let that = this;
     this.settings = opts;
 
-    againBtContainer = new Container();
+    this.againBtContainer = new Container();
 
     //Create the front red rectangle
     againBtBg = new Graphics();
     drawBtBg(false);
-    againBtContainer.addChild(againBtBg);
+    this.againBtContainer.addChild(againBtBg);
 
     againBt = new Text(this.settings.text, {
         fontFamily: "Futura",
-        fontSize: 60,
+        fontSize: PIXI.pixelConv.convert(60),
         fill: "white",
         align: 'center',
     });
     againBt.x = againBtBg.width / 2;
     againBt.y = againBtBg.height / 2;
     againBt.anchor.set(0.5);
-    againBtContainer.addChild(againBt);
+    this.againBtContainer.addChild(againBt);
 
     againBt.interactive = true;
     againBt.buttonMode = true;
@@ -32,12 +32,10 @@ function Button(scene, opts) {
         .on('pointerup', onPointerup)
         .on('pointerupoutside', onPointerup)
 
-    againBtContainer.x = showWidth / 2 - againBtContainer.width / 2;
-    againBtContainer.y = showHeight / 2 + message.height;
+    this.againBtContainer.x = showWidth / 2 -  this.againBtContainer.width / 2;
+    this.againBtContainer.y = showHeight / 2 + PIXI.pixelConv.convert(100);
 
-    againBtContainer.outer = againBt;
-
-    scene.addChild(againBtContainer);
+    scene.addChild(this.againBtContainer);
 
 
     function onPointerdown(event) {
@@ -63,10 +61,17 @@ function Button(scene, opts) {
             color = 0xf66f66;
         }
         againBtBg.beginFill(color);
-        againBtBg.drawRoundedRect(0, 0, 300, 100, 10);
+        againBtBg.drawRoundedRect(0, 0, PIXI.pixelConv.convert(300), PIXI.pixelConv.convert(100), PIXI.pixelConv.convert(10));
         againBtBg.endFill();
     }
 }
+
+
+Button.prototype.resize = function () {
+    this.againBtContainer.x = showWidth / 2 - this.againBtContainer.width / 2;
+    this.againBtContainer.y = showHeight / 2 +  PIXI.pixelConv.convert(100);
+}
+
 
 
 

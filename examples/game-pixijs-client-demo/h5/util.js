@@ -4,9 +4,11 @@
  * 打印日志
  * @param {*} text 
  */
-function log(text){
+function log(text) {
     console.log(text);
-    hyExt.logger.info(text); 
+    if (window['hyExt'] != undefined) {
+        hyExt.logger.info(text);
+    }
 }
 
 

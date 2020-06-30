@@ -11,6 +11,44 @@
 
 ![](./ss2.png)
 
+### 文件结构说明
+```
+.
+├── h5              //H5游戏发布文件目录
+│   ├── audio       //游戏内用的音频
+│   ├── component   //游戏组件
+│   ├── images      //游戏内用的图片
+│   ├── index.html  //web端游戏启动入口
+│   ├── index.js    //游戏主逻辑文件  
+│   ├── lib         //游戏引擎依赖库
+│   └── util.js     //游戏工具类js
+├── package.json    //虎牙小程序构建依赖配置
+└── project.config.json //虎牙小程序配置文件
+
+```
+### 运行方式
+
+安装 nodejs 环境，版本:v10.x.x
+
+安装 Python 3 环境
+
+执行以下命令安装虎牙小程序CLI
+```
+npm install -g  @hyext/cli
+```
+`npm install` 安装Node.js依赖模块.
+
+在[ext.huya.com](https://ext.huya.com/)创建小程序(参考[创建小程序](https://dev.huya.com/docs/#/ems?id=_1-%e5%88%9b%e5%bb%ba%e5%b0%8f%e7%a8%8b%e5%ba%8f))
+
+#### 开发版本运行
+`npx  hyext start` 启动本地开发服务.
+
+打开开发者中心([ext.huya.com](https://ext.huya.com/)),按提示手动上传本地`hyext_dist/build-result`目录下的开发配置文件(参考[小程序开发](https://dev.huya.com/docs/#/hyext-cli?id=%e5%bc%80%e5%8f%91)),即可在虎牙app或者pc主播端启动游戏.
+
+#### 测试版本运行
+
+执行 `npx hyext release` 打包小游戏代码，然后上传到虎牙小程序平台，参考[程序配置](https://dev.huya.com/docs/#/ems?id=_232-%e7%a8%8b%e5%ba%8f%e9%85%8d%e7%bd%ae)进行测试
+
 ### 功能点
 1.Pixi游戏能力
 

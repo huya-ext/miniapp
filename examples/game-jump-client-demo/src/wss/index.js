@@ -1,5 +1,5 @@
-import protobuf from 'protobufjs';
-import { compare, getUserInfo, getJwt } from '../jump/utils';
+import protobuf from '@hygame/protobufjs';
+import { compare, getUserInfo, getJwt, getIsHyExt } from '../jump/utils';
 
 class WSS {
   constructor({ stage, world }) {
@@ -29,9 +29,8 @@ class WSS {
     this.timer = 3 * 1000;
     this.timeoutNum = 0;
 
-    const wssInstance = (this.wssInstance = new WebSocket(
-      `ws://127.0.0.1:8081?jwt=${this.jwt}`
-    ));
+    const url = `ws://127.0.0.1:8081?jwt=${this.jwt}`;
+    const wssInstance = (this.wssInstance = getIsHyExt() ? new hyExt.WebSocket(url) : new WebSocket(url));
     wssInstance.binaryType = 'arraybuffer';
     wssInstance.onopen = this.onopen.bind(this);
     wssInstance.onmessage = this.onmessage.bind(this);

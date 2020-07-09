@@ -36,6 +36,14 @@ export default class Demo extends Component {
       this.log('获取当前小程序初始化参数失败，错误信息：' + err.message)
     })
   }
+  submit_hyExt_env_getHostInfo () {
+    this.log('获取宿主信息')
+    global.hyExt.env.getHostInfo().then(resp => {
+      this.log('获取宿主信息成功，返回：' + JSON.stringify(resp))
+    }).catch(err => {
+      this.log('获取宿主信息失败，错误信息：' + err.message)
+    })
+  }
   render () {
     return (
       <ScrollView
@@ -45,6 +53,8 @@ export default class Demo extends Component {
         <SubmitButton onPress={this.submit_hyExt_env_getVersionType.bind(this)}>获取当前小程序版本信息</SubmitButton>
         <Text style={styles.header}>hyExt.env.getInitialParam</Text>
         <SubmitButton onPress={this.submit_hyExt_env_getInitialParam.bind(this)}>获取当前小程序初始化参数</SubmitButton>
+        <Text style={styles.header}>hyExt.env.getHostInfo</Text>
+        <SubmitButton onPress={this.submit_hyExt_env_getHostInfo.bind(this)}>获取宿主信息</SubmitButton>
         <LogPanel ref={logPanel => {
           if (logPanel) {
             this.log = logPanel.log.bind(logPanel)

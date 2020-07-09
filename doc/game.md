@@ -25,7 +25,7 @@ window.innerHeight
 ```
 
 ### 引擎支持
-开发者可以采用开发HTML5游戏方式(基于WebGL)来开发小游戏，支持使用`Cocos Creator`、`Egret`、`Laya`等游戏引擎开发，导出`HTML5`格式(web mobile)；也支持使用`Three.js`、`PixiJS`等HTML5渲染引擎直接开发。
+开发者可以采用开发HTML5游戏方式(基于WebGL)来开发小游戏，支持使用`Cocos Creator`、`Egret`、`Laya`等游戏引擎开发，导出`HTML5`格式(web mobile)；也支持使用`Three.js`、`PixiJS`等HTML5渲染引擎直接开发，详情可查阅[虎牙小游戏引擎支持清单及对接流程](./game/engine.md)
 
 > **注意，不支持使用 `SVG`、`DOM`、`CSS` 方式开发游戏，所有游戏画面及元素必须在 `Canvas` 中绘制**
 
@@ -57,6 +57,9 @@ x.blur();
 
 ### 小程序API调用
 所有小程序前端的API和能力，在虎牙小游戏内都可以调用。
+
+> 小游戏的运行环境中已经自动注入了虎牙小程序的SDK，所以小游戏代码中**不再需要导入小游戏SDK**，可以直接在js代码中调用`hyext`中的各端API。
+
 > 为了解决H5游戏单独编译时可能出现`hyext`未定义的问题，在小游戏中可使用`window['hyExt']`的方式调用小程序API
 
 ### WebSocket支持
@@ -76,12 +79,13 @@ ws.onclose = function (event) {}
 ws.send("test data");
 
 ```
+> `hyExt.WebSocket` 支持文本消息及二进制消息，可以传输Json、Protocol Buffer、私有协议等。
 
 > 调用`let ws = new window['hyExt'].WebSocket(wsUrl)`时，虎牙代理会自动在原始的wsUrl的末尾追加参数`jwt=xxx`，即用户的鉴权token，方便游戏服务器来鉴权及获得用户ID，jwt的用法参考[统一鉴权说明](https://dev.huya.com/docs#/%E7%BB%9F%E4%B8%80%E9%89%B4%E6%9D%83%E8%AF%B4%E6%98%8E)
 
-> hyExt.WebSocket 支持发送和接收的最大单个message为64k
+> `hyExt.WebSocket` 支持发送和接收的最大单个message为64k
 
-> 游戏前端需要自行发送心跳包来上报活跃状态
+> 使用 `hyExt.WebSocket` 需要发送邮件到 `hy-ext@huya.com` 申请开通权限，附上小程序ID及名称
 
 ### HTTP支持
 基于安全性原因，小游戏对`XMLHttpRequest`的使用进行了限制，目前只允许通过`XMLHttpRequest`访问以下域名：
@@ -165,11 +169,10 @@ npx hyext init  -b h5game
 与小程序一致，参考[版本发布](https://dev.huya.com/docs/#/ems?id=_26-%e7%89%88%e6%9c%ac%e5%8f%91%e5%b8%83)
 
 ---
-## 小游戏DEMO
+## 附录
+  * [常见问题](./game/faq.md)   
+  * [虎牙小游戏引擎支持清单及对接流程](./game/engine.md)
+  * [小游戏美术设计工具及流程介绍](./game/design.md)
+  * [跳一跳游戏-前端DEMO](https://github.com/huya-ext/miniapp/tree/master/examples/game-jump-client-demo)
+  * [跳一跳游戏-后端DEMO](https://github.com/huya-ext/miniapp/tree/master/examples/game-jump-server-demo)
 
-链接: [跳一跳游戏-前端DEMO](../examples/game-jump-client-demo)
-
-链接: [跳一跳游戏-后端DEMO](../examples/game-jump-server-demo)
-
----
-链接：[小游戏美术设计工具及流程介绍](./game/design.md)

@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hygame/protobufjs": "^1.0.0",
     "@tweenjs/tween.js": "^18.5.0",
     "core-js": "^3.6.4",
     "stats.js": "^0.17.0",
@@ -25,7 +26,6 @@
   },
   "devDependencies": {
     "@hyext/builder-h5game": "^1.1.8",
-    "@hyext/cli": "^1.1.0",
     "@vue/cli-plugin-babel": "^4.3.0",
     "@vue/cli-plugin-eslint": "^4.3.0",
     "@vue/cli-service": "^4.3.0",

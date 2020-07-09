@@ -1,0 +1,38 @@
+{
+  "name": "pixijs-demo2",
+  "outputPath": "hyext_dist",
+  "releasePath": "hyext_release",
+  "ignore": [
+    "*.md",
+    "LICENSE",
+    ".git/**",
+    ".gitignore",
+    "package-lock.json"
+  ],
+  "builder": {
+    "name": "@hyext/builder-h5game",
+    "config": {
+      "webTitle": "pixijs-demo2",
+      "h5Dir": "./h5",
+      "convertEs6": true,
+      "buildConfig": [
+        {
+          "extType": "pc_anchor_panel",
+          "platform": "pc"
+        },
+        {
+          "extType": "pc_panel",
+          "platform": "pc"
+        },
+        {
+          "extType": "web_video_com",
+          "platform": "web"
+        },
+        {
+          "extType": "app_panel",
+          "platform": "app"
+        }
+      ]
+    }
+  }
+}

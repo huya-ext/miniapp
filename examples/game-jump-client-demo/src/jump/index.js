@@ -1,8 +1,10 @@
-import { computeCameraInitalPosition, resetPropCounter } from './utils';
+import { computeCameraInitalPosition, resetPropCounter, getJwt, findValue } from './utils';
 import Stage from './Stage';
 import PropCreator from './PropCreator';
 import Prop from './Prop';
 import LittleMan from './LittleMan';
+import WSS from '../wss';
+import MapCreator from './MapCreator';
 
 /**
  * 游戏总入口
@@ -32,6 +34,10 @@ class JumpGameWorld {
     this.count = 0;
     this.currentPropIndex = 0;
 
+    this.wss = null;
+    // 1 单机，2 联网
+    this.type = 1;
+
     this.propStrs = [];
 
     this.init();
@@ -41,21 +47,49 @@ class JumpGameWorld {
     this.initStage();
     this.initPropCreator();
     this.computeSafeClearLength();
-    this.create();
+    this.stage.changeStartHud();
   }
 
   async create() {
     // 得分清0
     this.handleCount(true);
-    // 第一个道具
-    this.createProp(0);
-    // 第二个道具
-    this.createProp(0);
+    if (this.type === 1) {
+      // 第一个道具
+      this.createProp(0);
+      // 第二个道具
+      this.createProp(0);
+    } else {
+      this.configs = this.wss.platforms.map((item, index) => ({
+        ...item,
+        ...{ propNumber: index + 1 },
+        ...{ distance: ~~((this.width * item.distance) / 750), size: ~~((this.width * item.size) / 750) },
+        ...{ direction: ~~item.direction ? 'z' : 'x', shape: ~~item.shape },
+      }));
+
+      const { uid, playerInfo } = this.wss;
+      const score = findValue(uid, playerInfo, 'score');
+
+      if (score) {
+        this.currentPropIndex = score;
+        this.count = score;
+        this.stage.changeGoHud();
+      }
+
+      for (let i = 0; i <= ~~this.count + 1; i++) {
+        this.createProp(i <= 1 ? 0 : undefined, undefined, undefined, {
+          ...this.configs[i],
+          ...{ size: this.configs[i].size, distance: this.configs[i].distance },
+        });
+      }
+    }
 
     // 首次调整相机
     this.moveCamera(0);
+
+    const currentProp = this.props[~~this.count];
+    const { x, z } = currentProp.getPosition();
     // 创建人物
-    this.initLittleMan();
+    this.initLittleMan(x, z, true, currentProp, currentProp.getNext());
   }
 
   reset() {
@@ -88,7 +122,7 @@ class JumpGameWorld {
   initStage() {
     const { canvas, axesHelper, width, height } = this;
     const cameraNear = 0.1;
-    const cameraFar = 2000;
+    const cameraFar = 3000;
     // 计算相机应该放在哪里
     const cameraInitalPosition = (this.cameraInitalPosition = computeCameraInitalPosition(
       35,
@@ -115,6 +149,14 @@ class JumpGameWorld {
     });
   }
 
+  async initWss() {
+    const { stage } = this;
+    this.wss = new WSS({
+      stage,
+      world: this,
+    });
+  }
+
   // 初始化道具生成器
   initPropCreator() {
     const { needDefaultCreator, propSizeRange, propHeight } = this;
@@ -133,16 +175,21 @@ class JumpGameWorld {
   }
 
   // 初始化小人
-  initLittleMan() {
+  initLittleMan(x, z, restart, currentProp, nextProp) {
     const { stage, propHeight, G, props } = this;
     const littleMan = new LittleMan({
       world: this,
       color: 0x386899,
       G,
+      restart,
+      currentProp,
+      nextProp,
     });
-    littleMan.enterStage(stage, { x: 0, y: propHeight + 80, z: 0 }, props[0]);
+
+    littleMan.enterStage(stage, { x: ~~x, y: propHeight + 80, z: ~~z }, currentProp || props[0]);
     littleMan.jump();
 
+    this.littleMans = [];
     this.littleMans.push(littleMan);
   }
 
@@ -231,7 +278,9 @@ class JumpGameWorld {
   }
 
   handleCount(isInit) {
-    this.stage.handleCount(isInit);
+    isInit ? (this.count = '0') : this.count++;
+    this.stage.changeGoHud();
+    // this.stage.handleCount(isInit);
   }
 
   handlePropIndex() {
@@ -330,6 +379,7 @@ class JumpGameWorld {
       props.slice(0, point).forEach((prop) => prop.destroy());
       this.props = props.slice(point);
       this.currentPropIndex -= point;
+      this.configs && (this.configs = this.configs.slice(point));
     }
   }
 
@@ -339,6 +389,10 @@ class JumpGameWorld {
     const minS = propSizeRange[0];
     const hypotenuse = Math.sqrt(minS * minS + minS * minS);
     this.safeClearLength = Math.ceil(width / minS) + Math.ceil(height / hypotenuse / 2) + 1;
+  }
+
+  setType(value) {
+    this.type = value;
   }
 }
 

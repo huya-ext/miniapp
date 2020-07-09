@@ -32,7 +32,7 @@
 
 ---
 
-6. 游戏素材资源网站：
+6. 游戏素材网站(仅供参考)：
 
     [https://craftpix.net/](https://craftpix.net/)
 
@@ -57,4 +57,4 @@
 
 ---
 
-> 更多小游戏开发资料,请查阅: [小游戏开发文档](https://github.com/huya-ext/miniapp/blob/master/doc/game.md)
+> 更多小游戏开发资料,请查阅: [小游戏开发文档](/game/index.md)

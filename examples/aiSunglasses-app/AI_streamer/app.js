@@ -32,6 +32,9 @@ class App extends Component {
       }
     }
 
+
+    
+
     hyExt.env.getInitialParam().then(param => {
       if (param.wb) {
         // 初始化参数包含wb参数，说明处于独立白板模式

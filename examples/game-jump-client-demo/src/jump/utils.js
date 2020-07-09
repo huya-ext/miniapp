@@ -252,6 +252,7 @@ export const logFps = () => {
 };
 
 export const getIsHyExt = () => !!window.hyExt;
+export const getIsAnchor = () => !!window.hyExt && !!window.hyExt.stream;
 
 export const getVersion = () =>
   new Promise((resolve, reject) => {
@@ -288,3 +289,60 @@ export const getPlatform = () =>
       resolve(false);
     }
   });
+
+export const getJwt = () =>
+  new Promise((resolve, reject) => {
+    if (getIsHyExt()) {
+      hyExt.vip
+        .getJWT()
+        .then((resp) => {
+          hyExt.logger.info('获取当前用户Token成功，返回：' + JSON.stringify(resp));
+          resolve(resp.jwt);
+        })
+        .catch((err) => {
+          hyExt.logger.info('获取当前用户Token失败，错误信息：' + err.message);
+          reject(err.message);
+        });
+    } else {
+      resolve(false);
+    }
+  });
+
+export const getUserInfo = () =>
+  new Promise((resolve, reject) => {
+    if (getIsHyExt()) {
+      hyExt.context
+        .getUserInfo()
+        .then((resp) => {
+          hyExt.logger.info('获取当前用户（观众/主播）信息成功，返回：' + JSON.stringify(resp));
+          resolve(resp);
+        })
+        .catch((err) => {
+          hyExt.logger.info('获取当前用户（观众/主播）信息失败，错误信息：' + err.message);
+          reject(err.message);
+        });
+    } else {
+      resolve(false);
+    }
+  });
+
+export const compare = (property) => {
+  return (obj1, obj2) => {
+    var value1 = obj1[property];
+    var value2 = obj2[property];
+    return value2 - value1; // 降序
+  };
+};
+
+export const findValue = (uid, list = [], key) => {
+  let item = {};
+  list.forEach(listItem => {
+    if (listItem.uid === uid) {
+      item = listItem;
+    }
+  });
+
+  return item[key];
+}
+
+export const setPx = value => value * window.innerWidth / 375 / 1.5;

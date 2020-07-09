@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { animate, destroyMesh } from './utils';
+import { animate, destroyMesh, compare, findValue, setPx } from './utils';
 import { MeshText2D, SpriteText2D, textAlign } from 'three-text2d';
 
 /**
@@ -36,6 +36,8 @@ class Stage {
     this.camera = null;
     this.renderer = null;
 
+    this.clickName = __isMobile ? 'touchstart' : 'click';
+
     this.init();
   }
 
@@ -45,8 +47,9 @@ class Stage {
     this.createLight();
     this.createCamera();
     this.createRenterer();
-    this.createText();
+    // this.createText();
     this.createHud();
+    // this.changeEndHud();
     this.render();
   }
 
@@ -232,7 +235,251 @@ class Stage {
     hudCamera.lookAt(0, 0, 0);
   }
 
-  changeHud() {
+  changeStartHud() {
+    while (this.hudScene.children.length) {
+      this.hudScene.remove(this.hudScene.children[0]);
+    }
+
+    // 制作2D canvas内容,作为离屏canvas使用,后续要增加排行榜等功能，也可用此方式
+    this.hudCanvas = document.createElement('canvas');
+    this.hudCanvas.width = this.width; //屏幕的宽高
+    this.hudCanvas.height = this.height;
+    this.context = this.hudCanvas.getContext('2d');
+    this.context.fillStyle = 'rgba(219, 219, 219, 1)';
+    this.context.fillRect(0, 0, this.width, this.height);
+
+    // this.context.restore();
+    this.context.textAlign = 'center';
+    this.context.textBaseline = 'middle';
+    this.context.fillStyle = '#000';
+    this.context.font = `${setPx(32)}px Arial`;
+    this.context.fillText('跳一跳', this.width / 2, this.height / 3);
+    // this.context.save();
+
+    this.context.strokeStyle = 'black';
+    // this.context.lineJoin = 'round';
+    this.context.lineWidth = setPx(3);
+    this.context.strokeRect(this.width / 2 - setPx(60), (this.height * 3) / 4 - setPx(50), setPx(120), setPx(50));
+
+    this.context.textAlign = 'center';
+    this.context.textBaseline = 'middle';
+    this.context.fillStyle = '#000';
+    this.context.font = `${setPx(20)}px Arial`;
+    this.context.fillText('开始游戏', this.width / 2, (this.height * 3) / 4 - setPx(25));
+
+    this.context.textAlign = 'center';
+    this.context.textBaseline = 'middle';
+    this.context.fillStyle = '#000';
+    this.context.font = `${setPx(18)}px Arial`;
+    this.context.fillText('多人游戏 >', this.width / 2, (this.height * 3) / 4 + setPx(40));
+
+    this.changeTexture();
+
+    this.clickFunc = (event) => {
+      const { touches } = event;
+      const _event = touches ? event.touches[0] : event;
+      const { clientX, clientY } = _event;
+      const { width, height } = this;
+      let beginX = width / 2 - setPx(60);
+      let endX = width / 2 + setPx(60);
+      let endY = (height * 3) / 4;
+      let beginY = endY - setPx(50);
+      // 开始游戏
+      if (clientX >= beginX && clientX <= endX && clientY >= beginY && clientY <= endY) {
+        this.world.setType(1);
+        this.canvas.removeEventListener(this.clickName, this.clickFunc);
+        this.world.reset();
+      }
+
+      beginX = width / 2 - setPx(60);
+      endX = width / 2 + setPx(60);
+      endY = (height * 3) / 4 + setPx(49);
+      beginY = endY - setPx(18);
+      // 多人运动
+      if (clientX >= beginX && clientX <= endX && clientY >= beginY && clientY <= endY) {
+        this.world.setType(2);
+        this.canvas.removeEventListener(this.clickName, this.clickFunc);
+        this.changeMiddleHud('连接中...');
+        this.world.initWss();
+      }
+    };
+
+    // 这里给整个canvas增加点击事件，通过坐标找到重新开始点击按钮
+    this.canvas.addEventListener(this.clickName, this.clickFunc, false);
+  }
+
+  changeMiddleHud(text = '', isShowBtn) {
+    // 制作2D canvas内容,作为离屏canvas使用,后续要增加排行榜等功能，也可用此方式
+    this.hudCanvas = document.createElement('canvas');
+    this.hudCanvas.width = this.width; //屏幕的宽高
+    this.hudCanvas.height = this.height;
+    this.context = this.hudCanvas.getContext('2d');
+    this.context.fillStyle = 'rgba(219, 219, 219, 1)';
+    this.context.fillRect(0, 0, this.width, this.height);
+
+    this.context.textAlign = 'center';
+    this.context.textBaseline = 'middle';
+    this.context.fillStyle = '#000';
+    this.context.font = `${setPx(22)}px Arial`;
+    this.context.fillText(text, this.width / 2, this.height / 2);
+
+    if (isShowBtn) {
+      this.context.strokeStyle = 'black';
+      // this.context.lineJoin = 'round';
+      this.context.lineWidth = setPx(3);
+      this.context.strokeRect(this.width / 2 - setPx(60), (this.height * 3) / 4 - setPx(50), setPx(120), setPx(50));
+
+      this.context.textAlign = 'center';
+      this.context.textBaseline = 'middle';
+      this.context.fillStyle = '#000';
+      this.context.font = `${setPx(20)}px Arial`;
+      this.context.fillText('返回首页', this.width / 2, (this.height * 3) / 4 - setPx(25));
+
+      this.clickFunc = (event) => {
+        const { touches } = event;
+        const _event = touches ? event.touches[0] : event;
+        const { clientX, clientY } = _event;
+        const { width, height } = this;
+        let beginX = width / 2 - setPx(60);
+        let endX = width / 2 + setPx(60);
+        let endY = (height * 3) / 4;
+        let beginY = endY - setPx(50);
+        // 开始游戏
+        if (clientX >= beginX && clientX <= endX && clientY >= beginY && clientY <= endY) {
+          this.canvas.removeEventListener(this.clickName, this.clickFunc);
+          this.changeStartHud();
+        }
+      };
+
+      // 这里给整个canvas增加点击事件，通过坐标找到重新开始点击按钮
+      this.canvas.addEventListener(this.clickName, this.clickFunc, false);
+    }
+
+    this.changeTexture();
+  }
+
+  changeMatchHud() {
+    const length = this.world.wss ? this.world.wss.players.length : 1;
+
+    this.canvas.removeEventListener(this.clickName, this.clickFunc);
+    this.hudScene.remove(this.scorePlane);
+
+    // 制作2D canvas内容,作为离屏canvas使用,后续要增加排行榜等功能，也可用此方式
+    this.hudCanvas = document.createElement('canvas');
+    this.hudCanvas.width = this.width; //屏幕的宽高
+    this.hudCanvas.height = this.height;
+    this.context = this.hudCanvas.getContext('2d');
+    this.context.fillStyle = 'rgba(219, 219, 219, 1)';
+    this.context.fillRect(0, 0, this.width, this.height);
+
+    // this.context.restore();
+    this.context.textAlign = 'center';
+    this.context.textBaseline = 'middle';
+    this.context.fillStyle = '#000';
+    this.context.font = `${setPx(30)}px Arial`;
+    this.context.fillText('当前房间人数：', this.width / 2, this.height / 3);
+    // this.context.save();
+
+    this.context.textAlign = 'center';
+    this.context.textBaseline = 'middle';
+    this.context.fillStyle = 'red';
+    this.context.font = `${setPx(40)}px Arial`;
+    this.context.fillText(length, this.width / 2, this.height / 3 + setPx(70));
+
+    if (length > 1) {
+      if (__isAnchor) {
+        this.context.strokeStyle = 'black';
+        // this.context.lineJoin = 'round';
+        this.context.lineWidth = setPx(3);
+        this.context.strokeRect(this.width / 2 - setPx(60), (this.height * 3) / 4 - setPx(50), setPx(120), setPx(50));
+
+        this.context.textAlign = 'center';
+        this.context.textBaseline = 'middle';
+        this.context.fillStyle = '#000';
+        this.context.font = `${setPx(20)}px Arial`;
+        this.context.fillText('开始游戏', this.width / 2, (this.height * 3) / 4 - setPx(25));
+        
+        this.clickFunc = (event) => {
+          const { touches } = event;
+          const _event = touches ? event.touches[0] : event;
+          const { clientX, clientY } = _event;
+          const { width, height } = this;
+          let beginX = width / 2 - setPx(60);
+          let endX = width / 2 + setPx(60);
+          let endY = (height * 3) / 4;
+          let beginY = endY - setPx(50);
+          // 开始游戏
+          if (clientX >= beginX && clientX <= endX && clientY >= beginY && clientY <= endY) {
+            // this.world.setType(2);
+            this.canvas.removeEventListener(this.clickName, this.clickFunc);
+            this.world.wss.sendStartGame();
+            // this.hudScene.remove(this.scorePlane);
+            // this.world.reset();
+          }
+        };
+
+        // 这里给整个canvas增加点击事件，通过坐标找到重新开始点击按钮
+        this.canvas.addEventListener(this.clickName, this.clickFunc, false);
+      } else {
+        this.context.textAlign = 'center';
+        this.context.textBaseline = 'middle';
+        this.context.fillStyle = '#000';
+        this.context.font = `${setPx(18)}px Arial`;
+        this.context.fillText('等待主播开始游戏，请耐心等待...', this.width / 2, (this.height * 3) / 4 - setPx(25));
+      }
+    } else {
+      this.context.textAlign = 'center';
+      this.context.textBaseline = 'middle';
+      this.context.fillStyle = '#000';
+      this.context.font = `${setPx(18)}px Arial`;
+      this.context.fillText('要两人以上才能开始游戏，请耐心等待...', this.width / 2, (this.height * 3) / 4 - setPx(25));
+    }
+
+    this.changeTexture();
+  }
+
+  changeGoHud() {
+    while (this.hudScene.children.length) {
+      this.hudScene.remove(this.hudScene.children[0]);
+    }
+
+    // 制作2D canvas内容,作为离屏canvas使用,后续要增加排行榜等功能，也可用此方式
+    this.hudCanvas = document.createElement('canvas');
+    this.hudCanvas.width = this.width; //屏幕的宽高
+    this.hudCanvas.height = this.height;
+    this.context = this.hudCanvas.getContext('2d');
+    this.context.clearRect(0, 0, this.width, this.height);
+
+    this.context.textAlign = 'left';
+    this.context.textBaseline = 'middle';
+    this.context.fillStyle = '#000';
+    this.context.font = `${setPx(30)}px Arial`;
+    this.context.fillText(this.world.count, setPx(60), setPx(60));
+
+    if (this.world.type !== 1) {
+      this.context.textAlign = 'right';
+      this.context.textBaseline = 'middle';
+      this.context.fillStyle = '#000';
+      this.context.font = `${setPx(20)}px Arial`;
+      this.context.fillText(`倒计时：${this.world.wss.gameDuration - this.world.wss.timeLeft}`, this.width - setPx(30), setPx(55));
+
+      const list = Object.keys(this.world.wss.playerMap).reduce(
+        (_list, uid) => [..._list, ...[{ uid, value: this.world.wss.playerMap[uid] }]],
+        []
+      );
+      list.sort(compare('value')).forEach((item, index) => {
+        this.context.textAlign = 'right';
+        this.context.textBaseline = 'middle';
+        this.context.fillStyle = 'rgba(0, 0, 0, 0.7)';
+        this.context.font = `${setPx(12)}px Arial`;
+        this.context.fillText(`${findValue(item.uid, this.world.wss.playerInfo, 'nick')}：${item.value}`, this.width - setPx(30), setPx(80) + (index + 1) * setPx(16));
+      });
+    }
+
+    this.changeTexture();
+  }
+
+  changeEndHud(rank) {
     // 制作2D canvas内容,作为离屏canvas使用,后续要增加排行榜等功能，也可用此方式
     this.hudCanvas = document.createElement('canvas');
     this.hudCanvas.width = this.width; //屏幕的宽高
@@ -245,23 +492,54 @@ class Stage {
     this.context.textAlign = 'center';
     this.context.textBaseline = 'middle';
     this.context.fillStyle = '#fff';
-    this.context.font = '30px Arial';
-    this.context.fillText('得分： ' + this.text.text, this.width / 2, this.height / 3);
+    this.context.font = `${setPx(30)}px Arial`;
+    this.context.fillText('得分： ' + this.world.count, this.width / 2, this.height / 3);
     // this.context.save();
+
+    if (rank) {
+      this.context.textAlign = 'center';
+      this.context.textBaseline = 'middle';
+      this.context.fillStyle = '#fff';
+      this.context.font = `${setPx(30)}px Arial`;
+      this.context.fillText('排名： ' + rank, this.width / 2, this.height / 3 + setPx(50));
+    }
 
     this.context.strokeStyle = 'white';
     // this.context.lineJoin = 'round';
-    this.context.lineWidth = 3;
-    this.context.strokeRect(this.width / 2 - 60, this.height / 1.5, 120, 50);
+    this.context.lineWidth = setPx(3);
+    this.context.strokeRect(this.width / 2 - setPx(60), (this.height * 3) / 4 - setPx(50), setPx(120), setPx(50));
 
     this.context.textAlign = 'center';
     this.context.textBaseline = 'middle';
     this.context.fillStyle = '#fff';
-    this.context.font = '22px Arial';
-    this.context.fillText('重新开始', this.width / 2, this.height / 1.5 + 25);
+    this.context.font = `${setPx(22)}px Arial`;
+    this.context.fillText('返回首页', this.width / 2, (this.height * 3) / 4 - setPx(25));
 
+    this.changeTexture(1.5);
+
+    this.clickFunc = (event) => {
+      const { touches } = event;
+      const _event = touches ? event.touches[0] : event;
+      const { clientX, clientY } = _event;
+      const { width, height } = this;
+      const beginX = width / 2 - setPx(60);
+      const endX = width / 2 + setPx(60);
+      const _height = height / 1.5;
+      const endY = (_height * 3) / 4 + (height - _height) / 2;
+      const beginY = endY - setPx(50);
+      if (clientX >= beginX && clientX <= endX && clientY >= beginY && clientY <= endY) {
+        this.canvas.removeEventListener(this.clickName, this.clickFunc);
+        this.changeStartHud();
+      }
+    };
+
+    // 这里给整个canvas增加点击事件，通过坐标找到重新开始点击按钮
+    this.canvas.addEventListener(this.clickName, this.clickFunc, false);
+  }
+
+  changeTexture(num = 1) {
     // 将canvas作为材质的一面贴上去
-    this.geometry = new THREE.PlaneGeometry(this.width / 1.5, this.height / 1.5); // 按比例设置宽高
+    this.geometry = new THREE.PlaneGeometry(this.width / num, this.height / num); // 按比例设置宽高
     this.scoreTexture = new THREE.CanvasTexture(this.hudCanvas);
     this.scoreTexture.minFilter = this.scoreTexture.magFilter = THREE.LinearFilter;
     this.scoreTexture.needsUpdate = true;
@@ -275,28 +553,6 @@ class Stage {
 
     this.hudScene.add(scorePlane); // 将生成的平面添加到hudScene场景中即可
     this.render();
-
-    const clickName = __isMobile ? 'touchstart' : 'click';
-
-    const func = (event) => {
-      const { touches } = event;
-      const _event = touches ? event.touches[0] : event;
-      const { clientX, clientY } = _event;
-      const { width, height } = this;
-      const beginX = width / 2 - 60;
-      const endX = width / 2 + 60;
-      const _height = height / 1.5;
-      const endY = (_height * 3) / 4 + (height - _height) / 2;
-      const beginY = endY - 50;
-      if (clientX >= beginX && clientX <= endX && clientY >= beginY && clientY <= endY) {
-        this.canvas.removeEventListener(clickName, func);
-        this.hudScene.remove(this.scorePlane);
-        this.world.reset();
-      }
-    };
-
-    // 这里给整个canvas增加点击事件，通过坐标找到重新开始点击按钮
-    this.canvas.addEventListener(clickName, func, false);
   }
 
   // 处理得分
@@ -340,19 +596,19 @@ class Stage {
     );
 
     // 移动文字
-    animate(
-      {
-        from: { ...text.position },
-        to: textTo,
-        duration,
-      },
-      ({ x, y, z }) => {
-        text.position.x = x;
-        // text.position.y = y;
-        text.position.z = z;
-        this.render();
-      }
-    );
+    // animate(
+    //   {
+    //     from: { ...text.position },
+    //     to: textTo,
+    //     duration,
+    //   },
+    //   ({ x, y, z }) => {
+    //     text.position.x = x;
+    //     // text.position.y = y;
+    //     text.position.z = z;
+    //     this.render();
+    //   }
+    // );
 
     // 保证不会跑出有限大小的地面
     plane.position.x = center.x;

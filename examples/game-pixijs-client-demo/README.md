@@ -50,15 +50,19 @@ npm install -g  @hyext/cli
 执行 `npx hyext release` 打包小游戏代码，然后上传到虎牙小程序平台，参考[程序配置](https://dev.huya.com/docs/#/ems?id=_232-%e7%a8%8b%e5%ba%8f%e9%85%8d%e7%bd%ae)进行测试
 
 ### 功能点
-1.Pixi游戏能力
+1. Pixi游戏能力
 
-2.多分辨率适配
+2. 多分辨率适配
 
-3.按钮实现
+3. 按钮实现
 
-4.虚拟摇杆实现
+4. 虚拟摇杆实现
 
-5.虎牙小程序API调用
+5. 虎牙小程序API调用
 
-6.音效播放
+6. 音效播放
 
+### 使用位图字体说明
+1. Pixi.js使用自定义位图字体，可以使用Pixi的加载器来加载XML位图文件，就像你加载JSON或图片文件一样，然后再结合PIXI.BitmapText使用即可，可参考示例demo/myFont_demo.html。
+2. 建议使用位图字体制作工具Bitmap Font Generator：http://www.angelcode.com/products/bmfont/
+3. bmfont的使用方法可参考：https://blog.csdn.net/u013654125/article/details/78672809

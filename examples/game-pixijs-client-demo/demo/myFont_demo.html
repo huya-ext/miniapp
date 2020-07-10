@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<title>myFont demo</title>
+<body>
+  <script src="../h5/lib/pixi.min.js"></script>
+  <script>
+    //Create a Pixi Application
+    let app = new PIXI.Application({
+      width: 256,
+      height: 256,
+      antialiasing: true,
+      transparent: false,
+      resolution: 1,
+    });
+
+    document.body.appendChild(app.view);
+    app.renderer.view.style.border = '1px dashed black';
+    app.renderer.resize(512, 512);
+    app.renderer.backgroundColor = '#000';
+
+    PIXI.loader.add('./assets/myFont.fnt').load(setup);
+
+    function setup() {
+      const gameScene = new PIXI.Container();
+      app.stage.addChild(gameScene);
+
+      var text = new PIXI.BitmapText('字体展示示例', { font: '35px myFont' });
+      text.position.x = 100;
+      text.position.y = 100;
+      gameScene.addChild(text);
+    }
+  </script>
+</body>

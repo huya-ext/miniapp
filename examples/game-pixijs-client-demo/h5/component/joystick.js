@@ -119,6 +119,19 @@ Joystick.prototype.initRocker = function () {
     this.initRockerEvents();
 };
 
+
+/**
+ * 初始化摇杆
+ */
+Joystick.prototype.position = function (x,y) {
+    this.settings.rockerX =x;
+    this.settings.rockerY =y;
+    this.containerJoystick.position = {
+        x: this.settings.rockerX, //中心X坐标
+        y: this.settings.rockerY //中心Y坐标
+    };
+}
+
 /**
  * 初始化事件
  */

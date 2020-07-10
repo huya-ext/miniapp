@@ -7,38 +7,46 @@
 function HealthBar(gameScene, opts) {
     this.settings = opts;
 
-    let healthTip = new Text("血量：", {
+    this.healthBarWrap = new Container();
+    this.healthBarWrap.position.set(this.settings.showWidth - PIXI.pixelConv.convert(250), PIXI.pixelConv.convert(4))
+
+    this.healthTip = new Text("血量：", {
         fontFamily: "Futura",
-        fontSize: 23,
+        fontSize: PIXI.pixelConv.convert(30),
         fill: ['red'],
         stroke: '#ffffff',
-        strokeThickness: 4,
+        strokeThickness: PIXI.pixelConv.convert(4),
     });
 
-    healthTip.x = this.settings.showWidth - 240;
-    healthTip.y = 4;
-    gameScene.addChild(healthTip);
+    // this.healthTip.x = this.settings.showWidth - PIXI.pixelConv.convert(240);
+    // this.healthTip.y = PIXI.pixelConv.convert(4);
+    this.healthBarWrap.addChild(this.healthTip);
 
     //Create the health bar
     this.healthBar = new Container();
-    this.healthBar.position.set(this.settings.showWidth - 170, 4)
-    gameScene.addChild(this.healthBar);
+    this.healthBar.x = PIXI.pixelConv.convert(80);
+    this.healthBar.y = PIXI.pixelConv.convert(6);
+
 
     //Create the black background rectangle
     let innerBar = new Graphics();
     innerBar.beginFill(0x000000);
-    innerBar.drawRect(0, 10, 128, 12);
+    innerBar.drawRect(0, PIXI.pixelConv.convert(10), PIXI.pixelConv.convert(128), PIXI.pixelConv.convert(12));
     innerBar.endFill();
     this.healthBar.addChild(innerBar);
 
     //Create the front red rectangle
     let outerBar = new Graphics();
     outerBar.beginFill(0xFF3300);
-    outerBar.drawRect(0, 10, 128, 12);
+    outerBar.drawRect(0, PIXI.pixelConv.convert(10), PIXI.pixelConv.convert(128), PIXI.pixelConv.convert(12));
     outerBar.endFill();
     this.healthBar.addChild(outerBar);
 
     this.healthBar.outer = outerBar;
+
+    this.healthBarWrap.addChild(this.healthBar);
+
+    gameScene.addChild(this.healthBarWrap);
 }
 
 HealthBar.prototype.setWidth = function (width) {
@@ -49,6 +57,10 @@ HealthBar.prototype.getWidth = function () {
     return this.healthBar.outer.width;
 }
 
+HealthBar.prototype.setPosition = function (x, y) {
+    this.healthBarWrap.x = x;
+    this.healthBarWrap.y = y;
+}
 
 
 

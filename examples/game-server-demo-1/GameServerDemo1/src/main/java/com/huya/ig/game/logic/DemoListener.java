@@ -35,7 +35,12 @@ public class DemoListener implements NetworkListener {
             }else{
                 // 观众连接，返回房间关闭
                 ChannelUtil.write(channel, new GamePacket(Protocol.S2CRoomClosed.uri));
-                channel.close();
+                channel.eventLoop().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        channel.close();
+                    }
+                });
             }
         }else{
             // 加入房间

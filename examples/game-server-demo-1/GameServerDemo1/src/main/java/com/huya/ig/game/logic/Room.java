@@ -51,6 +51,7 @@ public class Room {
         data.put("uid", uid);
         data.put("gaming", state == ERoomState.Gaming);
         data.put("signedUp", signedPlayers.containsKey(uid));
+        data.put("players", signedPlayers.values());
         broadcast(Protocol.S2CPlayerJoin.uri, gson.toJson(data));
     }
 
@@ -80,14 +81,17 @@ public class Room {
      */
     public void signup(String uid, String payload){
         boolean success = true;
-        if(signedPlayers.size() >= GameConfig.maxPlayerCnt){
-            success = false;
-        }else {
-            JsonObject data = gson.fromJson(payload, JsonObject.class);
-            signedPlayers.putIfAbsent(uid, new Player(uid, 0,
-                    data.get("nick").getAsString(),
-                    data.get("avatar").getAsString()));
+        if(!signedPlayers.containsKey(uid)){
+            if(signedPlayers.size() >= GameConfig.maxPlayerCnt){
+                success = false;
+            }else {
+                JsonObject data = gson.fromJson(payload, JsonObject.class);
+                signedPlayers.putIfAbsent(uid, new Player(uid, 0,
+                        data.get("nick").getAsString(),
+                        data.get("avatar").getAsString()));
+            }
         }
+
         Map<String, Object> data = new HashMap<>();
         if(success){
             data.put("success", true);

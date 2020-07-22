@@ -5,3 +5,6 @@ release
 dist
 examples/game-jump-client-demo/package-lock.json
 examples/game-jump-server-demo/logs/
+*.log
+*.iml
+.idea

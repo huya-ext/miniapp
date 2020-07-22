@@ -4,7 +4,7 @@
 基于[Pixi实例学习: 宝物猎人](https://github.com/Zainking/learningPixi#casestudy)修改
 
 ### 特别说明
-此DEMO仅供参考,其中大部分代码仅为示例,并不完善,请勿用于正式发布.
+此DEMO仅供npx参考,其中大部分代码仅为示例,并不完善,请勿用于正式发布.
 
 ### 截图
 ![](./ss.png)
@@ -42,6 +42,8 @@ npm install -g  @hyext/cli
 
 #### 开发版本运行
 `npx  hyext start` 启动本地开发服务.
+
+在浏览器打开 `http://{本机ip}:18080/h5/pixijs-demo2-hyext-web_video_com.html` 可以进行简单预览
 
 打开开发者中心([ext.huya.com](https://ext.huya.com/)),按提示手动上传本地`hyext_dist/build-result`目录下的开发配置文件(参考[小程序开发](https://dev.huya.com/docs/#/hyext-cli?id=%e5%bc%80%e5%8f%91)),即可在虎牙app或者pc主播端启动游戏.
 

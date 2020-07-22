@@ -30,6 +30,9 @@ class App extends Component {
       }
     }
 
+
+    
+
     hyExt.env.getInitialParam().then(param => {
       if (param.wb) {
         // 初始化参数包含wb参数，说明处于独立白板模式
@@ -138,8 +141,8 @@ class App extends Component {
               position: 'absolute',
               left: wb_width * ((x1 - (x2-x1)) / canvas.width),
               top:  wb_height * ((y1 - (x2-x1)) / canvas.height),
-              height: (x2-x1)*2,
-              width: (x2-x1)*3,
+              width: wb_width * (x2-x1) / canvas.width * 3,
+              height:  wb_height * (x2-x1) / canvas.height * 2
             }}
           >
           </Image>

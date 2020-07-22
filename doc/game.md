@@ -25,7 +25,7 @@ window.innerHeight
 ```
 
 ### 引擎支持
-开发者可以采用开发HTML5游戏方式(基于WebGL)来开发小游戏，支持使用`Cocos Creator`、`Egret`、`Laya`等游戏引擎开发，导出`HTML5`格式(web mobile)；也支持使用`Three.js`、`PixiJS`等HTML5渲染引擎直接开发。
+开发者可以采用开发HTML5游戏方式(基于WebGL)来开发小游戏，支持使用`Cocos Creator`、`Egret`、`Laya`等游戏引擎开发，导出`HTML5`格式(web mobile)；也支持使用`Three.js`、`PixiJS`等HTML5渲染引擎直接开发，详情可查阅[虎牙小游戏引擎支持清单及对接流程](./game/engine.md)
 
 > **注意，不支持使用 `SVG`、`DOM`、`CSS` 方式开发游戏，所有游戏画面及元素必须在 `Canvas` 中绘制**
 
@@ -57,6 +57,9 @@ x.blur();
 
 ### 小程序API调用
 所有小程序前端的API和能力，在虎牙小游戏内都可以调用。
+
+> 小游戏的运行环境中已经自动注入了虎牙小程序的SDK，所以小游戏代码中**不再需要导入小游戏SDK**，可以直接在js代码中调用`hyext`中的各端API。
+
 > 为了解决H5游戏单独编译时可能出现`hyext`未定义的问题，在小游戏中可使用`window['hyExt']`的方式调用小程序API
 
 ### WebSocket支持
@@ -166,11 +169,10 @@ npx hyext init  -b h5game
 与小程序一致，参考[版本发布](https://dev.huya.com/docs/#/ems?id=_26-%e7%89%88%e6%9c%ac%e5%8f%91%e5%b8%83)
 
 ---
-## 小游戏DEMO
+## 附录
+  * [常见问题](./game/faq.md)   
+  * [虎牙小游戏引擎支持清单及对接流程](./game/engine.md)
+  * [小游戏美术设计工具及流程介绍](./game/design.md)
+  * [跳一跳游戏-前端DEMO](https://github.com/huya-ext/miniapp/tree/master/examples/game-jump-client-demo)
+  * [跳一跳游戏-后端DEMO](https://github.com/huya-ext/miniapp/tree/master/examples/game-jump-server-demo)
 
-链接: [跳一跳游戏-前端DEMO](../examples/game-jump-client-demo)
-
-链接: [跳一跳游戏-后端DEMO](../examples/game-jump-server-demo)
-
----
-链接：[小游戏美术设计工具及流程介绍](./game/design.md)

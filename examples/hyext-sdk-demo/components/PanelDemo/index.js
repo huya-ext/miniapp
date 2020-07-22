@@ -50,25 +50,25 @@ export default class Demo extends Component {
               onChange={v => this.setState({ hyExt_panel_setLayout_0_visible: v })} />
           </FormItem>
           <FormItem label='x'>
-            <Input placeholder='请输入左上角横坐标'
+            <Input placeholder='请输入左上角横坐标占容器的比例'
               value={this.state.hyExt_panel_setLayout_0_x || ''}
               inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_panel_setLayout_0_x: v })} />
           </FormItem>
           <FormItem label='y'>
-            <Input placeholder='请输入左上角纵坐标'
+            <Input placeholder='请输入左上角纵坐标占容器的比例'
               value={this.state.hyExt_panel_setLayout_0_y || ''}
               inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_panel_setLayout_0_y: v })} />
           </FormItem>
           <FormItem label='width'>
-            <Input placeholder='请输入宽度'
+            <Input placeholder='请输入宽度占容器的比例'
               value={this.state.hyExt_panel_setLayout_0_width || ''}
               inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_panel_setLayout_0_width: v })} />
           </FormItem>
           <FormItem label='height'>
-            <Input placeholder='请输入高度'
+            <Input placeholder='请输入高度占容器的比例'
               value={this.state.hyExt_panel_setLayout_0_height || ''}
               inputStyle={{ color: '#000' }}
               onChange={v => this.setState({ hyExt_panel_setLayout_0_height: v })} />

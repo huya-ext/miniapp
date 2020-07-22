@@ -151,11 +151,9 @@ class JumpGameWorld {
 
   async initWss() {
     const { stage } = this;
-    const jwt = await getJwt();
     this.wss = new WSS({
       stage,
       world: this,
-      jwt,
     });
   }
 

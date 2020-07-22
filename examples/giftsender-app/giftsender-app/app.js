@@ -13,7 +13,8 @@ class App extends Component {
       giftInfo: [],
       giftIndex: 1,
       giftNum: 1,
-      textBar: ""
+      textBar: "",
+      default_step: 1
     }
   }
 
@@ -21,7 +22,9 @@ class App extends Component {
     hyExt.context.getGiftConf().then(giftInfo => {
       if(giftInfo){
         this.setState({
-          giftInfo: giftInfo
+          giftInfo: giftInfo.filter((item,i)=>{
+            return item.giftName&&/https/.test(item.giftGif)
+          })
         })
       }
     })
@@ -37,9 +40,15 @@ class App extends Component {
   }
 
   changeGift(step){
+    if(step === undefined)  //无参数则按上一次操作来
+      step = this.state.default_step;
+    else
+      this.setState({default_step:step})  //有参数则保存操作
+
     var {giftIndex} = this.state;
     const maxlen = this.state.giftInfo.length;
     giftIndex = (giftIndex + step + maxlen)%maxlen;
+
     this.setState({
       giftIndex: giftIndex
     })
@@ -77,12 +86,14 @@ class App extends Component {
   render () {
     
     const {giftInfo, giftIndex, giftNum, textBar} = this.state;
-
     return (
       giftInfo[giftIndex]?
       <View className="container">
+        <View className="text">
+          <Text className="title">公告栏（主播留言）</Text>
+          <Text className="msg">{textBar?textBar:"暂未收到主播发送的消息~"}</Text>
+        </View>
         <SelectGift data={giftInfo[giftIndex]} changeGift={this.changeGift.bind(this)}></SelectGift>
-        <Text className="text">{textBar}</Text> 
         <SelectNum num={giftNum} changeNum={this.changeNum.bind(this)}></SelectNum>
         <Button type='primary' className="senderButton" onPress={()=>this.sendGift()}>赠送</Button>
       </View>        

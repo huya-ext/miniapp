@@ -24,6 +24,7 @@ async def write(ws, data):
 
 async def broadcast(roomId,   uri,   data,  allUids, exUid=None):
     """ 房间内广播数据的方法，exUid为要排除的用户id列表 """
+    log.info('broadcast roomId:{} uri:{} data:{}'.format(roomId,uri,data))
 
     game_packet = GamePacket(uri,  data)
     for uid in allUids:
@@ -42,6 +43,8 @@ async def broadcast(roomId,   uri,   data,  allUids, exUid=None):
 
 async def unicast_packet(roomId, uid, game_packet):
     """ 单播方法，给房间内指定用户发送消息 """
+    log.info('unicast_packet roomId:{} game_packet:{}'.format(roomId,game_packet.dump()))
+
     ws = ws_connects_mgr.getWs(uid, roomId)
     await write(ws, game_packet)
 

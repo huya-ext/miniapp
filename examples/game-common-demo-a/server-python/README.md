@@ -28,6 +28,20 @@ sudo apt install python3.8
 
 ---
 
+# 配合前端DEMO运行
+
+前端demo地址：[client-pixi-js](https://github.com/huya-ext/miniapp/tree/master/examples/game-common-demo-a/client-pixi-js)
+
+修改 h5\src\main.js
+```
+   const wssInstance = (this.wssInstance = new WebSocket(
+            `ws://127.0.0.1:8081?jwt=${jwt || jwtMap[type]}`
+        ));
+```
+其中，`ws://127.0.0.1:8081` 改为 `ws://127.0.0.1:9090/ws`
+
+---
+
 # 在windows 上用 vscode 进行远程调试
 windows 端安装：`pip install ptvsd`
 wsl端安装 `sudo pip3 install ptvsd`
@@ -82,4 +96,4 @@ websocket url格式：
 
 
 ### ws 数据包格式
-`{"protocol":100,"payload":"{}"}`
+参考 [协议简介](https://github.com/huya-ext/miniapp/tree/master/examples/game-common-demo-a/server-java#%E5%8D%8F%E8%AE%AE%E7%AE%80%E4%BB%8B)

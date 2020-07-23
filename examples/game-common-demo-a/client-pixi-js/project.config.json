@@ -14,7 +14,7 @@
     "config": {
       "webTitle": "h5game",
       "h5Dir": "./h5",
-      "convertEs6": true,
+      "convertEs6": false,
       "buildConfig": [
         {
           "extType": "pc_anchor_panel",

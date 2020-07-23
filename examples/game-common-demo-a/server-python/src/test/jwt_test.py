@@ -12,9 +12,9 @@
 # }
 
 # 远程调试代码 begin
-# import ptvsd
-# ptvsd.enable_attach(address = ('localhost', 5678))
-# ptvsd.wait_for_attach()
+import ptvsd
+ptvsd.enable_attach(address = ('localhost', 5678))
+ptvsd.wait_for_attach()
 # 远程调试代码 end
 
 import time
@@ -28,6 +28,7 @@ algorithms = 'HS256'
 appId = 'test'
 #@TODO 密钥，需要改成小程序平台上生成的
 secret_key = 'test'
+
 
 # src根目录下面创建：local.py local.py可以不提交到代码仓库，避免泄密
 # class HyextConfig(object):
@@ -133,4 +134,6 @@ if __name__ == "__main__":
     # 生成观众jwt
     print('观众jwt:')
     encode = make_huya_jwt(False,"15687938","20000")
-    # decode_huya_jwt(encode)
+    
+    print('decode_huya_jwt:')
+    decode_huya_jwt('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjcmVhdG9yIjoiU1lTIiwicm9sZSI6IlAiLCJwcm9maWxlSWQiOiJ1bnJtM2dkbG9EL1ptY1FDWFJIU3RxOHVGSC96aTBqNDhwIiwiYXBwSWQiOiJ1ZDgwMTM4MjY3MzEyOWRjIiwiZXh0SWQiOiIzZ3pydTYwciIsImV4cCI6MTU5NTQyOTc3MywidXNlcklkIjoidW5ybTNnZGxvRC9abWNRQ1hSSFN0cTh1RkgvemkwajQ4cCIsImlhdCI6MTU5NTQyNjE3Mywicm9vbUlkIjoiMTU2ODc5MzgifQ.6tFfJCjj-ueyLI43UaAnHlvdkiFsMlVe0-TEGJsPKzk')

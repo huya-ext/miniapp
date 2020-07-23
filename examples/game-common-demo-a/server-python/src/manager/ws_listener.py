@@ -1,4 +1,4 @@
-
+import json
 from manager.ws_connects_mgr import ws_connects_mgr
 from logger import log
 from logic.room_mgr import room_manager
@@ -37,17 +37,20 @@ class WsListener(object):
     async def onData(self, ws, gamePacket):
         """ 收到ws数据包时回调 """
 
-        log.info('ws received:' + gamePacket.dump() + ' ws:'+str(ws))
-
         protocol = gamePacket.protocol
         roomId = ws_connects_mgr.getRoomId(ws)
         uid = ws_connects_mgr.getUid(ws)
         room = room_manager.get_room(roomId)
 
-        log.info("handle uid:{0} protocol:{1} of room:{2}".format(
-            uid, protocol, room.roomId if room else ''))
+        # log.info('ws received:' + gamePacket.dump() + ' ws:'+str(ws))
+        if protocol != PROTOCOL.C2SHeartbeat:  # 游戏心跳包
+            log.info("handle uid:{0} protocol:{1} of room:{2}".format(
+                uid, protocol, room.roomId if room else ''))
 
         if not protocol or not room:
+            # if not ws.closed:
+            #     await ws_channel_util.write(ws, GamePacket(PROTOCOL.S2CRoomClosed))
+            #     await ws.close()
             return
 
         # 根据客户端的包，来执行相应的操作
@@ -55,15 +58,15 @@ class WsListener(object):
             # 原样返回
             await ws_channel_util.write(ws, GamePacket(PROTOCOL.S2CHeartbeat, gamePacket.payload))
         elif protocol == PROTOCOL.C2SSignup:  # 加入游戏
-            room.signup(uid, json.loads(gamePacket.payload))
+            await room.signup(uid, json.loads(gamePacket.payload))
         elif protocol == PROTOCOL.C2SStart:  # 开始游戏
-            room.start(uid)
+            await room.start(uid)
         elif protocol == PROTOCOL.C2SGameover:  # 主播主动结束游戏
-            room.gameOver(uid)
-
+            await room.gameOver(uid)
+        elif protocol == PROTOCOL.C2SPlayerScore:  # 玩家上报得分
+            await room.playerScore(uid, json.loads(gamePacket.payload))
         else:
-            log.warn("protocol invalid:{0},{1}".format(
-                protocol), gamePacket.dump())
+            log.warn("protocol invalid:{},{}".format(protocol, gamePacket.dump()))
             pass
 
         pass

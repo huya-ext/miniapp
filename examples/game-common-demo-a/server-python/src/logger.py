@@ -8,7 +8,7 @@ logging_format += "%(message)s"
 
 logging.basicConfig(
     format=logging_format,
-    level=logging.DEBUG
+    level=logging.INFO
 )
 
 log = logging.getLogger()

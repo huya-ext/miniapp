@@ -1,6 +1,7 @@
 import json
 from logic.protocol import PROTOCOL
 from logger import log
+from .player import Player, PlayerEncoder
 
 # 
 class GamePacket(object):
@@ -15,7 +16,7 @@ class GamePacket(object):
     def dump(self):
         """ 转json字符串 """
         data = {'protocol':self.protocol.value,'payload':self.payload if self.payload else '{}'}
-        json_str = json.dumps(data)
+        json_str = json.dumps(data, cls=PlayerEncoder)
         return json_str
 
     @staticmethod

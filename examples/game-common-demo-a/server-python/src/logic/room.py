@@ -1,5 +1,7 @@
 import threading
 import json
+import time
+import asyncio
 from enum import Enum
 from config import DefaultConfig
 from logger import log
@@ -7,7 +9,8 @@ from .protocol import PROTOCOL
 from util import ws_channel_util
 from util import jwt_util
 from hy_subscriber.subscriber import LiveSubscriber
-from .player import Player
+from .player import Player, PlayerEncoder
+
 
 class ERoomState(Enum):
     """ 房间状态枚举定义 """
@@ -47,6 +50,13 @@ class Room(object):
     def __init__(self, roomId, presenterUid):
         self.roomId = roomId
         self.presenterUid = presenterUid
+        self.signedPlayers ={}
+        self.allUids = []
+        self.reconnTimes = 0
+        self.state = None
+        self.gameStartedAt =None
+        self.liveSubscriber = None
+        self.timer = None
         self.__connect_live_subscriber()
 
     def __connect_live_subscriber(self):
@@ -66,8 +76,15 @@ class Room(object):
         data['uid'] = uid
         data['gaming'] = (self.state == ERoomState.Gaming)
         data['signedUp'] = (self.signedPlayers.__contains__(uid))
+
+        players = []
+        if self.signedPlayers:
+            for i in self.signedPlayers:
+                players.append(self.signedPlayers[i])
+
+        data['players'] = players
         # 房间内广播，玩家加入
-        await self.__broadcast(PROTOCOL.S2CPlayerJoin, json.dumps((data)))
+        await self.__broadcast(PROTOCOL.S2CPlayerJoin, json.dumps(data, cls=PlayerEncoder))
 
     async def start(self, uid):
         """ 开始游戏 """
@@ -79,8 +96,19 @@ class Room(object):
 
         # 启动计时检测
         self.timer = threading.Timer(
-            DefaultConfig.GAME_DURATION, self.__gameOver)
+            DefaultConfig.GAME_DURATION, self.__game_over_task)
         self.timer.start()
+
+
+    def __game_over_task(self):
+        """ 创建异步任务 """
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        try:
+            loop.run_until_complete(self.__gameOver())
+        finally:
+            loop.run_until_complete(loop.shutdown_asyncgens())
+            loop.close()
 
     async def signup(self, uid, data):
         """ 加入游戏 """
@@ -97,20 +125,22 @@ class Room(object):
                 player.avatar = data['avatar']
                 self.signedPlayers[uid] = player
             data = {}
-            data['uid'] = uid
             data['success'] = True
+            data['player'] = self.signedPlayers[uid]
             # 广播加入游戏成功
-            await self.__broadcast(PROTOCOL.S2CPlayerSignup, json.dumps((data)))
+            await self.__broadcast(PROTOCOL.S2CPlayerSignup, json.dumps(data, cls=PlayerEncoder))
         else:
             data = {}
             data['success'] = False
             # 发给当前用户，加入失败
-            await self.__unicast(uid, PROTOCOL.S2CPlayerSignup, json.dumps((data)))
+            await self.__unicast(uid, PROTOCOL.S2CPlayerSignup, json.dumps(data, cls=PlayerEncoder))
 
     async def __gameOver(self):
         """ 游戏结束 """
+        log.info('game timeout,gameOver,{}'.format(self.roomId))
+
         # 广播游戏结束，可附带排行榜等数据
-        await self.__broadcast(Protocol.S2CGameOver.uri, self.__build_rank())
+        await self.__broadcast(PROTOCOL.S2CGameOver,  json.dumps(self.__build_rank(),cls=PlayerEncoder) )
 
         self.state = ERoomState.GameOver
 
@@ -120,35 +150,37 @@ class Room(object):
         from logic.room_mgr import room_manager
         room_manager.remove_room(self.roomId)
 
-
     async def gameOver(self, uid):
         """ 主播主动结束游戏 """
         if uid == self.presenterUid and self.state == ERoomState.Gaming:
             await self.__gameOver()
 
-
     async def playerScore(self, uid, data):
         """ 玩家上报得分 """
         if self.signedPlayers.__contains__(uid) and self.state == ERoomState.Gaming:
-            self.signedPlayers[uid].score = data['score']
+            self.signedPlayers[uid].score = int(data['score'])
             data = self.__build_rank()
-            await self.__broadcast(PROTOCOL.S2CRealtimeRank, data)
+            await self.__broadcast(PROTOCOL.S2CRealtimeRank, json.dumps(data,cls=PlayerEncoder))
 
     def __build_rank(self):
         """ 构造实时得分排行榜 """
-        data = sorted(self.signedPlayers,
-                      key=lambda player: player.score, reverse=True)
+
+        players = []
+        if self.signedPlayers:
+            for i in self.signedPlayers:
+                players.append(self.signedPlayers[i])
+            
+        data = sorted(players,  key=lambda player: player.score, reverse=True)
         return data
 
     async def __broadcast(self, uri,  data=None,  exUids=None):
         """ 广播 """
         await ws_channel_util.broadcast(self.roomId, uri, data, self.allUids)
 
-    # 
+    #
     async def __unicast(self, uid, uri,  data=None):
         """ 发送给指定用户 """
         await ws_channel_util.unicast(self.roomId, uid, uri, data)
-
 
     def __live_message(self, notice, data):
         """ 收到虎牙直播间订阅消息回调 """
@@ -210,7 +242,6 @@ class Room(object):
             reTrytimer = threading.Timer(
                 2+self.reconnTimes*2, self.__retry_connect_live_subscriber)
             reTrytimer.start()
-
 
     def __retry_connect_live_subscriber(self):
         """ 重连订阅服务 """

@@ -6,7 +6,7 @@ from util import decode_hyext_jwt
 from manager import ws_listener
 from logic.protocol import PROTOCOL
 from logic.game_packet import GamePacket
-
+from logger import log
 from sanic.response import json as response_json
 
 # 处理所有的 ws 请求
@@ -65,11 +65,19 @@ async def ws_bp_root(request, payload, ws):
             # 等待收到消息
             data = await ws.recv()
             import json
-            # 消息解包成GamePacket对象
-            packet = json.loads(data, object_hook=GamePacket.load)
-            # 回调业务访问
-            await ws_listener.onData(ws, packet)
-        except (ConnectionClosed):
+
+            log.info('ws receive message:{}'.format(data))
+
+            try:
+                # 消息解包成GamePacket对象
+                packet = json.loads(data, object_hook=GamePacket.load)
+                # 回调业务访问
+                await ws_listener.onData(ws, packet)
+            except Exception as e:
+                log.error('ws deal message error:{}'.format(str(e)))
+
+        except Exception as e:
+            log.error('ws receive message error:{}'.format(str(e)))
             # 回调连接断开方法
             await ws_listener.onDisconnected(ws)
             break

@@ -12,9 +12,9 @@
 # }
 
 # 远程调试代码 begin
-import ptvsd
-ptvsd.enable_attach(address = ('localhost', 5678))
-ptvsd.wait_for_attach()
+# import ptvsd
+# ptvsd.enable_attach(address = ('localhost', 5678))
+# ptvsd.wait_for_attach()
 # 远程调试代码 end
 
 import time
@@ -135,5 +135,5 @@ if __name__ == "__main__":
     print('观众jwt:')
     encode = make_huya_jwt(False,"15687938","20000")
     
-    print('decode_huya_jwt:')
-    decode_huya_jwt('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjcmVhdG9yIjoiU1lTIiwicm9sZSI6IlAiLCJwcm9maWxlSWQiOiJ1bnJtM2dkbG9EL1ptY1FDWFJIU3RxOHVGSC96aTBqNDhwIiwiYXBwSWQiOiJ1ZDgwMTM4MjY3MzEyOWRjIiwiZXh0SWQiOiIzZ3pydTYwciIsImV4cCI6MTU5NTQyOTc3MywidXNlcklkIjoidW5ybTNnZGxvRC9abWNRQ1hSSFN0cTh1RkgvemkwajQ4cCIsImlhdCI6MTU5NTQyNjE3Mywicm9vbUlkIjoiMTU2ODc5MzgifQ.6tFfJCjj-ueyLI43UaAnHlvdkiFsMlVe0-TEGJsPKzk')
+    # print('decode_huya_jwt:')
+    # decode_huya_jwt('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjcmVhdG9yIjoiU1lTIiwicm9sZSI6IlAiLCJwcm9maWxlSWQiOiJ1bnJtM2dkbG9EL1ptY1FDWFJIU3RxOHVGSC96aTBqNDhwIiwiYXBwSWQiOiJ1ZDgwMTM4MjY3MzEyOWRjIiwiZXh0SWQiOiIzZ3pydTYwciIsImV4cCI6MTU5NTQyOTc3MywidXNlcklkIjoidW5ybTNnZGxvRC9abWNRQ1hSSFN0cTh1RkgvemkwajQ4cCIsImlhdCI6MTU5NTQyNjE3Mywicm9vbUlkIjoiMTU2ODc5MzgifQ.6tFfJCjj-ueyLI43UaAnHlvdkiFsMlVe0-TEGJsPKzk')

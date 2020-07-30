@@ -390,7 +390,7 @@ class Wss {
             'zhubouid3': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjcmVhdG9yIjoiREVWIiwicm9sZSI6IlAiLCJwcm9maWxlSWQiOiJ6aHVib3VpZCIsImFwcElkIjoiYXBwSWQiLCJleHRJZCI6IiIsImV4cCI6MTU5NzM3NTUxMCwidXNlcklkIjoiemh1Ym91aWQzIiwiaWF0IjoxNTk0NzgzNTEwLCJyb29tSWQiOiIxMDAwIn0.i3O-dJWTKQeb2Lpwl7kVs1XTRWnAtoXjyww_UMzRSLA',
             'zhubouid4': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjcmVhdG9yIjoiREVWIiwicm9sZSI6IlAiLCJwcm9maWxlSWQiOiJ6aHVib3VpZCIsImFwcElkIjoiYXBwSWQiLCJleHRJZCI6IiIsImV4cCI6MTU5NzM3NTUyMSwidXNlcklkIjoiemh1Ym91aWQ0IiwiaWF0IjoxNTk0NzgzNTIxLCJyb29tSWQiOiIxMDAwIn0.1vsoyO8ApIZfPuEosohzF6Rhd0iLV5YGQXBNKh--f7U'
         };
-        const wssInstance = (this.wssInstance = new WebSocket(
+        const wssInstance = (this.wssInstance = getWebSocket(
             `ws://127.0.0.1:8081?jwt=${jwt || jwtMap[type]}`
         ));
         wssInstance.binaryType = 'arraybuffer';
@@ -574,6 +574,14 @@ function logger(name, log) {
         hyExt.logger.info(name, log);
     }
     console.log(name, log)
+}
+
+function getWebSocket(url) {
+    if (getIsHyExt()) {
+        return new hyExt.WebSocket(url);
+    } else {
+        return new WebSocket(url);
+    }
 }
 
 function getUserInfo() {

@@ -131,7 +131,7 @@ public class WebSocketClient extends org.java_websocket.client.WebSocketClient {
     		
     		String appId = "";      //小程序开发者ID（成为开发者后，https://ext.huya.com可查）
     		String secret = "";     //小程序开发者密钥（成为开发者后，https://ext.huya.com可查）
-    		long roomId = ;        //监听主播的房间号
+    		long roomId = 0;        //监听主播的房间号
     		
             Map<String, Object> map = new HashMap<String, Object>(16);
             map = WebSocketClient.getWebSocketJwtParamsMap(appId,secret,roomId);

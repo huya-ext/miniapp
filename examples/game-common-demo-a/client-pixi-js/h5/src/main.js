@@ -221,6 +221,13 @@ class Main {
         app.renderer.backgroundColor = 0x94a7a5;
 
         const container = (this.startContainer = new PIXI.Container());
+        const bg = new PIXI.Graphics();
+        bg.beginFill(0x94a7a5);
+        bg.drawRect(0, 0, width, height);
+        bg.endFill();
+
+        container.addChild(bg);
+
         const message = new PIXI.Text('GAME NAME', {
             fill: 0xffffff,
             fontSize: setWPx(30),
@@ -262,6 +269,13 @@ class Main {
         app.renderer.backgroundColor = 0x94a7a5;
 
         const container = (this.middleContainer = new PIXI.Container());
+        const bg = new PIXI.Graphics();
+        bg.beginFill(0x94a7a5);
+        bg.drawRect(0, 0, width, height);
+        bg.endFill();
+
+        container.addChild(bg);
+
         const message = new PIXI.Text(text, {
             fill: 0xffffff,
             fontSize: setWPx(30),
@@ -319,6 +333,13 @@ class Main {
         app.renderer.backgroundColor = 0x6c7878;
 
         const container = (this.matchContainer = new PIXI.Container());
+        const bg = new PIXI.Graphics();
+        bg.beginFill(0x6c7878);
+        bg.drawRect(0, 0, width, height);
+        bg.endFill();
+
+        container.addChild(bg);
+
         const message = new PIXI.Text("等待开局...", {
             fill: 0xffffff,
             fontSize: setWPx(30),
@@ -390,6 +411,7 @@ class Wss {
             'zhubouid3': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjcmVhdG9yIjoiREVWIiwicm9sZSI6IlAiLCJwcm9maWxlSWQiOiJ6aHVib3VpZCIsImFwcElkIjoiYXBwSWQiLCJleHRJZCI6IiIsImV4cCI6MTU5NzM3NTUxMCwidXNlcklkIjoiemh1Ym91aWQzIiwiaWF0IjoxNTk0NzgzNTEwLCJyb29tSWQiOiIxMDAwIn0.i3O-dJWTKQeb2Lpwl7kVs1XTRWnAtoXjyww_UMzRSLA',
             'zhubouid4': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjcmVhdG9yIjoiREVWIiwicm9sZSI6IlAiLCJwcm9maWxlSWQiOiJ6aHVib3VpZCIsImFwcElkIjoiYXBwSWQiLCJleHRJZCI6IiIsImV4cCI6MTU5NzM3NTUyMSwidXNlcklkIjoiemh1Ym91aWQ0IiwiaWF0IjoxNTk0NzgzNTIxLCJyb29tSWQiOiIxMDAwIn0.1vsoyO8ApIZfPuEosohzF6Rhd0iLV5YGQXBNKh--f7U'
         };
+
         const wssInstance = (this.wssInstance = getWebSocket(
             `ws://127.0.0.1:8081?jwt=${jwt || jwtMap[type]}`
         ));

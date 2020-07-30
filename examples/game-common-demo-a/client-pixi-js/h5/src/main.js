@@ -1,6 +1,6 @@
 const isHyExt = getIsHyExt();
 window.__isAnchor = getIsAnchor();
-// window.__isAnchor = true;
+// window.__isAnchor = false;
 window.__isMobile = isHyExt && !!~window.navigator.userAgent.indexOf('Mobile');
 
 class Main {
@@ -12,7 +12,7 @@ class Main {
         const height = (this.height = window.innerHeight);
 
         const app = (this.app = new PIXI.Application({
-            // backgroundColor: 0xffffff,
+            // backgroundColor: 0x94a7a5,
             width,
             height,
             antialiasing: true,
@@ -33,7 +33,10 @@ class Main {
     }
 
     setup() {
+        console.log(this);
+        const { app, width, height } = this;
         this.drawStartPage();
+        // this.drawSmallRankModal();
     }
 
     drawSmallRankModal(list = []) {
@@ -58,7 +61,7 @@ class Main {
             fill: 0xffffff,
             fontSize: setWPx(10),
             wordWrapWidth: 600,
-            wordWrap: false,
+            wordWrap: false, 
             breakWords: false
         });
         title.position.set((container.width - title.width) / 2, setHPx(5));
@@ -221,6 +224,13 @@ class Main {
         app.renderer.backgroundColor = 0x94a7a5;
 
         const container = (this.startContainer = new PIXI.Container());
+        const bg = new PIXI.Graphics();
+        bg.beginFill(0x94a7a5);
+        bg.drawRect(0, 0, width, height);
+        bg.endFill();
+
+        container.addChild(bg);
+
         const message = new PIXI.Text('GAME NAME', {
             fill: 0xffffff,
             fontSize: setWPx(30),
@@ -262,6 +272,13 @@ class Main {
         app.renderer.backgroundColor = 0x94a7a5;
 
         const container = (this.middleContainer = new PIXI.Container());
+        const bg = new PIXI.Graphics();
+        bg.beginFill(0x94a7a5);
+        bg.drawRect(0, 0, width, height);
+        bg.endFill();
+
+        container.addChild(bg);
+
         const message = new PIXI.Text(text, {
             fill: 0xffffff,
             fontSize: setWPx(30),
@@ -319,6 +336,13 @@ class Main {
         app.renderer.backgroundColor = 0x6c7878;
 
         const container = (this.matchContainer = new PIXI.Container());
+        const bg = new PIXI.Graphics();
+        bg.beginFill(0x6c7878);
+        bg.drawRect(0, 0, width, height);
+        bg.endFill();
+
+        container.addChild(bg);
+
         const message = new PIXI.Text("等待开局...", {
             fill: 0xffffff,
             fontSize: setWPx(30),
@@ -390,8 +414,12 @@ class Wss {
             'zhubouid3': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjcmVhdG9yIjoiREVWIiwicm9sZSI6IlAiLCJwcm9maWxlSWQiOiJ6aHVib3VpZCIsImFwcElkIjoiYXBwSWQiLCJleHRJZCI6IiIsImV4cCI6MTU5NzM3NTUxMCwidXNlcklkIjoiemh1Ym91aWQzIiwiaWF0IjoxNTk0NzgzNTEwLCJyb29tSWQiOiIxMDAwIn0.i3O-dJWTKQeb2Lpwl7kVs1XTRWnAtoXjyww_UMzRSLA',
             'zhubouid4': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjcmVhdG9yIjoiREVWIiwicm9sZSI6IlAiLCJwcm9maWxlSWQiOiJ6aHVib3VpZCIsImFwcElkIjoiYXBwSWQiLCJleHRJZCI6IiIsImV4cCI6MTU5NzM3NTUyMSwidXNlcklkIjoiemh1Ym91aWQ0IiwiaWF0IjoxNTk0NzgzNTIxLCJyb29tSWQiOiIxMDAwIn0.1vsoyO8ApIZfPuEosohzF6Rhd0iLV5YGQXBNKh--f7U'
         };
-        const wssInstance = (this.wssInstance = getWebSocket(
-            `ws://127.0.0.1:8081?jwt=${jwt || jwtMap[type]}`
+        const wssInstance = (this.wssInstance = new WebSocket(
+            // `wss://172.21.15.38:8081?jwt=${jwt || jwtMap[type]}`
+            // `wss://gprx-ig.huya.info/MTcyLjIxLjE1LjM4OjgwODE/?prxSign=e6d87c5ce10cc7bb5c3eab4702d87ebc&jwt=${jwt || jwtMap[type]}`
+            `wss://gprx-ig.huya.info/MTAuMjU1LjE1Mi40OTo4MDgx/?prxSign=d4659e373d5ce8ca4d3af545a62c4a27&jwt=${jwt || jwtMap[type]}`
+            // `ws://106.52.158.28:9091/ws?jwt=${jwt || jwtMap[type]}`
+            // `ws://127.0.0.1:8081?jwt=${jwt || jwtMap[type]}`
         ));
         wssInstance.binaryType = 'arraybuffer';
         wssInstance.onopen = this.onopen.bind(this);
@@ -574,14 +602,6 @@ function logger(name, log) {
         hyExt.logger.info(name, log);
     }
     console.log(name, log)
-}
-
-function getWebSocket(url) {
-    if (getIsHyExt()) {
-        return new hyExt.WebSocket(url);
-    } else {
-        return new WebSocket(url);
-    }
 }
 
 function getUserInfo() {

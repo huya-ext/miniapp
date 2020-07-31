@@ -1,27 +1,22 @@
 {
   "hyext-sdk-demo": {
-    "desc": "sdk接口例子小程序，包含sdk的基本使用方法",
+    "desc": "sdk接口例子小程序，包含sdk的基本使用方法"
   },
   "WBDemo": {
-   "desc": "独立白板Demo，适用于PC主播端和助手APP"
+    "desc": "独立白板Demo，适用于PC主播端和助手APP"
   },
-
   "weather-view": {
     "desc": "看天气小程序，调用了http request方法，获取外部接口数据"
   },
-
   "weather-view-popup-version": {
     "desc": "看天气的浮窗版本"
   },
-
   "giftsender-app": {
     "desc": "包含主播端和观众端的一个示例小程序，调用了礼物和消息通道接口"
   },
-
   "giftsender-wb-app": {
     "desc": "送礼助手添加白板功能"
   },
-
   "giftsender-rt-app": {
     "desc": "送礼助手添加秩序审核功能"
   },

@@ -204,3 +204,11 @@ websocket url格式：
 
 		}	
 ```
+
+---
+
+# 线上发布部署
+
+linux下面，进入src目录执行：`nohup python3 main.py &`
+
+日志会输出到`nohup.out`文件中

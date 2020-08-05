@@ -97,3 +97,11 @@ websocket url格式：
 
 ### ws 数据包格式
 参考 [协议简介](https://github.com/huya-ext/miniapp/tree/master/examples/game-common-demo-a/server-java#%E5%8D%8F%E8%AE%AE%E7%AE%80%E4%BB%8B)
+
+---
+
+# 线上发布部署
+
+linux下面，进入src目录执行：`nohup python3 main.py &`
+
+日志会输出到`nohup.out`文件中

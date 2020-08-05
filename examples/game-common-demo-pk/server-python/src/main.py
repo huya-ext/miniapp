@@ -1,7 +1,7 @@
 # 远程调试代码 begin
-import ptvsd
-ptvsd.enable_attach(address = ('localhost', 5678))
-ptvsd.wait_for_attach()
+# import ptvsd
+# ptvsd.enable_attach(address = ('localhost', 5678))
+# ptvsd.wait_for_attach()
 # 远程调试代码 end
 
 from sanic import Sanic
@@ -27,4 +27,4 @@ app.blueprint(group)
 
 if __name__ == "__main__":
   print('server start')
-  app.run(host="0.0.0.0", port=DefaultConfig.PORT, debug=False)
+  app.run(host="0.0.0.0", port=DefaultConfig.PORT, debug=False, workers=4)

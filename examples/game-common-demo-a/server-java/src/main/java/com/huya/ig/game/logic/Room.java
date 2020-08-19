@@ -10,6 +10,7 @@ import io.netty.util.internal.ConcurrentSet;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -86,8 +87,14 @@ public class Room {
                 success = false;
             }else {
                 JsonObject data = gson.fromJson(payload, JsonObject.class);
+                Base64.Decoder decoder = Base64.getDecoder();
+                String nick = data.get("nick").getAsString();
+                try {
+                      nick = new String(decoder.decode(nick), "UTF-8");
+                } catch (UnsupportedEncodingException e) {
+                }
                 signedPlayers.putIfAbsent(uid, new Player(uid, 0,
-                        data.get("nick").getAsString(),
+                        nick,
                         data.get("avatar").getAsString()));
             }
         }

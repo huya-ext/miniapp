@@ -148,7 +148,7 @@ System.out.println(token);
 	报名成功响应包，房间广播玩家报名成功：
 		{
 			"protocol": 205,
-			"payload": "{"success":true, "player":"{"uid":"1","nick":"昵称","avatar":"头像url"}"}"
+			"payload": "{"success":true, "player":"{"uid":"1","nick": "base64编码的用户昵称","avatar":"头像url"}"}"
 		}	
 	报名失败响应包，对当前报名用户单播报名失败：
 		{

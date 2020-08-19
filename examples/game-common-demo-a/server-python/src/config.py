@@ -4,11 +4,11 @@ class DefaultConfig(object):
     """ 配置文件，注意，配置项必须要大写！！！ """
 
     # sanic 定义参数 begin
-    WEBSOCKET_MAX_SIZE = 5  # 5 seconds
-    WEBSOCKET_MAX_QUEUE = 64  # 1 megabyte
-    WEBSOCKET_READ_LIMIT = 4 ** 16
-    WEBSOCKET_WRITE_LIMIT = 4 ** 16
-    ACCESS_LOG = False
+    WEBSOCKET_MAX_SIZE = 65535
+    WEBSOCKET_MAX_QUEUE = 32
+    WEBSOCKET_READ_LIMIT = 65535
+    WEBSOCKET_WRITE_LIMIT = 65535
+    ACCESS_LOG = True
     # sanic 定义参数 end
 
     PORT = 9090     #服务器监听端口

@@ -553,9 +553,10 @@ class Wss {
 
     async sendReady() {
         const { userNick, userAvatarUrl } = await getUserInfo();
+        
         this.send({
             "protocol": 101,
-            "payload": JSON.stringify({ "nick": userNick, "avatar": userAvatarUrl })
+            "payload": JSON.stringify({ "nick": Base64.encode(userNick), "avatar": userAvatarUrl })
         });
     }
 

@@ -2,6 +2,9 @@ import threading
 import json
 import time
 import asyncio
+
+import base64
+
 from enum import Enum
 from config import DefaultConfig
 from logger import log
@@ -160,7 +163,12 @@ class Room(object):
 
         if not players.__contains__(uid):
             player = Player(uid)
-            player.nick = data['nick']
+
+            nick = data['nick']
+            if nick:
+                nick = base64.b64decode(nick).decode("utf-8")
+            player.nick = nick
+
             player.avatar = data['avatar']
             player.isPresenter = True if self.presenterUids.__contains__(uid) else False
             players[uid] = player

@@ -1,0 +1,25 @@
+.option-content {}
+
+.option-title {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 500;
+  margin-top: 32px;
+  margin-bottom: 24px;
+}
+
+.vote-num {
+  margin: 0 auto;
+  margin-top: 24px;
+  font-size: 28px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+}
+
+.icon-win {
+  width: 120px;
+  height: 78px;
+  position: absolute;
+  right: 0;
+  top: 45px;
+}

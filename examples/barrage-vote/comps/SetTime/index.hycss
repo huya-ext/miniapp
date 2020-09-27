@@ -1,0 +1,24 @@
+.num-item-btn {
+  padding: 0;
+  background: transparent;
+  border-width: 0;
+}
+
+.num-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 154px;
+  height: 70px;
+  border-radius: 8px;
+  border-radius: 13px;
+  border: 6px solid #FFC600;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.item-name {
+  font-size: 28px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+}

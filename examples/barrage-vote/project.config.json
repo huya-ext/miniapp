@@ -1,0 +1,76 @@
+{
+  "name": "barrage-vote",
+  "outputPath": "dist",
+  "releasePath": "release",
+  "extId": "",
+  "ignore": [
+    "*.md",
+    "LICENSE",
+    ".git/**",
+    ".gitignore",
+    "package-lock.json"
+  ],
+  "builder": {
+    "name": "@hyext/builder-beyond",
+    "config": {
+      "hostId": "huyaext",
+      "webSDKVersion": "latest",
+      "webTitle": "虎牙小程序",
+      "useCssLoader": true,
+      "enableVW": true,
+      "designWidth": 750,
+      "https": true,
+      "host": "127.0.0.1",
+      "port": 18080,
+      "enableLint": {
+        "stylelint": false,
+        "eslint": false
+      },
+      "mockConfig": {
+        "useMock": true,
+        "roomid": 100,
+        "designWidth": {
+          "vertical": 750,
+          "landscape": 1334
+        },
+        "isVerticalChannel": true
+      },
+      "buildConfig": {
+        "RN": [
+          {
+            "entry": "index.js",
+            "extType": "app_popup",
+            "platform": "app",
+            "registerComponent": [
+              "barrage-vote"
+            ],
+            "position": "player"
+          },
+          {
+            "entry": "index_streamer.js",
+            "extType": "zs_anchor_panel",
+            "registerComponent": [
+              "barrage-vote-streamer"
+            ]
+          },
+          {
+            "entry": "index_streamer_popup.js",
+            "extType": "zs_anchor_popup",
+            "platform": "app",
+            "registerComponent": [
+              "barrage-vote-streamer-popup"
+            ],
+            "position": "player"
+          }
+        ],
+        "H5": [
+          {
+            "entry": "index.js",
+            "extType": "web_popup",
+            "platform": "web"
+          }
+        ]
+      }
+    }
+  }
+}

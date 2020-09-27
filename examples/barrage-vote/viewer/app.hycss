@@ -1,0 +1,201 @@
+.container {
+  flex: 1;
+  position: relative;
+}
+
+.timer-bg {
+  width: 55%;
+  height: 14%;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 23%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timer-bg_web {
+  width: 55%;
+  height: 14%;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 23%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timer-bg_app_portrait {
+  width: 59%;
+  height: 14%;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 23%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timer-bg_app_landscape {
+  width: 55%;
+  height: 14%;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 23%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.panel-bg {
+  width: 100%;
+  height: 94%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 6%;
+}
+
+.panel-bg-img {
+  width: 100%;
+  height: 100%;
+}
+
+.panel-bg_web {
+  width: 100%;
+  height: 94%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 6%;
+}
+
+.panel-bg_app_portrait {
+  width: 100%;
+  height: 94%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 6%;
+}
+
+.panel-bg_app_landscape {
+  width: 100%;
+  height: 94%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 6%;
+}
+
+.button-close {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-close_web {
+  position: absolute;
+  top: 2%;
+  right: 4%;
+  height: 13%;
+  width: 13%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-close_app_portrait {
+  position: absolute;
+  top: 4%;
+  right: 4%;
+  height: 14%;
+  width: 14%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-close_app_landscape {
+  position: absolute;
+  top: 4%;
+  right: 4%;
+  height: 14%;
+  width: 14%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-close {
+  height: 32px;
+  width: 32px;
+}
+
+.img-close_web {
+  height: 95%;
+  width: 95%;
+}
+
+.img-close_app_portrait {
+  height: 95%;
+  width: 95%;
+}
+
+.img-close_app_landscape {
+  height: 95%;
+  width: 95%;
+}
+
+.scroller {
+  flex: 1;
+  position: relative;
+  margin: 14% 0;
+}
+
+.clock {
+  color: #fff;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.pupop-title {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 5%;
+}
+
+.pupop-title_web {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 5%;
+}
+
+.pupop-title_app_portrait {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 5%;
+}
+
+.pupop-title_app_landscape {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 5%;
+}

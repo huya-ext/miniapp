@@ -1,0 +1,29 @@
+.add-content {
+  width: 686px;
+  height: 40px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.button-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.add-img {
+  width: 40px;
+  height: 40px;
+}
+
+.add-text {
+  align-self: center;
+  margin-left: 8px;
+  margin-right: 8px;
+  font-size: 28px;
+  font-weight: 400;
+  color: rgba(255, 169, 0, 1);
+}

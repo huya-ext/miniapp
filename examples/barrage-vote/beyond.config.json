@@ -1,0 +1,5 @@
+{
+  "plugins": [
+    "@hyext/beyond-plugin-mock"
+  ]
+}

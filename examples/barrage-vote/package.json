@@ -14,7 +14,8 @@
   "license": "ISC",
   "devDependencies": {
     "@hyext/builder-beyond": "^2.0.4",
-    "@hyext/cli": "^3.1.4"
+    "@hyext/cli": "^3.1.4",
+    "@hyext/beyond-plugin-mock": "^0.1.0"
   },
   "dependencies": {
     "@hyext-beyond/core": "2.0.2",

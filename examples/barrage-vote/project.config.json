@@ -31,7 +31,7 @@
         "roomid": 100,
         "designWidth": {
           "vertical": 750,
-          "landscape": 1334
+          "landscape": 0
         },
         "isVerticalChannel": true
       },

@@ -33,6 +33,7 @@
           "vertical": 750,
           "landscape": 0
         },
+        "port": 18082,
         "isVerticalChannel": true
       },
       "buildConfig": {

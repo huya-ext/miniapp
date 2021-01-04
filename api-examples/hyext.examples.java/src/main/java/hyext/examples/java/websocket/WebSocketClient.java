@@ -1,10 +1,10 @@
-package hyext.ebs.examples.websocket;
+package hyext.examples.java.websocket;
 
 import com.alibaba.fastjson.JSONObject;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 
-import hyext.ebs.examples.utils.ParamsUtil;
+import hyext.examples.java.utils.ParamsUtil;
 
 import org.java_websocket.enums.ReadyState;
 import org.java_websocket.handshake.ServerHandshake;

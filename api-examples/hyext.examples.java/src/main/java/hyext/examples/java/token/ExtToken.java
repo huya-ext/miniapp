@@ -1,4 +1,4 @@
-package hyext.token.examples;
+package hyext.examples.java.token;
 
 import java.util.Date;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package hyext.ebs.examples.apiext;
+package hyext.examples.java.ebs.apiext;
 
 import java.io.IOException;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package hyext.ebs.examples.utils;
+package hyext.examples.java.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

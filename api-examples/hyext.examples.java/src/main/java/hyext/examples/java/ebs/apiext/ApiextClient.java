@@ -29,7 +29,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 public class ApiextClient {
 	
 	/**
-	 * 生效请求jwt凭证
+	 * 生效请求jwt凭证1
 	 * @param appId  开发者ID
 	 * @param secret  开发者密钥
 	 * @param extId  小程序uuid

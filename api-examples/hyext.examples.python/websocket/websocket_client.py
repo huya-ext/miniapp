@@ -86,9 +86,9 @@ class WSClient(object):
 
 
 # 开发者ID（https://ext.huya.com成为开发者后自动生成）
-appId = "test_appid"
+appId = "test_appId"
 # 要监听主播的房间号
-roomId = "test_roomid"
+roomId = "test_roomId"
 socket_uri = "ws://ws-apiext.huya.com/index.html?"
 # 接口返回的jwt
 jwt = "test_jwt"
@@ -106,12 +106,15 @@ print(socket_uri)
 ws_client = WSClient(socket_uri, lambda message: print("call_back message:", message))
 ws_client.run()
 
-while True:
-    message = {
-        "command": "subscribeNotice",
-        "data": ["getSendItemNotice"],
-        "reqId": int(time.time())
-    }
-    message = json.dumps(message).encode()
-    ws_client.send_message(message)
-    time.sleep(5)
+# 等待5秒
+time.sleep(5)
+
+# 发送订阅命令
+message = {
+	"command": "subscribeNotice",
+	"data": ["getSendItemNotice"],
+	"reqId": int(time.time())
+}
+message = json.dumps(message).encode()
+ws_client.send_message(message)
+

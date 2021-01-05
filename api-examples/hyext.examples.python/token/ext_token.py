@@ -12,7 +12,7 @@ def get_token(appid, secret, extid, profileid, second):
     }
     # 当前时间戳 秒
     iat = int(time.time())
-    # 超时时间
+    # 过期时间
     exp = iat + second
 
     payload = {

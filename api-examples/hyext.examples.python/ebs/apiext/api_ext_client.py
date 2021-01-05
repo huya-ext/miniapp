@@ -1,7 +1,7 @@
 import urllib3
 import json
 import logging
-
+from urllib.parse import urlencode
 
 def send_post(url, post_data):
     # 创建PoolManager对象生成请求, 由该实例对象处理与线程池的连接以及线程安全的所有细节
@@ -24,13 +24,20 @@ def send_post(url, post_data):
         logging.exception(e)
 
 
+# 开发者ID（https://ext.huya.com成为开发者后自动生成）
 appId = "testAppId"
+# 小程序ID（https://ext.huya.com成为创建小程序后自动生成）
 extId = "testExtId"
 
 post_data = {
-    "profileId": "test_profileId",
-    "event": "test_message",
+    "profileId": "主播unionId",
+    "event": "test_event",
     "message": "test_message",
 }
-url = "https://apiext.huya.com/message/deliverRoomByProfileId?appId=" + appId + "&extId=" + extId
+query_param = {
+    "appId": appId,
+    "extId": extId,
+}
+url = "https://apiext.huya.com/message/deliverRoomByProfileId?"
+url += urlencode(query_param)
 send_post(url, post_data)

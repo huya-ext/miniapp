@@ -85,17 +85,20 @@ class WSClient(object):
         self.client.send_message(message)
 
 
-appId = "hda4989c0d21502c"
-roomId = "18628950"
+# 开发者ID（https://ext.huya.com成为开发者后自动生成）
+appId = "test_appid"
+# 要监听主播的房间号
+roomId = "test_roomid"
 socket_uri = "ws://ws-apiext.huya.com/index.html?"
-jwt = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjcmVhdG9yIjoiU1lTIiwicm9sZSI6IlAiLCJwcm9maWxlSWQiOiJ1bjFGeE5BUFFmdytCTkN0VmRKbFNEMWNlTU12VlpxUk5KIiwiYXBwSWQiOiJoZGE0OTg5YzBkMjE1MDJjIiwiZXh0SWQiOiJyZzhkY2QyMSIsImV4cCI6MTYwOTgzOTE5NiwidXNlcklkIjoidW4xRnhOQVBRZncrQk5DdFZkSmxTRDFjZU1NdlZacVJOSiIsImlhdCI6MTYwOTgzNTU5Niwicm9vbUlkIjoiMTg2Mjg5NTAifQ.GCpBjS66KV20YsACXSI--GMJvHGvDWosy-8WVd9k4vA"
+# 接口返回的jwt
+jwt = "test_jwt"
 
 params = {
-    "iat": 1609835596,
-    "exp": 1609839196,
+    "iat": "jwt中的iat",
+    "exp": "jwt中的exp",
     "sToken": jwt,
     "appId": appId,
-    "roomId": 942020,
+    "roomId": roomId,
     "do": "comm",
 }
 socket_uri += urlencode(params)

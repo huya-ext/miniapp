@@ -1,0 +1,24 @@
+{
+  "name": "game-launcher",
+  "version": "2.0.0",
+  "description": "hyext game launcher",
+  "main": "index.js",
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "bundle": "node node_modules/react-native/local-cli/cli.js bundle --entry-file index.js  --platform ios --dev false --bundle-output ./ios/bundle/index.ios.jsbundle --assets-dest ./ios/bundle --sourcemap-output ./ios/bundle/index.ios.map",
+    "test": "jest",
+    "doc": "node ./node_modules/grunt/bin/grunt",
+    "generate-docs": "node_modules/.bin/jsdoc -c jsdoc.json"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-decorators": "7.3.0",
+    "@babel/runtime": "7.3.4",
+    "autobind-decorator": "^2.1.0",
+    "babel-plugin-transform-remove-console": "6.9.4",
+    "prop-types": "^15.6.1",
+    "@hyext/hy-ui": "^1.3.7",
+    "@hyext/ext-sdk-hy": "2.6.3-beta.4"
+  },
+  "author": "DING HAISHENG",
+  "license": "ISC"
+}

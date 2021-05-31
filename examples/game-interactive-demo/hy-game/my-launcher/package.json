@@ -1,0 +1,17 @@
+{
+  "name": "@hyext/game-launcher",
+  "version": "2.6.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^8.1.0",
+    "handlebars": "^4.7.6",
+    "rimraf": "^3.0.2"
+  }
+}

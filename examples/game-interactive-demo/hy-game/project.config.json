@@ -1,0 +1,61 @@
+{
+  "name": "hy-game",
+  "outputPath": "hyext_dist",
+  "releasePath": ".",
+  "ignore": [
+    "*.md",
+    "LICENSE",
+    ".git/**",
+    ".gitignore",
+    "package-lock.json",
+    "assets/**",
+    "library/**",
+    "local/**",
+    "packages/**",
+    "pb/**",
+    "settings/**",
+    "temp/**",
+    "creator.d.ts",
+    "jsconfig.json",
+    "project.json",
+    "tsconfig.json",
+    "debug.py",
+    "*.txt"
+  ],
+  "builder": {
+    "name": "@hyext/builder-h5game",
+    "config": {
+      "webTitle": "hy-game",
+      "https": true,
+      "h5Dir": "web-mobile",
+      "convertEs6": false,
+      "customLauncher": "./my-launcher",
+      "buildConfig": [
+        {
+          "extType": "pc_anchor_panel",
+          "platform": "pc"
+        },
+        {
+          "extType": "zs_anchor_popup",
+          "platform": "app"
+        },
+        {
+          "extType": "pc_popup",
+          "platform": "pc"
+        },
+        {
+          "extType": "web_popup",
+          "platform": "web"
+        },
+        {
+          "extType": "app_popup",
+          "platform": "app"
+        },
+        {
+          "extType": "app_inner_rn",
+          "platform": "app"
+        }
+      ]
+    }
+  }
+}

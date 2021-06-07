@@ -1,0 +1,42 @@
+{
+  "name": "BarrageGame",
+  "outputPath": "dist",
+  "releasePath": "release",
+  "ignore": [
+    "*.md",
+    "LICENSE",
+    ".git/**",
+    ".gitignore",
+    "package-lock.json"
+  ],
+  "builder": {
+    "name": "@hyext/builder-beyond",
+    "config": {
+      "hostId": "huyaext",
+      "webSDKVersion": "latest",
+      "webTitle": "虎牙小程序",
+      "designWidth": 750,
+      "buildConfig": {
+        "RN": [],
+        "H5": [
+          {
+            "entry": "index_streamer.js",
+            "extType": "pc_anchor_panel",
+            "platform": "pc"
+          }
+        ]
+      },
+      "useTaf": true,
+      "https": true,
+      "host": "localhost",
+      "useCssLoader": true,
+      "port": 18080,
+      "enableLint": {
+        "stylelint": false,
+        "eslint": false
+      },
+      "enableVW": false,
+      "compileNodeModules": []
+    }
+  }
+}

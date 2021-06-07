@@ -2,8 +2,8 @@ import { UI } from "@hyext/hy-ui";
 import React, { Component } from "react";
 import "./app.hycss";
 import IMG_CONFIG from '../assets/index.js';
-
-import genLayoutSizeParam from './genLayoutSizeParam'
+import { LayoutSwitch } from "@hyext/popup";
+import { MeasureBox } from "./PopupLayout";
 
 let WEATHER_IMG = IMG_CONFIG.WEATHER_IMG;
 
@@ -18,15 +18,9 @@ let weatherType = "now";
 let city = "guangzhou";
 let Key = encodeURI("f816455070734768b757247924a44eef");
 
-const CONTIANER_WIDTH = 400; // 小程序容器宽度，即设计稿上小程序的宽度,单位为px
-const CONTAINER_HEIGHT = 600;// 小程序容器宽度，即设计稿上小程序的宽度,单位为px
-const TOP = 100;  // 小程序距离播放器左上角的纵向距离，单位为px
-const LEFT = 100; // 小程序距离播放器左上角的横向距离，单位为px
-const APP_DESIGN_WIDTH = 750; //app端设计稿
-
 const hyExt = global.hyExt;
 
-class App extends Component {
+class WeatherPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,39 +31,6 @@ class App extends Component {
 
   componentDidMount() {
     this.getWeatherInfo();
-
-    this.setLayout();
-  }
-
-  setLayout() {
-    hyExt.context.onLayoutChange(({screenWidth, screenHeight}) => {
-
-      let { x, y, width, height } = genLayoutSizeParam({
-        containerWidth: CONTIANER_WIDTH,
-        containerHeight: CONTAINER_HEIGHT,
-        screenWidth,
-        screenHeight,
-        top: TOP,
-        left: LEFT,
-        designWidth: APP_DESIGN_WIDTH
-      })
-
-      let param = {
-        visible: true,
-        x,
-        y,
-        width,
-        height,
-        animate: true,
-        alpha: 1
-      }
-
-      hyExt.panel.setLayout(param).then(() => {
-        hyExt.logger.info('设置小程序布局成功')    
-      }).catch(err => {
-        hyExt.logger.info('设置小程序布局失败，错误信息：' + err.message)
-      })
-    })
   }
 
   // 获取天气 和风
@@ -239,6 +200,16 @@ class Clock extends Component {
       )}`}</Text>
     );
   }
+}
+
+function App() {
+  return (
+    <LayoutSwitch currentLayoutName="weather">
+      <MeasureBox name="weather">
+        <WeatherPanel></WeatherPanel>
+      </MeasureBox>
+    </LayoutSwitch>
+  )
 }
 
 export default App;

@@ -40,7 +40,11 @@
             "designWidth": 400
           }
         ]
-      }
+      },
+      "compileNodeModules": [
+        "@hyext/popup"
+      ],
+      "hostId": "huyaext"
     }
   }
 }

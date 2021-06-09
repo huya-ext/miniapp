@@ -10,4 +10,3 @@ npm install 安装Node.js依赖模块
 
 npx hyext start 运行
 
-> 如果您正在使用虎牙小程序vscode[插件](http://dev.huya.com/docs#/vscode), 请安装本地依赖后按照插件的说明文档进行操作。

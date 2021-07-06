@@ -12,12 +12,11 @@
   "license": "ISC",
   "devDependencies": {
     "@hyext/builder-beyond": "latest",
-    "@hyext/cli": "^1.0.9"
+    "@hyext/cli": "latest"
   },
   "dependencies": {
-    "@hyext-beyond/core": "1.0.6",
+    "@hyext-beyond/core": "latest",
     "@hyext/hy-ui": "latest",
-    "@hyext/hyext-rn-sdk": "1.8.4",
-    "@hyext/hyliveext-rn-sdk": "1.10.0"
+    "@hyext/ext-sdk-hy": "latest"
   }
 }

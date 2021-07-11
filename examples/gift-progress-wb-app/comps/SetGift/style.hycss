@@ -1,0 +1,61 @@
+.selector-content {
+  margin: 0 auto;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.title-content {
+  align-self: flex-start;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.scroller {
+  width: 100%;
+  min-height: 400px;
+  height: auto;
+}
+
+.gift-item {
+  margin: 0 10px;
+  width: 150px;
+  height: 244px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.item-info {
+  width: 144px;
+  height: 144px;
+  background: #ccc;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-image {
+  width: 70px;
+  height: 70px;
+}
+
+.item-name {
+  font-size: 22px;
+  font-weight: 400;
+  color: #212121;
+}

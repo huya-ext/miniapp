@@ -1,0 +1,66 @@
+{
+  "name": "weather-view",
+  "outputPath": "dist",
+  "releasePath": "release",
+  "ignore": [
+    "*.md",
+    "LICENSE",
+    ".git/**",
+    ".gitignore",
+    "package-lock.json"
+  ],
+  "builder": {
+    "name": "@hyext/builder-beyond",
+    "config": {
+      "webSDKVersion": "1.10.0",
+      "webTitle": "虎牙小程序",
+      "useCssLoader": true,
+      "designWidth": 750,
+      "https": true,
+      "host": "localhost",
+      "port": 18080,
+      "enableLint": false,
+      "buildConfig": {
+        "RN": [
+          {
+            "entry": "index.js",
+            "extType": "app_panel",
+            "platform": "app",
+            "registerComponent": [
+              "weather-view"
+            ]
+          },
+          {
+            "entry": "index.js",
+            "extType": "app_popup",
+            "platform": "app",
+            "registerComponent": [
+              "weather-view"
+            ]
+          }
+        ],
+        "H5": [
+          {
+            "entry": "index.js",
+            "extType": "web_video_com",
+            "platform": "web"
+          },
+          {
+            "entry": "index.js",
+            "extType": "pc_popup",
+            "platform": "pc"
+          },
+          {
+            "entry": "index.js",
+            "extType": "web_popup",
+            "platform": "web"
+          }
+        ]
+      },
+      "compileNodeModules": [
+        "@hyext/popup"
+      ],
+      "hostId": "huyaext"
+    }
+  }
+}

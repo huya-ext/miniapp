@@ -1,0 +1,31 @@
+{
+  "name": "builder-webview-demo",
+  "outputPath": "hyext_dist",
+  "releasePath": "hyext_release",
+  "ignore": [
+    "*.md",
+    "LICENSE",
+    ".git/**",
+    ".gitignore",
+    "package-lock.json"
+  ],
+  "builder": {
+    "name": "@hyext/builder-webview",
+    "config": {
+      "webTitle": "builder-webview-demo",
+      "https": true,
+      "h5Dir": "my-game-files",
+      "buildConfig": [
+        {
+          "extType": "web_video_com",
+          "platform": "web"
+        },
+        {
+          "extType": "app_panel",
+          "platform": "app",
+          "entry": "app_panel.js"
+        }
+      ]
+    }
+  }
+}

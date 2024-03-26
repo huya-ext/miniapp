@@ -1,0 +1,30 @@
+{
+  "name": "hygame-demo",
+  "outputPath": "hyext_dist",
+  "releasePath": "hyext_release",
+  "ignore": [
+    "*.md",
+    "LICENSE",
+    ".git/**",
+    ".gitignore",
+    "package-lock.json"
+  ],
+  "builder": {
+    "name": "@hyext/builder-webview",
+    "config": {
+      "webTitle": "hygame-demo",
+      "https": true,
+      "h5Dir": "h5Dir",
+      "buildConfig": [
+        {
+          "extType": "web_video_com",
+          "platform": "web"
+        },
+        {
+          "extType": "app_panel_h5",
+          "platform": "web"
+        }
+      ]
+    }
+  }
+}

@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>虎牙小程序demo</title>
 </head>
+
 <body>
   <h1>虎牙小程序demo</h1>
-  <p>hello world</p>
+
+  <p>当前登录用户昵称: <span id="nick"></span></p>
+  <p>当前登录用户等级: <span id="level"></span></p>
+
+  <script>
+    async function main() {
+      const info = await hyExt.context.getUserInfo()
+      const {userNick, userAvatarUrl, userLevel, userUnionId} = info
+      document.getElementById('nick').innerText = userNick
+      document.getElementById('level').innerText = userLevel
+    }
+
+    // 等待SDK注入, 需要在DOM加载完成后才能执行main函数, 
+    document.addEventListener('DOMContentLoaded', main)
+  </script>
 </body>
+
 </html>

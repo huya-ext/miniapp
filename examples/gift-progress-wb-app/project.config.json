@@ -1,0 +1,47 @@
+{
+  "name": "zsWbDemo",
+  "outputPath": "dist",
+  "releasePath": "release",
+  "extId": "osskcn9z",
+  "isTestEnv": true,
+  "ignore": [
+    "*.md",
+    "LICENSE",
+    ".git/**",
+    ".gitignore",
+    "package-lock.json"
+  ],
+  "builder": {
+    "name": "@hyext/builder-beyond",
+    "config": {
+      "webSDKVersion": "1.10.0",
+      "webTitle": "虎牙小程序",
+      "useCssLoader": true,
+      "designWidth": 750,
+      "https": true,
+      "host": "172.21.40.4",
+      "port": 18080,
+      "enableLint": false,
+      "buildConfig": {
+        "RN": [
+          {
+            "entry": "index_streamer.js",
+            "extType": "zs_anchor_panel",
+            "platform": "app",
+            "registerComponent": [
+              "zsWbDemo-streamer"
+            ]
+          }
+        ],
+        "H5": [
+          {
+            "entry": "index_streamer.js",
+            "extType": "pc_anchor_panel",
+            "platform": "pc"
+          }
+        ]
+      },
+      "hostId": "huyaext"
+    }
+  }
+}
